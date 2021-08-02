@@ -3,6 +3,8 @@
 	import "../app.scss";
 </script>
 
+
+
 <Header />
 
 <main>
@@ -10,9 +12,14 @@
 </main>
 
 <footer>
-	<p>visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to learn SvelteKit</p>
+	
 </footer>
 
+
+
 <style lang="scss">
-	
+	main {
+		max-width: 1400px;
+		margin: 0 auto;
+	}
 </style>

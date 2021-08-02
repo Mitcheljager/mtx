@@ -16,13 +16,13 @@ $text-color: hsl(219, 22%, 77%);
   --primary: hsl(281, 72%, 54%);
   --secondary: hsl(32, 90%, 49%);
 
-  --red: #b33834;
+  --red: #8b2926;
   --orange: #e89930;
-  --green: #35d377;
+  --green: #26aa5d;
 
   --body-bg: #{ $body-bg };
   --content-bg: #{ darken($body-bg, 5%) };
-  --content-bg-light: #{ lighten($body-bg, 15%)};
+  --content-bg-light: #{ lighten($body-bg, 10%)};
   --bg-dark: #{ darken($body-bg, 10%) };
   --border-color: #{ lighten($body-bg, 10%) };
 

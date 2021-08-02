@@ -4,14 +4,22 @@
 
 <script lang="ts">
 	import supabase from "$lib/db"
+
+	import { fade } from "svelte/transition"
+
+	import Game from "./games/_game.svelte"
 	
 	async function getData() {
 		const { data, error } = await supabase
 			.from("games")
-			.select()
+			.select(`
+				id, title,
+				categories (id, title, type)
+			`)
+			.limit(20)
 			
 		if (error) throw new Error(error.message)
-		
+
 		return data
 	}
 </script>
@@ -26,11 +34,13 @@
 
 <div class="cards">
 	{ #await getData() }
-		<p>Fetching data...</p>
+		{ #each { length: 20 } as _ }
+			<Game loading={ true } />
+		{ /each }
 	{ :then data }
 		{ #each data as game }
-			<div class="card">
-				{ game.title }
+			<div in:fade={{ duration: 150 }}>
+				<Game { game } />
 			</div>
 		{ /each }
 	{ :catch error }
@@ -44,26 +54,17 @@
 <style lang="scss">
 	.cards {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    grid-gap: 1rem;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-gap: 1.5rem;
   }
 
-	.card {
-		position: relative;
-		display: block;
-		padding: 1.5rem;
-		border-radius: 1rem;
-		background: var(--bg-dark);
-		box-shadow: var(--shadow-medium);
-	}
+	@keyframes loading {
+		from {
+			transform: translateX(-100%);
+		}
 
-	.card__header {
-		display: flex;
-		justify-content: space-between;
-		align-items: flex-start;
-
-		h3 {
-			margin: 0 0 1rem;
+		to {
+			transform: translateX(100%);
 		}
 	}
 </style>
