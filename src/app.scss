@@ -1,0 +1,36 @@
+@import "variables";
+
+* {
+	box-sizing: border-box;
+}
+
+html, body {
+	width: 100%;
+}
+
+body {
+	position: relative;
+	margin: 0;
+	padding: 0;
+	background-color: var(--body-bg);
+	color: var(--text-color);
+	font-size: 16px;
+	font-family: var(--font-family);
+	overflow-x: hidden;
+}
+
+a {
+	color: var(--primary);
+
+	&:hover {
+		color: var(--secondary);
+	}
+
+	&:focus {
+		outline: none;
+	}
+}
+
+[contenteditable]:focus {
+	outline: none;
+}
