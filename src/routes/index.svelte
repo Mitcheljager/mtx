@@ -3,7 +3,7 @@
 </script>
 
 <script lang="ts">
-	import supabase from "$lib/db"
+	import supabase from "../lib/db"
 
 	import { fade } from "svelte/transition"
 

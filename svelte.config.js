@@ -1,4 +1,4 @@
-import preprocess from "svelte-preprocess";
+import preprocess from "svelte-preprocess"
 
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
@@ -10,6 +10,6 @@ const config = {
 		// hydrate the <div id="svelte"> element in src/app.html
 		target: "#svelte"
 	}
-};
+}
 
-export default config;
+export default config
