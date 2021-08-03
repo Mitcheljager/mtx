@@ -9,7 +9,7 @@ $media-min-widths: (
   xl: 1200px
 );
 
-$body-bg: hsl(220, 15%, 20%);
+$base-bg: hsl(220, 15%, 20%);
 $text-color: hsl(219, 22%, 77%);
 
 :root {
@@ -18,18 +18,21 @@ $text-color: hsl(219, 22%, 77%);
 
   --red: #8b2926;
   --orange: #e89930;
+  --yellow: #e8c630;
+  --blue: #2659b8;
   --green: #26aa5d;
 
-  --body-bg: #{ $body-bg };
-  --content-bg: #{ darken($body-bg, 5%) };
-  --content-bg-light: #{ lighten($body-bg, 10%)};
-  --bg-dark: #{ darken($body-bg, 10%) };
-  --border-color: #{ lighten($body-bg, 10%) };
+  --body-bg: #{ darken($base-bg, 10%) };
+  --content-bg: #{ lighten($base-bg, 5%) };
+  --content-bg-light: #{ lighten($base-bg, 10%)};
+  --bg-dark: #{ darken($base-bg, 5%) };
+  --border-color: #{ lighten($base-bg, 15%) };
 
   --text-color: #{ $text-color };
   --text-color-medium: #{ desaturate(darken($text-color, 15%), 5%) };
   --text-color-dark: #{ desaturate(darken($text-color, 30%), 10%) };
   --text-color-light: #{ lighten($text-color, 15%) };
+  --text-color-title: hsl(351, 48%, 45%);
   --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   --font-family-titles: "Lato", sans-serif;
 
@@ -41,8 +44,8 @@ $text-color: hsl(219, 22%, 77%);
                   0 16px 8px rgba(0, 0, 0, 0.1),
                   0 32px 16px rgba(0, 0, 0, 0.1);
                   
-  --shadow-big:    0 3px 2px rgba(0, 0, 0, .1),
-                  0 10px 5px rgba(0, 0, 0, .1),
+  --shadow-big:   0 3px 2px rgba(0, 0, 0, .1),
+                  0 10px 5px rgba(0, 0, 0, 0.1),
                   0 15px 10px rgba(0, 0, 0, .1),
                   0 25px 15px rgba(0, 0, 0, .2),
                   0 40px 30px rgba(0, 0, 0, .2),
