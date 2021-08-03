@@ -21,8 +21,8 @@ export default {
     "src"
   ],
   moduleNameMapper: {
-    "^@stores(.*)$": "<rootDir>/src/stores$1",
-    "^@shared(.*)$": "<rootDir>/src/shared$1"
+    "^$stores(.*)$": "<rootDir>/src/stores$1",
+    "^$lib(.*)$": "<rootDir>/src/lib$1"
   },
   setupFilesAfterEnv: [
     "@testing-library/jest-dom/extend-expect"

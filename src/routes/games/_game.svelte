@@ -1,24 +1,23 @@
 <script lang="ts">
+	import type { Game } from "$lib/db"
+
 	import Category from "../categories/_category.svelte"
 
-  export let game = {
-    title: null as string,
-		publisher: null as string,
-		year_of_release: null as number,
-    categories: null as []
-  }
+  export let game: Game
   export let loading = false
+
+	let maxCategories = 10
 
 	$: grade = categoriesToScore()
 
 	function sortCategories() {
-		return game.categories.sort((a, b) => (a.type > b.type) ? 1 : -1).filter((c, i) => i < 10)
+		return game.categories.sort((a, b) => (a.type > b.type) ? 1 : -1).filter((c, i) => i < maxCategories)
 	}
 
 	function categoriesToScore() {
 		let score:number = 10
 
-		const negativeCategories = game.categories?.filter(c => c.type == "negative").length
+		const negativeCategories = game?.categories?.filter(c => c.type == "negative").length
 
 		score -= (negativeCategories / 2)
 
@@ -58,6 +57,10 @@
 		{ #each sortCategories() as category }
 			<Category { category } />
 		{ /each }
+
+		{ #if game.categories.length > maxCategories }
+			And { game.categories.length - maxCategories } more...
+		{ /if }
   { /if }
 </div>
 

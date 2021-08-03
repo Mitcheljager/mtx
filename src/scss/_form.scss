@@ -1,0 +1,46 @@
+.form-input {
+  appearance: none;
+  width: 100%;
+  padding: .5rem .75rem;
+  border: 0;
+  border-radius: .5rem;
+  background: var(--bg-dark);
+  color: var(--text-color);
+  font-size: 1rem;
+
+  &:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px var(--text-color-dark);
+  }
+
+  &::placeholder {
+    color: var(--text-color-dark);
+    font-style: italic;
+    font-size: .85rem;
+  }
+
+  &--large {
+    font-size: 1.5rem;
+    padding: .75rem 1.5rem;
+    border-radius: 5rem;
+  }
+}
+
+.form-label {
+  display: block;
+  margin: 1.5rem 0 .25rem;
+  color: var(--text-color-light);
+  font-family: var(--font-family-titles);
+  font-weight: bold;
+
+  &--large {
+    font-size: 1.15em;
+  }
+}
+
+.help {
+  margin: .25rem 0;
+  font-size: .85em;
+  font-style: italic;
+  color: var(--text-color-medium);
+}

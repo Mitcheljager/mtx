@@ -1,8 +1,7 @@
 <script lang="ts">
-  export let category = {
-    title: null as string,
-    type: null as string
-  }
+  import type { Category } from "$lib/db"
+
+  export let category: Category
 
   function categoryTypeIcon(type) {
     if (type == "positive") return "👍"

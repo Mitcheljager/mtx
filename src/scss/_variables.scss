@@ -13,7 +13,7 @@ $base-bg: hsl(220, 15%, 20%);
 $text-color: hsl(219, 22%, 77%);
 
 :root {
-  --primary: hsl(281, 72%, 54%);
+  --primary: hsl(351, 48%, 45%);
   --secondary: hsl(32, 90%, 49%);
 
   --red: #8b2926;
@@ -32,7 +32,7 @@ $text-color: hsl(219, 22%, 77%);
   --text-color-medium: #{ desaturate(darken($text-color, 15%), 5%) };
   --text-color-dark: #{ desaturate(darken($text-color, 30%), 10%) };
   --text-color-light: #{ lighten($text-color, 15%) };
-  --text-color-title: hsl(351, 48%, 45%);
+  --text-color-title: var(--primary);
   --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   --font-family-titles: "Lato", sans-serif;
 
