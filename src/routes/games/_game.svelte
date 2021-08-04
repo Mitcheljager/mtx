@@ -48,6 +48,10 @@
 					<div class="card__name">{ game.publisher }</div>
 				{ /if }
 
+				<div>
+					<small><a href="/games/categories/{ game.id }">Edit categories</a></small>
+				</div>
+
 				<div class="card__grade card__grade--{ grade }">
 					{ grade }
 				</div>
@@ -108,7 +112,7 @@
 
   .card__image {
     width: 5rem;
-    height: 7rem;
+    aspect-ratio: 1 / 1.333;
     margin-right: 1.5rem;
     background: var(--content-bg);
 		box-shadow: inset 0 0 0 1px var(--border-color);

@@ -1,17 +1,17 @@
 <script lang="ts">
-  import supabase from "$lib/db"
+  import { createGame } from "$lib/db"
   
   let submit = false
   let title, publisher, year_of_release
   
   async function submitForm() {
-    const { data, error } = await supabase
-    .from("games")
-    .insert([
-      { title, publisher, year_of_release }
-    ])
+    let data
 
-    if (error) throw new Error(error.message)
+    try {
+      data = await createGame({ title, publisher, year_of_release })
+    } catch(error) {
+      throw new Error(error.message)
+    }
 
     title = ""
     publisher = ""
@@ -26,7 +26,7 @@
 <div class="wrapper">
   <h1>Add new game</h1>
     
-  <form on:submit|preventDefault={ () => submit = true }>    
+  <form on:submit|preventDefault={ () => submit = true }>
     { #if !submit }
       <label class="form-label mt-0" for="title">Title</label>
       <input class="form-input" type="text" name="title" required bind:value={ title }>
