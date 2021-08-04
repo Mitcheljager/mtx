@@ -147,7 +147,7 @@
 		font-size: 1.2rem;
 		line-height: 1em;
 		font-weight: bold;
-		text-shadow: 0 3px 1px hsla(0, 0, 0, .25);
+		text-shadow: 0 3px 1px hsla(0, 0%, 0%, .25);
 
 		$grades: (
 			A: var(--green),

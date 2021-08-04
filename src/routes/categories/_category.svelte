@@ -27,7 +27,7 @@
     padding: .35rem .5rem;
     border-radius: .25rem;
     line-height: 1.5rem;
-    color: hsla(0, 0, 100, .95);
+    color: hsla(0, 0%, 100%, .95);
     
     &--neutral {
       background: linear-gradient(to right, var(--border-color), transparent);

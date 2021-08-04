@@ -2,9 +2,9 @@ $offset-values: (
   "auto": auto,
   "0": 0,
   "1\\/1": $margin,
-  "1\\/2": $margin / 2,
-  "1\\/4": $margin / 4,
-  "1\\/8": $margin / 8
+  "1\\/2": $margin * 0.5,
+  "1\\/4": $margin * 0.25,
+  "1\\/8": $margin * 0.125
 );
 
 $properties: (
