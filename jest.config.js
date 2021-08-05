@@ -3,7 +3,7 @@ export default {
     "spec"
   ],
   transform: {
-    "^.+\\.(js|ts)$": "babel-jest",
+    "^.+\\.(js|ts)$": "ts-jest",
     "^.+\\.svelte$": [
       "svelte-jester",
       {
@@ -21,8 +21,8 @@ export default {
     "src"
   ],
   moduleNameMapper: {
-    "^$stores(.*)$": "<rootDir>/src/stores$1",
-    "^$lib(.*)$": "<rootDir>/src/lib$1"
+    "^\\$lib(.*)$": "<rootDir>/src/lib$1",
+    "^\\$app(.*)$": ["<rootDir>/.svelte-kit/dev/runtime/app$1", "<rootDir>/.svelte-kit/build/runtime/app$1"]
   },
   setupFilesAfterEnv: [
     "@testing-library/jest-dom/extend-expect"

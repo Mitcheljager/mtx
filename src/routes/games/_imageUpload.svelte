@@ -28,7 +28,7 @@
 
     reader.onload = event => {
       let image = new Image()
-      image.src = event.target.result
+      image.src = event.target.result.toString()
 
       image.onload = () => {
         const canvas = document.createElement("canvas")
@@ -56,7 +56,6 @@
           const filename =  Math.random().toString(36).substring(2, 15) + ".jpeg"
           const renderedImage = new File([blob], filename, {
             type: "image/jpeg",
-            quality: 0.8,
             lastModified: Date.now()
           })
 

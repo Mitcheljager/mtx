@@ -26,7 +26,7 @@
       .limit(20)
         
       if (error) throw new Error(error.message)
-      if (!data.length) noResults = true
+      noResults = !data.length
 
       $games = data
     }, 500)
