@@ -1,10 +1,16 @@
 <script lang="ts">
+  import { onMount } from "svelte"
+  import { goto } from "$app/navigation"
+  
   import { createGame } from "$lib/db"
+  import { user } from "../../stores/session" 
 
   import ImageUpload from "./_imageUpload.svelte"
   
   let submit = false
   let title: string, publisher: string, year_of_release: any, image_url: string
+
+  onMount(() => { if (!$user) goto("/login") })
   
   async function submitForm() {
     try {

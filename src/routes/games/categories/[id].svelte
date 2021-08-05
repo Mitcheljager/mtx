@@ -1,7 +1,10 @@
 <script lang="ts">
+  import { onMount } from "svelte";
   import { flip } from "svelte/animate"
   import { page } from "$app/stores"
-
+  import { goto } from "$app/navigation"
+  
+  import { user } from "../../../stores/session"
   import supabase, { createGameCategory, destroyGameCategory } from "$lib/db"
   import Category from "../../categories/_category.svelte"
 
@@ -10,6 +13,8 @@
   let categories = []
   let allCategories = []
   $: availableCategories = allCategories.filter(c => !categories.some(i => i.id == c.id))
+
+  onMount(() => { if (!$user) goto("/login") })
 
   async function getCategories() {
 		const { data, error } = await supabase
