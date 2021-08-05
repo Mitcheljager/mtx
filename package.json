@@ -39,6 +39,7 @@
     "@fontsource/fira-mono": "^4.2.2",
     "@lukeed/uuid": "^2.0.0",
     "@supabase/supabase-js": "^1.21.0",
+    "@sveltejs/adapter-cloudflare-workers": "^1.0.0-next.18",
     "cookie": "^0.4.1"
   }
 }
