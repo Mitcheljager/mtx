@@ -36,22 +36,25 @@
 
 
 <input
-  class="form-input form-input--large mb-1/1"
+  class="form-input form-input--large"
   type="text"
   placeholder="Search..."
   autocomplete="off"
   bind:value />
 
 { #if noResults }
-  <div>No matches were found for your search query</div>
+  <center><em>No matches were found for your search query</em></center>
 { /if }
 
 
 
 <style lang="scss">
   input {
+    display: block;
+    max-width: clamp(300px, 100%, 50%);
+    margin: clamp(3rem, 10vw, 6rem) auto;
     background: var(--content-bg);
-    max-width: 480px;
+    box-shadow: var(--shadow-big);
     
     &::placeholder {
       font-size: 1.5rem;

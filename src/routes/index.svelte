@@ -16,7 +16,7 @@
 		const { data, error } = await supabase
 		.from("games")
 		.select(`
-			id, title, publisher, year_of_release,
+			id, title, publisher, year_of_release, image_url,
 			categories (id, title, type)
 		`)
 		.order("created_at", { ascending: false })
@@ -36,7 +36,11 @@
 
 
 
-<h1>Microtransactions</h1>
+<center>
+	<h1><mark>Macro</mark>transactions</h1>
+
+	<big>Monetisation in games can be <mark>predatory</mark>, <mark>exploitative</mark>, and <mark>unethical</mark>. This website highlights monetisation in popular games.</big>
+</center>
 
 <Search />
 
@@ -60,6 +64,31 @@
 
 
 <style lang="scss">
+	center {
+		max-width: clamp(300px, 100%, 50%);
+		margin: 0 auto;
+	}
+
+	h1 {
+		margin: clamp(3rem, 10vw, 6rem) 0 2rem;
+		padding: 0;
+		font-size: clamp(2rem, 5vw, 4rem);
+		text-align: center;
+		text-transform: lowercase;
+		text-shadow: var(--shadow-big);
+	}
+
+	big {
+		display: block;
+		max-width: 620px;
+	}
+
+	mark {
+		background: transparent;
+		color: var(--primary);
+		font-weight: 800;
+	}
+
 	.cards {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(clamp(250px, 45vw, 350px), 1fr));

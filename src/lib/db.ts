@@ -10,6 +10,7 @@ export type Game = {
   title: string,
   publisher: string,
   year_of_release: number,
+  image_url?: string,
   categories?: Category[]
 }
 
@@ -21,8 +22,8 @@ export type Category = {
 
 export const createGame = async (properties: Game) => {
   const { data, error } = await supabase
-    .from("games")
-    .insert([properties])
+  .from("games")
+  .insert([properties])
 
   if (error) throw new Error(error.message)
 
@@ -31,8 +32,8 @@ export const createGame = async (properties: Game) => {
 
 export const createGameCategory = async (category_id: string, game_id: string) => {
   const { data, error } = await supabase
-    .from("game_category")
-    .insert([{ category_id, game_id }])
+  .from("game_category")
+  .insert([{ category_id, game_id }])
 
   if (error) throw new Error(error.message)
 
@@ -44,6 +45,17 @@ export const destroyGameCategory = async (category_id: string, game_id: string) 
     .from("game_category")
     .delete()
     .match({ category_id, game_id })
+
+  if (error) throw new Error(error.message)
+
+  return data
+}
+
+export const uploadImage = async (file, filename: string) => {
+  const { data, error } = await supabase
+  .storage
+  .from("games")
+  .upload(filename, file)
 
   if (error) throw new Error(error.message)
 

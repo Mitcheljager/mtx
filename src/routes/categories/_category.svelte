@@ -25,7 +25,7 @@
     display: flex;
     margin-bottom: .25rem;
     padding: .35rem .5rem;
-    border-radius: .25rem;
+    border-radius: .5rem;
     line-height: 1.5rem;
     color: hsla(0, 0%, 100%, .95);
     

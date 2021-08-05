@@ -114,6 +114,7 @@
     width: 5rem;
     aspect-ratio: 1 / 1.333;
     margin-right: 1.5rem;
+		border-radius: .5rem;
     background: var(--content-bg);
 		box-shadow: inset 0 0 0 1px var(--border-color);
   }
@@ -122,7 +123,7 @@
     margin: 0;
 		width: 100%;
 		color: var(--text-color-title);
-    font-size: 1.2rem;
+    font-size: 1.25rem;
   }
 
 	.card__date {

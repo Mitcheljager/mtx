@@ -1,14 +1,14 @@
 <script lang="ts">
   import { createGame } from "$lib/db"
+
+  import ImageUpload from "./_imageUpload.svelte"
   
   let submit = false
-  let title, publisher, year_of_release
+  let title: string, publisher: string, year_of_release: any, image_url: string
   
   async function submitForm() {
-    let data
-
     try {
-      data = await createGame({ title, publisher, year_of_release })
+      await createGame({ title, publisher, year_of_release })
     } catch(error) {
       throw new Error(error.message)
     }
@@ -16,8 +16,7 @@
     title = ""
     publisher = ""
     year_of_release = ""
-    
-    return data
+    image_url = ""
   }
 </script>
 
@@ -45,6 +44,8 @@
       <p class="help">
         The year the game initially released.
       </p>
+
+      <ImageUpload on:upload={ image_url = event.details.image } />
 
       <input class="button button--primary button--block button--large mt-1/2" type="submit" value="Submit">
     { :else }
