@@ -1,5 +1,7 @@
 <script lang="ts">
 	import { page } from "$app/stores"
+	import { user } from "../../stores/session"
+	
 	import logo from "./svelte-logo.svg"
 </script>
 
@@ -18,7 +20,9 @@
 	</nav>
 
 	<div class="corner">
-		<!-- TODO put something else here? github link? -->
+		{ #if $user }
+			Logged in
+		{ /if }
 	</div>
 </header>
 

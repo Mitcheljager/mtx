@@ -14,13 +14,12 @@
   function input(event) {
     file = event.target.files[0]
     
-    isFileImage()
+    if (isFileImage()) drawImageOnCanvas()
   }
 
   function isFileImage() {
-    if (file.type == "image/png" || file.type == "image/jpg" || file.type == "image/jpeg") {
-      drawImageOnCanvas()
-    }
+    if (file.type == "image/png" || file.type == "image/jpg" || file.type == "image/jpeg") return true
+    return false
   }
 
   function drawImageOnCanvas() {
@@ -96,10 +95,12 @@
       let image = await uploadImage(blob, filename)
       dispatch("upload", { image })
     } catch(error) {
+      console.log(error)
       alert(error.message)
     }
   }
 </script>
+
 
 
 { #if src }

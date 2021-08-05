@@ -39,7 +39,7 @@
 <center>
 	<h1><mark>Macro</mark>transactions</h1>
 
-	<big>Monetisation in games can be <mark>predatory</mark>, <mark>exploitative</mark>, and <mark>unethical</mark>. This website highlights monetisation in popular games.</big>
+	<big>Monetisation in games can be <mark>predatory</mark>, <mark>exploitative</mark>, and <mark>unethical</mark>. This website highlights monetisation practises in popular games.</big>
 </center>
 
 <Search />
@@ -50,7 +50,7 @@
 			<Game loading={ true } />
 		{ /each }
 	{ :then data }
-		{ #each $games as game }
+		{ #each $games as game (game.id) }
 			<div in:fade={{ duration: 150 }}>
 				<Game { game } />
 			</div>
@@ -70,7 +70,7 @@
 	}
 
 	h1 {
-		margin: clamp(3rem, 10vw, 6rem) 0 2rem;
+		margin: clamp(3rem, 10vw, 5rem) 0 2rem;
 		padding: 0;
 		font-size: clamp(2rem, 5vw, 4rem);
 		text-align: center;

@@ -8,7 +8,7 @@
   
   async function submitForm() {
     try {
-      await createGame({ title, publisher, year_of_release })
+      await createGame({ title, publisher, year_of_release, image_url })
     } catch(error) {
       throw new Error(error.message)
     }
@@ -45,7 +45,7 @@
         The year the game initially released.
       </p>
 
-      <ImageUpload on:upload={ image_url = event.details.image } />
+      <ImageUpload on:upload={ event => image_url = event.detail.image.Key } />
 
       <input class="button button--primary button--block button--large mt-1/2" type="submit" value="Submit">
     { :else }

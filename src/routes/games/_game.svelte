@@ -1,13 +1,16 @@
 <script lang="ts">
+	import supabase from "$lib/db"
 	import type { Game } from "$lib/db"
 
 	import Category from "../categories/_category.svelte"
 
   export let game: Game
   export let loading = false
+	
+	let maxCategories = 5
+	let src: string
 
-	let maxCategories = 10
-
+	$: if (game?.image_url) downloadImage()
 	$: grade = categoriesToScore()
 
 	function sortCategories() {
@@ -19,15 +22,32 @@
 
 		const negativeCategories = game?.categories?.filter(c => c.type == "negative").length
 
-		score -= (negativeCategories / 2)
+		score -= negativeCategories
 
 		if (score == 10) return "A"
-		if (score > 8) return "B"
-		if (score > 6) return "C"
-		if (score > 4) return "D"
-		if (score > 2) return "E"
+		if (score >= 8) return "B"
+		if (score >= 6) return "C"
+		if (score >= 4) return "D"
+		if (score >= 2) return "E"
 		return "F"
 	}
+
+	async function downloadImage() {
+    try {
+      const { data, error } = await supabase
+			.storage
+			.from("games")
+			.download(game.image_url.split("games/")[1])
+
+      if (error) throw error
+
+			console.log(data)
+      
+      src = URL.createObjectURL(data)
+    } catch (error) {
+      console.error(error)
+    }
+  }
 </script>
 
 
@@ -35,7 +55,13 @@
 <div class="card" class:card--loading={ loading }>
   { #if !loading }
     <div class="card__header">
-      <div class="card__image"></div>
+      <div class="card__image">
+				{ #if src }
+					<img
+						alt={ game.title }
+						{ src } />
+				{ /if }
+			</div>
 
 			<div>
 				<h3 class="card__title">{ game.title }</h3>
@@ -117,6 +143,13 @@
 		border-radius: .5rem;
     background: var(--content-bg);
 		box-shadow: inset 0 0 0 1px var(--border-color);
+		overflow: hidden;
+
+		img {
+			display: block;
+			width: 100%;
+			height: auto;
+		}
   }
 
   .card__title {

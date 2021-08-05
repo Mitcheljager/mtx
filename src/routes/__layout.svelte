@@ -1,6 +1,16 @@
 <script lang="ts">
+	import { user } from "../stores/session"
+	import supabase from "$lib/db"
+
 	import Header from "$lib/header/Header.svelte"
+
 	import "../app.scss"
+
+	$user = supabase.auth.user()
+
+	supabase.auth.onAuthStateChange((_, session) => {
+		$user = session.user
+	})
 </script>
 
 

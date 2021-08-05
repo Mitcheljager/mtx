@@ -16,7 +16,7 @@
       const { data, error } = await supabase
       .from("games")
       .select(`
-        id, title, publisher, year_of_release,
+        id, title, publisher, year_of_release, image_url,
         categories (id, title, type)
       `)
       .textSearch("title", value, {
