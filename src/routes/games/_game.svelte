@@ -3,14 +3,13 @@
 	import type { Game } from "$lib/db"
 
 	import Category from "../categories/_category.svelte"
+import Thumbnail from "./_thumbnail.svelte"
 
   export let game: Game
   export let loading = false
 	
 	let maxCategories = 5
-	let src: string
 
-	$: if (game?.image_url) downloadImage()
 	$: grade = categoriesToScore()
 
 	function sortCategories() {
@@ -31,23 +30,6 @@
 		if (score >= 2) return "E"
 		return "F"
 	}
-
-	async function downloadImage() {
-    try {
-      const { data, error } = await supabase
-			.storage
-			.from("games")
-			.download(game.image_url.split("games/")[1])
-
-      if (error) throw error
-
-			console.log(data)
-      
-      src = URL.createObjectURL(data)
-    } catch (error) {
-      console.error(error)
-    }
-  }
 </script>
 
 
@@ -56,15 +38,13 @@
   { #if !loading }
     <div class="card__header">
       <div class="card__image">
-				{ #if src }
-					<img
-						alt={ game.title }
-						{ src } />
+				{ #if game.image_url }
+					<Thumbnail { game } />
 				{ /if }
 			</div>
 
 			<div>
-				<h3 class="card__title">{ game.title }</h3>
+				<a class="card__title" href="/games/{ game.id }">{ game.title }</a>
 
 				{ #if game.year_of_release }
 					<div class="card__date">{ game.year_of_release }</div>
@@ -144,12 +124,6 @@
     background: var(--content-bg);
 		box-shadow: inset 0 0 0 1px var(--border-color);
 		overflow: hidden;
-
-		img {
-			display: block;
-			width: 100%;
-			height: auto;
-		}
   }
 
   .card__title {
@@ -157,6 +131,15 @@
 		width: 100%;
 		color: var(--text-color-title);
     font-size: 1.25rem;
+		font-weight: 800;
+		text-decoration: none;
+
+		&:hover,
+		&:focus,
+		&:active {
+			color: var(--text-color-title);
+			box-shadow: 0 3px 0 currentColor;
+		}
   }
 
 	.card__date {

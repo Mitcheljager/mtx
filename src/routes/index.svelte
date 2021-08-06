@@ -39,7 +39,7 @@
 <center>
 	<h1><mark>Macro</mark>transactions</h1>
 
-	<big>Monetisation in games can be <mark>predatory</mark>, <mark>exploitative</mark>, and <mark>unethical</mark>. This website highlights monetisation practises in popular games.</big>
+	<big>Monetisation in games can be <mark>unethical</mark>, <mark>predatory</mark>, and <mark>exploitative</mark>. This website highlights monetisation practises in popular games.</big>
 </center>
 
 <Search />
@@ -70,12 +70,8 @@
 	}
 
 	h1 {
-		margin: clamp(3rem, 10vw, 5rem) 0 2rem;
-		padding: 0;
-		font-size: clamp(2rem, 5vw, 4rem);
 		text-align: center;
 		text-transform: lowercase;
-		text-shadow: var(--shadow-big);
 	}
 
 	big {
@@ -84,9 +80,12 @@
 	}
 
 	mark {
-		background: transparent;
-		color: var(--primary);
+		background: linear-gradient(130deg, var(--primary), var(--secondary));
+		background-clip: text;
+		-webkit-background-clip: text;
+		color: transparent;
 		font-weight: 800;
+		text-shadow: var(--shadow-big);
 	}
 
 	.cards {
@@ -94,20 +93,8 @@
     grid-template-columns: repeat(auto-fill, minmax(clamp(250px, 45vw, 350px), 1fr));
     grid-gap: 1.5rem;
 
-		&--single {
-			:global(> div) {
-				grid-column: 2;
-			}
+		&--single:global(> div) {
+			grid-column: 2;
 		}
   }
-
-	@keyframes loading {
-		from {
-			transform: translateX(-100%);
-		}
-
-		to {
-			transform: translateX(100%);
-		}
-	}
 </style>

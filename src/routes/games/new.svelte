@@ -31,7 +31,7 @@
 <div class="wrapper">
   <h1>Add new game</h1>
     
-  <form on:submit|preventDefault={ () => submit = true }>
+  <form class="block" on:submit|preventDefault={ () => submit = true }>
     { #if !submit }
       <label class="form-label mt-0" for="title">Title</label>
       <input class="form-input" type="text" name="title" required bind:value={ title }>
@@ -69,19 +69,7 @@
 
 
 <style lang="scss">
-  .wrapper {
-    max-width: 480px;
-    margin: 0 auto;
-  }
-
   h1 {
     text-align: center;
-  }
-
-  form {
-    padding: 1.5rem;
-    border-radius: 1rem;
-    background: var(--content-bg);
-    box-shadow: var(--shadow-big);
   }
 </style>

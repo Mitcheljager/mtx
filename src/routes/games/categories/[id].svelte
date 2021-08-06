@@ -119,20 +119,8 @@
 
 
 <style lang="scss">
-  .wrapper {
-    max-width: 480px;
-    margin: 0 auto;
-  }
-
   h1 {
     text-align: center;
-  }
-
-  .block {
-    padding: 1.5rem;
-    border-radius: 1rem;
-    background: var(--content-bg);
-    box-shadow: var(--shadow-big);
   }
 
   .item {

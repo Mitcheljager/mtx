@@ -59,10 +59,12 @@
             lastModified: Date.now()
           })
 
+          console.log(renderedImage)
+
           src = URL.createObjectURL(renderedImage)
 
           upload(renderedImage, filename)
-        }, "image/jpeg", 0.8)
+        }, "image/jpeg", .8)
       }
     }
   }
