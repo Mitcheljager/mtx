@@ -72,6 +72,7 @@
 	h1 {
 		text-align: center;
 		text-transform: lowercase;
+		font-size: clamp(2rem, 5vw, 4rem);
 	}
 
 	big {

@@ -4,31 +4,15 @@
 
 	import Category from "../categories/_category.svelte"
 import Thumbnail from "./_thumbnail.svelte"
+import Grade from "./_grade.svelte"
 
   export let game: Game
   export let loading = false
 	
 	let maxCategories = 5
 
-	$: grade = categoriesToScore()
-
 	function sortCategories() {
 		return game.categories.sort((a, b) => (a.type > b.type) ? 1 : -1).filter((c, i) => i < maxCategories)
-	}
-
-	function categoriesToScore() {
-		let score:number = 10
-
-		const negativeCategories = game?.categories?.filter(c => c.type == "negative").length
-
-		score -= negativeCategories
-
-		if (score == 10) return "A"
-		if (score >= 8) return "B"
-		if (score >= 6) return "C"
-		if (score >= 4) return "D"
-		if (score >= 2) return "E"
-		return "F"
 	}
 </script>
 
@@ -56,8 +40,8 @@ import Thumbnail from "./_thumbnail.svelte"
 					<div class="card__name">{ game.publisher }</div>
 				{ /if }
 
-				<div class="card__grade card__grade--{ grade }">
-					{ grade }
+				<div class="card__grade">
+					<Grade categories={ game.categories } />
 				</div>
 			</div>
     </div>
@@ -136,7 +120,7 @@ import Thumbnail from "./_thumbnail.svelte"
     margin: 0;
 		width: 100%;
 		color: var(--text-color-title);
-    font-size: 1.25rem;
+    font-size: 1.2rem;
 		font-weight: bold;
 		text-decoration: none;
 
@@ -157,34 +141,6 @@ import Thumbnail from "./_thumbnail.svelte"
 	}
 
 	.card__grade {
-		display: inline-flex;
-		align-items: center;
-		justify-content: center;
-		padding: .15rem 0 .25rem;
 		margin-top: .5rem;
-		width: 2rem;
-		height: 2rem;
-		border-radius: 99px;
-		background: var(--border-color);
-		color: white;
-		font-size: 1.2rem;
-		line-height: 1em;
-		font-weight: bold;
-		text-shadow: 0 3px 1px hsla(0, 0%, 0%, .25);
-
-		$grades: (
-			A: var(--green),
-			B: var(--blue),
-			C: var(--border-color),
-			D: var(--yellow),
-			E: var(--orange),
-			F: var(--red)
-		);
-
-		@each $grade, $color in $grades {
-			&--#{ $grade } {
-				background: $color;
-			}
-		}
 	}
 </style>

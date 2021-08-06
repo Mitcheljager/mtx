@@ -7,6 +7,7 @@
 
   import Category from "../categories/_category.svelte"
   import Thumbnail from "./_thumbnail.svelte"
+  import Grade from "./_grade.svelte"
 
   let game: Game
 
@@ -44,12 +45,16 @@
     <h1>{ game.title }</h1>
   
     <div class="block">
-      <div>
+      <div class="mr-1/2">
         <div class="image mb-1/4">
           { #if game.image_url }
             <Thumbnail { game } />
           { /if }
         </div>
+
+        <div class="mb-1/4">
+					<Grade categories={ game.categories } size="large" />
+				</div>
 
         { #if game.year_of_release }
           <div class="date mt-1/8">{ game.year_of_release }</div>
@@ -99,7 +104,6 @@
   .image {
     width: 7.5rem;
     aspect-ratio: 1 / 1.333;
-    margin-right: 1.5rem;
 		border-radius: .5rem;
     background: var(--content-bg);
 		box-shadow: inset 0 0 0 1px var(--border-color);
