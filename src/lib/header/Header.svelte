@@ -1,107 +1,101 @@
 <script lang="ts">
 	import { page } from "$app/stores"
 	import { user } from "../../stores/session"
-	
-	import logo from "./svelte-logo.svg"
+
+	import github from "./github.svg"
 </script>
 
-<header>
-	<div class="corner">
-		<a href="https://kit.svelte.dev">
-			<img src={logo} alt="SvelteKit" />
-		</a>
-	</div>
 
-	<nav>
-		<ul>
-			<li class:active={ $page.path === "/" }><a sveltekit:prefetch href="/">Home</a></li>
-			<li class:active={ $page.path === "/about" }><a sveltekit:prefetch href="/about">About</a></li>
-		</ul>
+
+<header>
+	<a class="logo" href="/">
+		<mark>Macro</mark>transactions
+	</a>
+
+	<nav class="nav">
+		<a class="nav__item" class:nav__item--active={ $page.path === "/" } sveltekit:prefetch href="/">Home</a>
+		<a class="nav__item" class:nav__item--active={ $page.path === "/about" } sveltekit:prefetch href="/about">About</a>
 	</nav>
 
-	<div class="corner">
-		{ #if $user }
-			Logged in
-		{ /if }
+	<div class="socials">
+		<a href="https://github.com/Mitcheljager/mtx/" target="_blank" rel="noreferrer noopener">
+			<img src={ github } alt="GitHub" />
+		</a>
 	</div>
 </header>
 
-<style>
+
+
+<style lang="scss">
 	header {
-		display: flex;
-		justify-content: space-between;
+		display: grid;
+		grid-template: "logo nav socials";
+		grid-template-columns: 150px calc(100% - 300px) 150px;
+		justify-content: flex-start;
+		align-items: center;
+		width: 100%;
+		padding: 1.5rem 0;
 		margin-bottom: 1.5rem;
 	}
 
-	.corner {
-		width: 3em;
-		height: 3em;
-	}
-
-	.corner a {
+	.nav {
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		width: 100%;
-		height: 100%;
-	}
-
-	.corner img {
-		width: 2em;
-		height: 2em;
-		object-fit: contain;
-	}
-
-	nav {
-		display: flex;
-		justify-content: center;
-	}
-
-	ul {
-		position: relative;
-		padding: 0;
 		margin: 0;
-		height: 3em;
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		list-style: none;
-		background: var(--background);
-		background-size: contain;
 	}
 
-	li {
-		position: relative;
-		height: 100%;
-	}
-
-	li.active::before {
-		--size: 6px;
-		content: '';
-		width: 0;
-		height: 0;
-		position: absolute;
-		top: 0;
-		left: calc(50% - var(--size));
-		border: var(--size) solid transparent;
-		border-top: var(--size) solid var(--accent-color);
-	}
-
-	nav a {
-		display: flex;
-		height: 100%;
-		align-items: center;
-		padding: 0 1em;
-		color: var(--heading-color);
-		font-weight: 700;
-		font-size: 0.8rem;
-		text-transform: uppercase;
-		letter-spacing: 10%;
+	.nav__item {
+		display: block;
+		margin: 0 .75rem;
+		color: var(--text-color);
 		text-decoration: none;
-		transition: color 0.2s linear;
+		text-transform: lowercase;
+		font-weight: bold;
+
+		&:hover,
+		&:focus,
+		&:active {
+			color: white;
+			box-shadow: 0 2px 0 currentColor;
+		}
+
+		&--active {
+			color: white;
+		}
 	}
 
-	a:hover {
-		color: var(--accent-color);
+	.logo {
+		text-align: center;
+		text-transform: lowercase;
+		color: white;
+		font-weight: bold;
+		text-decoration: none;
+
+		&:hover,
+		&:focus,
+		&:active {
+			filter: brightness(1.2);
+		}
+	}
+
+	.socials {
+		display: flex;
+		align-items: center;
+		justify-content: flex-end;
+		height: 100%;
+
+		img {
+			height: 1.5rem;
+			width: auto;
+		}
+
+		a {
+			&:hover,
+			&:active,
+			&:focus {
+				filter: brightness(2);
+			}
+		}
 	}
 </style>

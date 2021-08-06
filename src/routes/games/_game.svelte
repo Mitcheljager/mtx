@@ -39,12 +39,14 @@ import Thumbnail from "./_thumbnail.svelte"
     <div class="card__header">
       <div class="card__image">
 				{ #if game.image_url }
-					<Thumbnail { game } />
+					<a href="/games/{ game.id }" tabindex="-1">
+						<Thumbnail { game } />
+					</a>
 				{ /if }
 			</div>
 
 			<div>
-				<a class="card__title" href="/games/{ game.id }">{ game.title }</a>
+				<div><a class="card__title" href="/games/{ game.id }">{ game.title }</a></div>
 
 				{ #if game.year_of_release }
 					<div class="card__date">{ game.year_of_release }</div>
@@ -53,10 +55,6 @@ import Thumbnail from "./_thumbnail.svelte"
 				{ #if game.publisher }
 					<div class="card__name">{ game.publisher }</div>
 				{ /if }
-
-				<div>
-					<small><a href="/games/categories/{ game.id }">Edit categories</a></small>
-				</div>
 
 				<div class="card__grade card__grade--{ grade }">
 					{ grade }
@@ -124,6 +122,14 @@ import Thumbnail from "./_thumbnail.svelte"
     background: var(--content-bg);
 		box-shadow: inset 0 0 0 1px var(--border-color);
 		overflow: hidden;
+
+		a {
+			&:hover,
+			&:active,
+			&:focus {
+				filter: brightness(1.1);
+			}
+		}
   }
 
   .card__title {
@@ -131,7 +137,7 @@ import Thumbnail from "./_thumbnail.svelte"
 		width: 100%;
 		color: var(--text-color-title);
     font-size: 1.25rem;
-		font-weight: 800;
+		font-weight: bold;
 		text-decoration: none;
 
 		&:hover,

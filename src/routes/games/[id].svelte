@@ -45,14 +45,25 @@
   
     <div class="block">
       <div>
-        <div class="image">
+        <div class="image mb-1/4">
           { #if game.image_url }
             <Thumbnail { game } />
           { /if }
         </div>
 
-        <div class="date mt-1/4">{ game.year_of_release }</div>
-        <div class="name mt-1/8">{ game.publisher }</div>
+        { #if game.year_of_release }
+          <div class="date mt-1/8">{ game.year_of_release }</div>
+        { /if }
+
+        { #if game.publisher }
+          <div class="name mt-1/8">{ game.publisher }</div>
+        { /if }
+
+        { #if $user }
+          <div class="mt-1/2">
+            <small><a href="/games/categories/{ game.id }">Edit categories</a></small>
+          </div>
+        { /if }
       </div>
 
       { #if game.categories }

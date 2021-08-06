@@ -79,15 +79,6 @@
 		max-width: 620px;
 	}
 
-	mark {
-		background: linear-gradient(130deg, var(--primary), var(--secondary));
-		background-clip: text;
-		-webkit-background-clip: text;
-		color: transparent;
-		font-weight: 800;
-		text-shadow: var(--shadow-big);
-	}
-
 	.cards {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(clamp(250px, 45vw, 350px), 1fr));

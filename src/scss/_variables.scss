@@ -34,7 +34,7 @@ $text-color: hsl(219, 22%, 77%);
   --text-color-light: #{ lighten($text-color, 15%) };
   --text-color-title: var(--primary);
   --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-  --font-family-titles: "Lato", sans-serif;
+  --font-family-titles: var(--font-family);
 
   --max-width: 1700px;
 

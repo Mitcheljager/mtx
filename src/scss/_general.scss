@@ -31,8 +31,13 @@ a {
 	}
 }
 
-[contenteditable]:focus {
-	outline: none;
+mark {
+  background: linear-gradient(130deg, var(--primary), var(--secondary));
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  font-weight: bold;
+  text-shadow: var(--shadow-big);
 }
 
 .wrapper {
