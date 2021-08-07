@@ -6,8 +6,8 @@
 
 
 
-<header>
-	<a class="logo" href="/">
+<header class="header">
+	<a class="logo" href="/" sveltekit:prefetch>
 		<mark>Macro</mark>transactions
 	</a>
 
@@ -26,7 +26,7 @@
 
 
 <style lang="scss">
-	header {
+	.header {
 		display: grid;
 		grid-template: "logo nav socials";
 		grid-template-columns: 150px calc(100% - 300px) 150px;

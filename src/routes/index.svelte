@@ -76,7 +76,7 @@
 
 { #if !$reachedEnd }
 	<div class="tray mt-1/1">
-		<button class="button button--large" class:button--primary={ !loadingMore } on:click={ getNextPage }>
+		<button class="button button--large" class:button--primary={ !loadingMore } on:click={ getNextPage } disabled={ loadingMore }>
 			{ loadingMore ? "Loading..." : "Load more" }
 		</button>
 	</div>
