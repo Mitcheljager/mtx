@@ -22,14 +22,14 @@
     <div class="card__header">
       <div class="card__image">
 				{ #if game.image_url }
-					<a href="/games/{ game.id }" tabindex="-1" sveltekit:prefetch>
+					<a href="/{ game.id }" tabindex="-1" sveltekit:prefetch>
 						<Thumbnail { game } width={ 80 } height={ 106 } />
 					</a>
 				{ /if }
 			</div>
 
 			<div>
-				<div><a class="card__title" href="/games/{ game.slug }" sveltekit:prefetch>{ game.title }</a></div>
+				<div><a class="card__title" href="/{ game.slug }" sveltekit:prefetch>{ game.title }</a></div>
 
 				{ #if game.year_of_release }
 					<div class="card__date">{ game.year_of_release }</div>

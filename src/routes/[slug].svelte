@@ -10,8 +10,9 @@
 		`)
     .eq("slug", page.params.slug)
     .single()
-			
-		if (error) throw new Error(error.message)
+
+    if (!data) return { status: 404, error: "Not found" }
+    if (error) throw new Error(error.message)
 
     return {
       props: { game: data }
@@ -20,13 +21,13 @@
 </script>
 
 <script lang="ts">
-  import { user } from "../../stores/session"
+  import { user } from "../stores/session"
   import supabase from "$lib/db"
   import type { Game } from "$lib/db"
 
-  import Category from "../categories/_category.svelte"
-  import Thumbnail from "./_thumbnail.svelte"
-  import Grade from "./_grade.svelte"
+  import Category from "./categories/_category.svelte"
+  import Thumbnail from "./games/_thumbnail.svelte"
+  import Grade from "./games/_grade.svelte"
 
   export let game: Game
 
