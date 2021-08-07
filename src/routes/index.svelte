@@ -1,12 +1,9 @@
 <script context="module" lang="ts">
 	export const prerender = true
-
 	
 	export async function load() {
-		let data = await getGames()
-
 		return {
-      props: { _games: data }
+      props: { _games: await getGames() }
     }
 	}
 </script>
@@ -14,7 +11,7 @@
 <script lang="ts">
 	import { fade } from "svelte/transition"
 
-	import { getGames, games, currentPage, reachedEnd, itemsPerPage } from "../stores/games"
+	import { getGames, games, currentPage, reachedEnd } from "../stores/games"
 
 	import Game from "./games/_game.svelte"
 	import Search from "./_search.svelte"

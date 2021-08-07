@@ -4,7 +4,7 @@
   export let categories
   export let size = "small"
 
-  let grade = categoriesToScore()
+  const grade = categoriesToScore()
 
   function categoriesToScore() {
 		let score = 10
