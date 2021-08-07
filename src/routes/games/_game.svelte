@@ -22,7 +22,7 @@
     <div class="card__header">
       <div class="card__image">
 				{ #if game.image_url }
-					<a href="/{ game.id }" tabindex="-1" sveltekit:prefetch>
+					<a href="/{ game.slug }" tabindex="-1" sveltekit:prefetch>
 						<Thumbnail { game } width={ 80 } height={ 106 } />
 					</a>
 				{ /if }

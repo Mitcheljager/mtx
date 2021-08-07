@@ -9,8 +9,6 @@
 </script>
 
 <script lang="ts">
-	import { fade } from "svelte/transition"
-
 	import { getGames, games, currentPage, reachedEnd } from "../stores/games"
 
 	import Game from "./games/_game.svelte"
@@ -62,10 +60,8 @@
 
 <div class="cards" class:cards--single={ $games?.length == 1 }>
 	{ #if $games }
-		{ #each $games as game }
-			<div in:fade={{ duration: 150 }}>
-				<Game { game } />
-			</div>
+		{ #each $games as game (game.id) }
+			<Game { game } />
 		{ /each }
 	{ /if }
 </div>
