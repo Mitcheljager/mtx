@@ -7,7 +7,6 @@
   import { user } from "../../../stores/session"
   import supabase, { createGameCategory, destroyGameCategory } from "$lib/db"
   import Category from "../../categories/_category.svelte"
-import Game from "../_game.svelte";
 
   const { id } = $page.params
 

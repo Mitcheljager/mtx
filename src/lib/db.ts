@@ -16,7 +16,7 @@ export type Game = {
 }
 
 export type Category = {
-  id: string,
+  id?: string,
   title: string,
   type: string
 }
@@ -24,6 +24,16 @@ export type Category = {
 export const createGame = async(properties: Game) => {
   const { data, error } = await supabase
   .from("games")
+  .insert([properties])
+
+  if (error) throw new Error(error.message)
+
+  return data
+}
+
+export const createCategory = async(properties: Category) => {
+  const { data, error } = await supabase
+  .from("categories")
   .insert([properties])
 
   if (error) throw new Error(error.message)

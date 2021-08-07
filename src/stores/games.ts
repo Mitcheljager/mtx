@@ -28,7 +28,7 @@ export async function getGames() {
   return data
 }
 
-export async function getGamesbySearch(query) {    
+export async function getGamesbySearch(query) {
   const { data, error } = await supabase
   .from(table)
   .select(select)
