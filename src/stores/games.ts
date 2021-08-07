@@ -4,7 +4,7 @@ import supabase from "$lib/db"
 
 export const games = writable([])
 export const currentPage = writable(0)
-export const itemsPerPage = readable(3)
+export const itemsPerPage = readable(18)
 export const reachedEnd = writable(false)
 
 const table = "games"
