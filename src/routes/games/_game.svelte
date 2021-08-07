@@ -8,7 +8,7 @@
   export let game: Game
   export let loading = false
 	
-	const maxCategories = 5
+	const maxCategories = 10
 
 	function sortCategories() {
 		return game.categories.sort((a, b) => (a.type > b.type) ? 1 : -1).filter((c, i) => i < maxCategories)
@@ -50,7 +50,9 @@
 		{ /each }
 
 		{ #if game.categories.length > maxCategories }
-			And { game.categories.length - maxCategories } more...
+			<a class="card__more" href="/{ game.slug }" sveltekit:prefetch tabindex="-1">
+				and { game.categories.length - maxCategories } more...
+			</a>
 		{ /if }
   { /if }
 </div>
@@ -141,5 +143,18 @@
 
 	.card__grade {
 		margin-top: .5rem;
+	}
+
+	.card__more {
+		display: inline-block;
+		margin-top: .5rem;
+		color: var(--text-color-medium);
+		text-decoration: none;
+
+		&:hover,
+		&:active,
+		&:focus {
+			color: var(--text-color);
+		}
 	}
 </style>
