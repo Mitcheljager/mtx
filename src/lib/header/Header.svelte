@@ -1,6 +1,5 @@
 <script lang="ts">
 	import { page } from "$app/stores"
-	import { user } from "../../stores/session"
 
 	import github from "./github.svg"
 </script>

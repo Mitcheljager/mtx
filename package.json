@@ -42,6 +42,7 @@
   },
   "type": "module",
   "dependencies": {
+    "@cloudflare/wrangler": "^1.19.0",
     "@fontsource/fira-mono": "^4.2.2",
     "@lukeed/uuid": "^2.0.0",
     "@supabase/supabase-js": "^1.21.0",

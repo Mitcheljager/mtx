@@ -1,3 +1,7 @@
+<script context="module" lang="ts">
+	export const prerender = true
+</script>
+
 <script lang="ts">
   import { page } from "$app/stores"
   
@@ -11,16 +15,16 @@
 
   let game: Game
 
-  const { id } = $page.params
+  const { slug } = $page.params
 
   async function getGame() {
 		const { data, error } = await supabase
 		.from("games")
 		.select(`
-			id, title, publisher, year_of_release, image_url,
+			id, title, publisher, year_of_release, image_url, slug,
 			categories (id, title, type)
 		`)
-    .eq("id", id)
+    .eq("slug", slug)
 			
 		if (error) throw new Error(error.message)
 
@@ -56,12 +60,12 @@
 					<Grade categories={ game.categories } size="large" />
 				</div>
 
-        { #if game.year_of_release }
-          <div class="date mt-1/8">{ game.year_of_release }</div>
-        { /if }
-
         { #if game.publisher }
           <div class="name mt-1/8">{ game.publisher }</div>
+        { /if }
+
+        { #if game.year_of_release }
+          <div class="date mt-1/8">{ game.year_of_release }</div>
         { /if }
 
         { #if $user }

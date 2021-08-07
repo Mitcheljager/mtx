@@ -3,28 +3,41 @@
 </script>
 
 <script lang="ts">
-	import supabase from "$lib/db"
-
 	import { fade } from "svelte/transition"
 
-	import { games } from "../stores/games"
+	import { getGames, games, currentPage, reachedEnd, itemsPerPage } from "../stores/games"
 
 	import Game from "./games/_game.svelte"
 	import Search from "./_search.svelte"
+
+	let loadingMore = false
 	
 	async function getData() {
-		const { data, error } = await supabase
-		.from("games")
-		.select(`
-			id, title, publisher, year_of_release, image_url,
-			categories (id, title, type)
-		`)
-		.order("created_at", { ascending: false })
-		.limit(20)
-			
-		if (error) throw new Error(error.message)
+		let data: any
 
-		$games = data
+		try {
+			data = await getGames()
+		} catch(error) {
+			throw new Error(error.message)
+		}
+
+		$games = [...$games, ...data]
+	}
+
+	async function getInitialData() {
+		if ($games.length) return
+
+		await getData()
+	}
+
+	async function getNextPage() {
+		$currentPage += 1
+
+		loadingMore = true
+
+		await getData()
+
+		loadingMore = false
 	}
 </script>
 
@@ -45,12 +58,12 @@
 <Search />
 
 <div class="cards" class:cards--single={ $games?.length == 1 }>
-	{ #await getData() }
-		{ #each { length: 20 } as _ }
+	{ #await getInitialData() }
+		{ #each { length: $itemsPerPage } as _ }
 			<Game loading={ true } />
 		{ /each }
 	{ :then data }
-		{ #each $games as game (game.id) }
+		{ #each $games as game }
 			<div in:fade={{ duration: 150 }}>
 				<Game { game } />
 			</div>
@@ -60,6 +73,14 @@
 		<pre>{ error }</pre>
 	{ /await }
 </div>
+
+{ #if !$reachedEnd }
+	<div class="tray mt-1/1">
+		<button class="button button--large" class:button--primary={ !loadingMore } on:click={ getNextPage }>
+			{ loadingMore ? "Loading..." : "Load more" }
+		</button>
+	</div>
+{ /if }
 
 
 
@@ -89,4 +110,15 @@
 			grid-column: 2;
 		}
   }
+
+	.tray {
+		display: flex;
+		justify-content: center;
+	}
+
+	.button--large {
+		width: 100%;
+		max-width: clamp(200px, 100%, 25%);
+		padding: 1rem 3rem;
+	}
 </style>

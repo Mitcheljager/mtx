@@ -1,15 +1,14 @@
 <script lang="ts">
-	import supabase from "$lib/db"
 	import type { Game } from "$lib/db"
 
 	import Category from "../categories/_category.svelte"
-import Thumbnail from "./_thumbnail.svelte"
-import Grade from "./_grade.svelte"
+	import Thumbnail from "./_thumbnail.svelte"
+	import Grade from "./_grade.svelte"
 
   export let game: Game
   export let loading = false
 	
-	let maxCategories = 5
+	const maxCategories = 5
 
 	function sortCategories() {
 		return game.categories.sort((a, b) => (a.type > b.type) ? 1 : -1).filter((c, i) => i < maxCategories)
@@ -24,20 +23,16 @@ import Grade from "./_grade.svelte"
       <div class="card__image">
 				{ #if game.image_url }
 					<a href="/games/{ game.id }" tabindex="-1">
-						<Thumbnail { game } />
+						<Thumbnail { game } width={ 80 } height={ 106 } />
 					</a>
 				{ /if }
 			</div>
 
 			<div>
-				<div><a class="card__title" href="/games/{ game.id }">{ game.title }</a></div>
+				<div><a class="card__title" href="/games/{ game.slug }">{ game.title }</a></div>
 
 				{ #if game.year_of_release }
 					<div class="card__date">{ game.year_of_release }</div>
-				{ /if }
-
-				{ #if game.publisher }
-					<div class="card__name">{ game.publisher }</div>
 				{ /if }
 
 				<div class="card__grade">

@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { onMount } from "svelte";
+  import { onMount } from "svelte"
   import { flip } from "svelte/animate"
   import { page } from "$app/stores"
   import { goto } from "$app/navigation"
@@ -7,6 +7,7 @@
   import { user } from "../../../stores/session"
   import supabase, { createGameCategory, destroyGameCategory } from "$lib/db"
   import Category from "../../categories/_category.svelte"
+import Game from "../_game.svelte";
 
   const { id } = $page.params
 
@@ -33,7 +34,7 @@
   async function getAllCategories() {
 		const { data, error } = await supabase
 		.from("categories")
-		.select(`id, title, type`)
+		.select("id, title, type")
 		.order("type")
 			
 		if (error) throw new Error(error.message)

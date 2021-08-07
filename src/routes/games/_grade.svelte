@@ -9,7 +9,7 @@
   onMount(() => grade = categoriesToScore())
 
   function categoriesToScore() {
-		let score:number = 10
+		let score = 10
 
 		const negativeCategories = categories?.filter(c => c.type == "negative").length
 

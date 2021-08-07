@@ -2,6 +2,8 @@
   import supabase from "$lib/db"
 
   export let game
+  export let width = 160
+  export let height = 213
 
   let src: string
 
@@ -26,7 +28,10 @@
 
 
 <img
+  loading="lazy"
   alt={ game.title }
+  { width }
+  { height }
   { src } />
 
 
@@ -36,5 +41,7 @@
     display: block;
     width: 100%;
     height: auto;
+    color: var(--text-color-dark);
+    font-size: .75rem;
   }
 </style>

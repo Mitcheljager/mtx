@@ -4,7 +4,10 @@ node_modules
 /package
 /build
 /dist
+/bin
 /workers-site
 
 .env
+.env.development
+.env.production
 wrangler.toml

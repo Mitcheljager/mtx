@@ -1,10 +1,10 @@
 <script lang="ts">
   import supabase from "$lib/db"
 
-  let loading: boolean = false
+  let loading = false
   let email: string
 
-  const handleLogin = async () => {
+  const handleLogin = async() => {
     try {
       loading = true
 

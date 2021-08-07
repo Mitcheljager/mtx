@@ -2,7 +2,7 @@
   import supabase from "$lib/db"
 
   async function logout() {
-    let { error } = await supabase.auth.signOut()
+    const { error } = await supabase.auth.signOut()
 
     if (error) throw new Error(error.message)
   }

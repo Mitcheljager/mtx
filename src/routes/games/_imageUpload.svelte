@@ -3,9 +3,9 @@
 
   import { uploadImage } from "$lib/db"
 
-  export let height: number = 213
-  export let width: number = 160
-  export let src: string = ""
+  export let height = 213
+  export let width = 160
+  export let src = ""
 
   const dispatch = createEventDispatcher()
 
@@ -27,7 +27,7 @@
     reader.readAsDataURL(file)
 
     reader.onload = event => {
-      let image = new Image()
+      const image = new Image()
       image.src = event.target.result.toString()
 
       image.onload = () => {
@@ -69,7 +69,7 @@
     }
   }
 
-  function resizeToFill(contentWidth: number, contentHeight: number, containerWidth: number, containerHeight: number, offsetLeft: number = 0.5, offsetTop: number = 0.5) {
+  function resizeToFill(contentWidth: number, contentHeight: number, containerWidth: number, containerHeight: number, offsetLeft = 0.5, offsetTop = 0.5) {
     const contentRatio: number = contentWidth / contentHeight
     const containerRatio: number = containerWidth / containerHeight
     let resultHeight: number
@@ -93,7 +93,7 @@
 
   async function upload(blob: any, filename: string) {
     try {
-      let image = await uploadImage(blob, filename)
+      const image = await uploadImage(blob, filename)
       dispatch("upload", { image })
     } catch(error) {
       console.log(error)
