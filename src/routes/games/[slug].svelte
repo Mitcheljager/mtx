@@ -1,10 +1,25 @@
 <script context="module" lang="ts">
 	export const prerender = true
+
+  export async function load({ page }) {
+		const { data, error } = await supabase
+		.from("games")
+		.select(`
+			id, title, publisher, year_of_release, image_url, slug,
+			categories (id, title, type)
+		`)
+    .eq("slug", page.params.slug)
+    .single()
+			
+		if (error) throw new Error(error.message)
+
+    return {
+      props: { game: data }
+    }
+	}
 </script>
 
 <script lang="ts">
-  import { page } from "$app/stores"
-  
   import { user } from "../../stores/session"
   import supabase from "$lib/db"
   import type { Game } from "$lib/db"
@@ -13,23 +28,7 @@
   import Thumbnail from "./_thumbnail.svelte"
   import Grade from "./_grade.svelte"
 
-  let game: Game
-
-  const { slug } = $page.params
-
-  async function getGame() {
-		const { data, error } = await supabase
-		.from("games")
-		.select(`
-			id, title, publisher, year_of_release, image_url, slug,
-			categories (id, title, type)
-		`)
-    .eq("slug", slug)
-			
-		if (error) throw new Error(error.message)
-
-    game = data[0]
-	}
+  export let game: Game
 
   function sortCategories() {
 		return game.categories.sort((a, b) => (a.type > b.type) ? 1 : -1)
@@ -38,56 +37,51 @@
 
 
 
-{ #await getGame() }
-  <div class="wrapper">
-    <h1>&nbsp;</h1>
+<svelte:head>
+	<title>Macrotransactions | { game.title }</title>
+</svelte:head>
 
-    <div class="block block--loading"></div>
-  </div>
-{ :then data }
-  <div class="wrapper">
-    <h1>{ game.title }</h1>
-  
-    <div class="block">
-      <div class="mr-1/2">
-        <div class="image mb-1/4">
-          { #if game.image_url }
-            <Thumbnail { game } />
-          { /if }
-        </div>
 
-        <div class="mb-1/4">
-					<Grade categories={ game.categories } size="large" />
-				</div>
 
-        { #if game.publisher }
-          <div class="name mt-1/8">{ game.publisher }</div>
-        { /if }
+<div class="wrapper">
+  <h1>{ game.title }</h1>
 
-        { #if game.year_of_release }
-          <div class="date mt-1/8">{ game.year_of_release }</div>
-        { /if }
-
-        { #if $user }
-          <div class="mt-1/2">
-            <small><a href="/games/categories/{ game.id }">Edit categories</a></small>
-          </div>
+  <div class="block">
+    <div class="mr-1/2">
+      <div class="image mb-1/4">
+        { #if game.image_url }
+          <Thumbnail { game } />
         { /if }
       </div>
 
-      { #if game.categories }
-        <div class="categories">
-          { #each sortCategories() as category (category.id) }        
-            <Category { category } />
-          { /each }
+      <div class="mb-1/4">
+        <Grade categories={ game.categories } size="large" />
+      </div>
+
+      { #if game.publisher }
+        <div class="name mt-1/8">{ game.publisher }</div>
+      { /if }
+
+      { #if game.year_of_release }
+        <div class="date mt-1/8">{ game.year_of_release }</div>
+      { /if }
+
+      { #if $user }
+        <div class="mt-1/2">
+          <small><a href="/games/categories/{ game.id }">Edit categories</a></small>
         </div>
       { /if }
     </div>
+
+    { #if game.categories }
+      <div class="categories">
+        { #each sortCategories() as category (category.id) }        
+          <Category { category } />
+        { /each }
+      </div>
+    { /if }
   </div>
-{ :catch error }
-  <p>Something went wrong while loading this page:</p>
-  <pre>{ error }</pre>
-{ /await }
+</div>
 
 
 
@@ -138,7 +132,7 @@
 			position: relative;
       background: var(--bg-dark);
 			overflow: hidden;
-			aspect-ratio: 1 / 1;
+			aspect-ratio: 1 / .5;
 
 			&::after {
 				content: "";

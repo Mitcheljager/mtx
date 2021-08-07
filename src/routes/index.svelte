@@ -44,7 +44,7 @@
 
 
 <svelte:head>
-	<title>Home</title>
+	<title>Macrotransactions - Highlighting monetisation in popular games</title>
 </svelte:head>
 
 
