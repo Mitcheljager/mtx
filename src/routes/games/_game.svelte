@@ -35,6 +35,10 @@
 					<div class="card__date">{ game.year_of_release }</div>
 				{ /if }
 
+				{ #if game.publisher }
+					<div class="card__name">{ game.publisher }</div>
+				{ /if }
+
 				<div class="card__grade">
 					<Grade categories={ game.categories } />
 				</div>

@@ -77,7 +77,7 @@
 		Cosmetics can cost very high amounts of money, often times even costing as much as entire full priced games. They do this because they know some people will buy them, and those who can't afford it are left out. Maybe you can't afford because you're a kid and you don't have an income, or maybe you're from a country where these prices are en entire month of wages. Whatever the case might be, it sucks to miss out on cool stuff because you aren't able to afford them.
 	</p>
 
-	<h2>Just don't buy it then!</h2>
+	<h2>Just don't buy it than!</h2>
 
 	<p>
 		If you are the type of person to not buy cosmetics items, great, but you aren't the target audience anyway. A great statistics that is very relevant here is the 80-20 rule which states that <strong>80% of outcomes  result from 20% of all causes</strong>. In this case that means that 80% of microtransactions are made by 20% of users.
