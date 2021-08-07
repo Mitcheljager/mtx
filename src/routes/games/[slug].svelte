@@ -127,24 +127,5 @@
   .block {
     display: flex;
     align-items: flex-start;
-    
-    &--loading {
-			position: relative;
-      background: var(--bg-dark);
-			overflow: hidden;
-			aspect-ratio: 1 / .5;
-
-			&::after {
-				content: "";
-				position: absolute;
-				top: 0;
-        left: 0;
-				height: 100%;
-				width: 100%;
-				background: linear-gradient(to right, var(--bg-dark) 10%, var(--content-bg), var(--bg-dark) 90%);
-				background-repeat: no-repeat;
-				animation: loading 1000ms infinite;
-			}
-		}
   }
 </style>

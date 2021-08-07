@@ -1,5 +1,14 @@
 <script context="module" lang="ts">
 	export const prerender = true
+
+	
+	export async function load() {
+		let data = await getGames()
+
+		return {
+      props: { _games: data }
+    }
+	}
 </script>
 
 <script lang="ts">
@@ -9,6 +18,9 @@
 
 	import Game from "./games/_game.svelte"
 	import Search from "./_search.svelte"
+
+	export let _games
+	$games = _games
 
 	let loadingMore = false
 	
@@ -22,12 +34,6 @@
 		}
 
 		$games = [...$games, ...data]
-	}
-
-	async function getInitialData() {
-		if ($games.length) return
-
-		await getData()
 	}
 
 	async function getNextPage() {
@@ -58,20 +64,13 @@
 <Search />
 
 <div class="cards" class:cards--single={ $games?.length == 1 }>
-	{ #await getInitialData() }
-		{ #each { length: $itemsPerPage } as _ }
-			<Game loading={ true } />
-		{ /each }
-	{ :then data }
+	{ #if $games }
 		{ #each $games as game }
 			<div in:fade={{ duration: 150 }}>
 				<Game { game } />
 			</div>
 		{ /each }
-	{ :catch error }
-		<p>Something went wrong while fetching the data:</p>
-		<pre>{ error }</pre>
-	{ /await }
+	{ /if }
 </div>
 
 { #if !$reachedEnd }

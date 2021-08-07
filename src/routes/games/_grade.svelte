@@ -4,9 +4,7 @@
   export let categories
   export let size = "small"
 
-  let grade: string
-
-  onMount(() => grade = categoriesToScore())
+  let grade = categoriesToScore()
 
   function categoriesToScore() {
 		let score = 10
