@@ -22,7 +22,8 @@ export default {
   ],
   moduleNameMapper: {
     "^\\$lib(.*)$": "<rootDir>/src/lib$1",
-    "^\\$app(.*)$": ["<rootDir>/.svelte-kit/dev/runtime/app$1", "<rootDir>/.svelte-kit/build/runtime/app$1"]
+    "^\\$app(.*)$": ["<rootDir>/.svelte-kit/dev/runtime/app$1", "<rootDir>/.svelte-kit/build/runtime/app$1"],
+    ".+\\.(svg|png|jpg)$": "identity-obj-proxy"
   },
   setupFilesAfterEnv: [
     "@testing-library/jest-dom/extend-expect"
