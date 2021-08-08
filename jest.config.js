@@ -3,7 +3,7 @@ export default {
     "spec"
   ],
   transform: {
-    "^.+\\.(js|ts)$": "ts-jest",
+    "^.+\\.(js|ts)$": "esbuild-jest",
     "^.+\\.svelte$": [
       "svelte-jester",
       {

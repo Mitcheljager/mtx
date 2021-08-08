@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type { Game } from "$lib/db"
+	import type { Game } from "$lib/types"
 
 	import Category from "../categories/_category.svelte"
 	import Thumbnail from "./_thumbnail.svelte"

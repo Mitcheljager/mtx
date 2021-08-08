@@ -1,25 +1,11 @@
 import { createClient } from "@supabase/supabase-js"
 
+import type { Game, Category } from "$lib/types"
+
 const supabase = createClient(
   import.meta.env.VITE_SUPABASE_URL,
   import.meta.env.VITE_SUPABASE_ANON_KEY
 )
-
-export type Game = {
-  id?: string,
-  title: string,
-  publisher: string,
-  year_of_release: number,
-  image_url?: string,
-  slug?: string,
-  categories?: Category[]
-}
-
-export type Category = {
-  id?: string,
-  title: string,
-  type: string
-}
 
 export const createGame = async(properties: Game) => {
   const { data, error } = await supabase

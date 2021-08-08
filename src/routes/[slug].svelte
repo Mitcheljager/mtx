@@ -23,7 +23,7 @@
 <script lang="ts">
   import { user } from "../stores/session"
   import supabase from "$lib/db"
-  import type { Game } from "$lib/db"
+  import type { Game } from "$lib/types"
 
   import Category from "./categories/_category.svelte"
   import Thumbnail from "./games/_thumbnail.svelte"

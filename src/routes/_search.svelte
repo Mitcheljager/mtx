@@ -1,5 +1,5 @@
 <script lang="ts">
-  import type { Game } from "$lib/db"
+  import type { Game } from "$lib/types"
 
   import { fade } from "svelte/transition"
 

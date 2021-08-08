@@ -1,5 +1,5 @@
 <script lang="ts">
-  import type { Category } from "$lib/db"
+  import type { Category } from "$lib/types"
 
   export let category: Category
 
