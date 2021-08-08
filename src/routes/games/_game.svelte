@@ -31,12 +31,12 @@
 			<div>
 				<div><a class="card__title" href="/{ game.slug }" sveltekit:prefetch>{ game.title }</a></div>
 
-				{ #if game.year_of_release }
-					<div class="card__date">{ game.year_of_release }</div>
-				{ /if }
-
 				{ #if game.publisher }
 					<div class="card__name">{ game.publisher }</div>
+				{ /if }
+
+				{ #if game.year_of_release }
+					<div class="card__date">{ game.year_of_release }</div>
 				{ /if }
 
 				<div class="card__grade">
