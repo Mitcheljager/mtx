@@ -18,7 +18,7 @@
 
 	<div class="socials">
 		<a href="https://github.com/Mitcheljager/mtx/" target="_blank" rel="noreferrer noopener">
-			<img src={ github } alt="GitHub" />
+			<img src={ github } alt="GitHub" width="24" height="24" />
 		</a>
 	</div>
 </header>

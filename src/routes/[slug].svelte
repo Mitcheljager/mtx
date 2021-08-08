@@ -48,31 +48,33 @@
   <h1>{ game.title }</h1>
 
   <div class="block">
-    <div class="mr-1/2">
+    <aside class="sidebar sm:mr-1/2">
       <div class="image mb-1/4">
         { #if game.image_url }
           <Thumbnail { game } />
         { /if }
       </div>
 
-      <div class="mb-1/4">
+      <div class="grade mb-1/4">
         <Grade categories={ game.categories } size="large" />
       </div>
 
-      { #if game.publisher }
-        <div class="name mt-1/8">{ game.publisher }</div>
-      { /if }
+      <div class="info">
+        { #if game.publisher }
+          <div class="name sm:mt-1/8">{ game.publisher }</div>
+        { /if }
 
-      { #if game.year_of_release }
-        <div class="date mt-1/8">{ game.year_of_release }</div>
-      { /if }
+        { #if game.year_of_release }
+          <div class="date mt-1/8">{ game.year_of_release }</div>
+        { /if }
 
-      { #if $user }
-        <div class="mt-1/2">
-          <small><a href="/games/categories/{ game.id }">Edit categories</a></small>
-        </div>
-      { /if }
-    </div>
+        { #if $user }
+          <div class="mt-1/2">
+            <small><a href="/games/categories/{ game.id }">Edit categories</a></small>
+          </div>
+        { /if }
+      </div>
+    </aside>
 
     { #if game.categories }
       <div class="categories">
@@ -87,6 +89,8 @@
 
 
 <style lang="scss">
+  $breakpoint: 640px;
+
   h1 {
     background: linear-gradient(130deg, var(--primary), var(--secondary));
 		background-clip: text;
@@ -101,12 +105,17 @@
   }
 
   .image {
-    width: 7.5rem;
+    grid-area: image;
+    width: 6rem;
     aspect-ratio: 1 / 1.333;
 		border-radius: .5rem;
     background: var(--content-bg);
 		box-shadow: inset 0 0 0 1px var(--border-color);
 		overflow: hidden;
+
+    @media (min-width: $breakpoint) {
+      width: 7.5rem;
+    }
   }
 
   .categories {
@@ -125,8 +134,29 @@
     max-width: 640px;
   }
 
+  .sidebar {
+    display: grid;
+    grid-template: "image info" "grade grade";
+    grid-template-columns: 6rem auto;
+    grid-gap: 0 .75rem;
+
+    @media (min-width: $breakpoint) {
+      display: block;
+    }
+  }
+
+  .grade {
+    grid-area: grade;
+  }
+
+  .info {
+    grid-area: info
+  }
+
   .block {
-    display: flex;
-    align-items: flex-start;
+    @media (min-width: $breakpoint) {
+      display: flex;
+      align-items: flex-start;
+    }
   }
 </style>
