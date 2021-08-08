@@ -10,12 +10,15 @@
 
 <style lang="scss">
   .footer {
-    display: flex;
-    justify-content: space-between;
-    padding: 1.5rem 0;
-    margin-top: 6rem;
+    padding: 6rem 0 1.5rem;
+    margin-top: auto;
     color: var(--text-color-dark);
     font-size: .85rem;
+
+    @media (min-width: 640px) {
+      display: flex;
+      justify-content: space-between;
+    }
   }
 
   a {
