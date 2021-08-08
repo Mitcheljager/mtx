@@ -8,7 +8,7 @@
 
 <header class="header">
 	<a class="logo" href="/" sveltekit:prefetch>
-		<mark>Macro</mark>transactions
+		<mark>M<span class="hidden sm:visible">acro</span></mark>t<span class="hidden sm:visible">ransactions</span>
 	</a>
 
 	<nav class="nav">
@@ -29,12 +29,16 @@
 	.header {
 		display: grid;
 		grid-template: "logo nav socials";
-		grid-template-columns: 150px calc(100% - 300px) 150px;
+		grid-template-columns: 50px calc(100% - 100px) 50px;
 		justify-content: flex-start;
 		align-items: center;
 		width: 100%;
 		padding: 1.5rem 0;
 		margin-bottom: 1.5rem;
+
+		@media (min-width: 640px) {
+			grid-template-columns: 150px calc(100% - 300px) 150px;
+		}
 	}
 
 	.nav {
@@ -65,7 +69,6 @@
 	}
 
 	.logo {
-		text-align: center;
 		text-transform: lowercase;
 		color: white;
 		font-weight: bold;

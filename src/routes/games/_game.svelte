@@ -10,7 +10,7 @@
 	
 	const maxCategories = 10
 
-	function sortCategories() {
+	function sortedCategories() {
 		return game.categories.sort((a, b) => (a.type > b.type) ? 1 : -1).filter((c, i) => i < maxCategories)
 	}
 </script>
@@ -45,7 +45,7 @@
 			</div>
     </div>
 
-		{ #each sortCategories() as category }
+		{ #each sortedCategories() as category }
 			<Category { category } />
 		{ /each }
 
