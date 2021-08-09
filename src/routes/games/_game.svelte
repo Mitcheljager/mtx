@@ -6,7 +6,6 @@
 	import Grade from "./_grade.svelte"
 
   export let game: Game
-  export let loading = false
 	
 	const maxCategories = 10
 
@@ -17,10 +16,10 @@
 
 
 
-<div class="card" class:card--loading={ loading }>
-  { #if !loading }
-    <div class="card__header">
-      <div class="card__image">
+<div class="card">
+	<div class="card__content">
+		<div class="card__header">
+			<div class="card__image">
 				{ #if game.image_url }
 					<a href="/{ game.slug }" tabindex="-1" sveltekit:prefetch>
 						<Thumbnail { game } width={ 80 } height={ 106 } />
@@ -43,7 +42,7 @@
 					<Grade categories={ game.categories } />
 				</div>
 			</div>
-    </div>
+		</div>
 
 		{ #each sortedCategories() as category }
 			<Category { category } />
@@ -54,7 +53,13 @@
 				and { game.categories.length - maxCategories } more...
 			</a>
 		{ /if }
-  { /if }
+	</div>
+
+	{ #if game.image_url }
+		<div class="card__background">
+			<Thumbnail { game } width={ 160 } height={ 212 } />
+		</div>
+	{ /if }
 </div>
 
 
@@ -73,23 +78,12 @@
 		border-radius: 1rem;
 		background: var(--bg-dark);
 		box-shadow: var(--shadow-medium);
+		overflow: hidden;
+	}
 
-		&--loading {
-			position: relative;
-			overflow: hidden;
-			aspect-ratio: 2 / 3;
-
-			&::after {
-				content: "";
-				position: absolute;
-				top: 0;
-				height: 100%;
-				width: 100%;
-				background: linear-gradient(to right, var(--bg-dark) 10%, var(--content-bg), var(--bg-dark) 90%);
-				background-repeat: no-repeat;
-				animation: loading 1000ms infinite;
-			}
-		}
+	.card__content {
+		position: relative;
+		z-index: 1;
 	}
 
 	.card__header {
@@ -156,5 +150,16 @@
 		&:focus {
 			color: var(--text-color);
 		}
+	}
+
+	.card__background {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		opacity: .2;
+		z-index: 0;
+		filter: blur(50px);
+		mask-image: linear-gradient(170deg, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0) 250px);
 	}
 </style>
