@@ -1,6 +1,8 @@
 <script lang="ts">
   import supabase from "$lib/db"
 
+  import { images } from "../../stores/images"
+
   export let game
   export let width = 160
   export let height = 213
@@ -10,15 +12,23 @@
   $: if (game?.image_url) downloadImage()
 
   async function downloadImage() {
+    const key = game.image_url.split("games/")[1]
+
+    if ($images[key]) {
+      src = $images[key]
+      return
+    }
+
     try {
       const { data, error } = await supabase
 			.storage
 			.from("games")
-			.download(game.image_url.split("games/")[1])
+			.download(key)
 
       if (error) throw error
       
       src = URL.createObjectURL(data)
+      $images[key] = src
     } catch (error) {
       console.error(error)
     }
