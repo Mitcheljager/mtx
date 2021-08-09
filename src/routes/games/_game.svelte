@@ -153,8 +153,8 @@
 	}
 
 	.card__background {
-		$mask: linear-gradient(170deg, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0) 400px);
-		
+		$mask: linear-gradient(170deg, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0) 300px);
+
 		position: absolute;
 		top: 0;
 		left: 0;
