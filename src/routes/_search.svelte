@@ -62,7 +62,7 @@
   input {
     display: block;
     max-width: clamp(300px, 100%, 50%);
-    margin: clamp(3rem, 10vw, 6rem) auto;
+    margin: clamp(3rem, 10vw, 5rem) auto;
     background: var(--content-bg);
     box-shadow: var(--shadow-big);
     
