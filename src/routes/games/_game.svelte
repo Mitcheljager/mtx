@@ -3,6 +3,7 @@
 
 	import Category from "../categories/_category.svelte"
 	import Thumbnail from "./_thumbnail.svelte"
+	import Background from "./_background.svelte"
 	import Grade from "./_grade.svelte"
 
   export let game: Game
@@ -56,9 +57,7 @@
 	</div>
 
 	{ #if game.image_url }
-		<div class="card__background">
-			<Thumbnail { game } width={ 160 } height={ 212 } />
-		</div>
+		<Background key={ game.id } />
 	{ /if }
 </div>
 
@@ -123,7 +122,7 @@
 		&:focus,
 		&:active {
 			color: var(--text-color-title);
-			box-shadow: 0 3px 0 currentColor;
+			box-shadow: 0 2px 0 currentColor;
 		}
   }
 
@@ -150,19 +149,5 @@
 		&:focus {
 			color: var(--text-color);
 		}
-	}
-
-	.card__background {
-		$mask: linear-gradient(170deg, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0) 300px);
-
-		position: absolute;
-		top: 0;
-		left: 0;
-		width: 100%;
-		opacity: .2;
-		z-index: 0;
-		filter: blur(50px);
-		mask-image: $mask;
-		-webkit-mask-image: $mask;
 	}
 </style>

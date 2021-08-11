@@ -12,10 +12,8 @@
   $: if (game?.image_url) downloadImage()
 
   async function downloadImage() {
-    const key = game.image_url.split("games/")[1]
-
-    if ($images[key]) {
-      src = $images[key]
+    if ($images[game.id]) {
+      src = $images[game.id]
       return
     }
 
@@ -23,12 +21,12 @@
       const { data, error } = await supabase
 			.storage
 			.from("games")
-			.download(key)
+			.download(game.image_url.split("games/")[1])
 
       if (error) throw error
       
       src = URL.createObjectURL(data)
-      $images[key] = src
+      $images[game.id] = src
     } catch (error) {
       console.error(error)
     }

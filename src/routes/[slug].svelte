@@ -28,6 +28,7 @@
   import Category from "./categories/_category.svelte"
   import Thumbnail from "./games/_thumbnail.svelte"
   import Grade from "./games/_grade.svelte"
+  import Background from "./games/_background.svelte"
 
   export let game: Game
 
@@ -83,6 +84,10 @@
         { /each }
       </div>
     { /if }
+
+    { #if game.image_url }
+      <Background key={ game.id } />
+    { /if }
   </div>
 </div>
 
@@ -119,7 +124,9 @@
   }
 
   .categories {
+    position: relative;
     width: 100%;
+    z-index: 1;
   }
 
   .date {
@@ -135,10 +142,12 @@
   }
 
   .sidebar {
+    position: relative;
     display: grid;
     grid-template: "image info" "grade grade";
     grid-template-columns: 6rem auto;
     grid-gap: 0 .75rem;
+    z-index: 1;
 
     @media (min-width: $breakpoint) {
       display: block;
@@ -154,6 +163,8 @@
   }
 
   .block {
+    position: relative;
+
     @media (min-width: $breakpoint) {
       display: flex;
       align-items: flex-start;
