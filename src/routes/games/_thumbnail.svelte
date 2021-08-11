@@ -11,6 +11,12 @@
 
   $: if (game?.image_url) downloadImage()
 
+  // Fallback for parsers to prevent errors. This doesn't do anything in modern browsers.
+  function noOp () { }
+  if (typeof URL.createObjectURL === "undefined") { 
+    Object.defineProperty(URL, "createObjectURL", { value: noOp })
+  }
+
   async function downloadImage() {
     if ($images[game.id]) {
       src = $images[game.id]
