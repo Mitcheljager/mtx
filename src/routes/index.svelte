@@ -15,7 +15,7 @@
 	import Search from "./_search.svelte"
 
 	export let _games
-	$games = _games
+	if (!$games.length) $games = _games
 
 	let loadingMore = false
 	
