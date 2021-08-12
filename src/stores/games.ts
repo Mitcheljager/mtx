@@ -28,7 +28,7 @@ export async function getGames() {
   return data
 }
 
-export async function getGamesbySearch(query) {
+export async function getGamesbySearch(query: string) {
   const { data, error } = await supabase
   .from(table)
   .select(select)
@@ -42,5 +42,21 @@ export async function getGamesbySearch(query) {
 
   reachedEnd.set(true)
   
+  return data
+}
+
+
+export async function getGame(column: string, value: string) {
+  const { data, error } = await supabase
+  .from("games")
+  .select(`
+    id, title, publisher, year_of_release, image_url, slug,
+    categories (id, title, type)
+  `)
+  .eq(column, value)
+  .single()
+
+  if (error) throw new Error(error.message)
+
   return data
 }

@@ -1,18 +1,12 @@
 <script context="module" lang="ts">
+  import { getGame } from "../stores/games"
+
 	export const prerender = true
 
   export async function load({ page }) {
-		const { data, error } = await supabase
-		.from("games")
-		.select(`
-			id, title, publisher, year_of_release, image_url, slug,
-			categories (id, title, type)
-		`)
-    .eq("slug", page.params.slug)
-    .single()
+		const data = await getGame("slug", page.params.slug)
 
     if (!data) return { status: 404, error: "Not found" }
-    if (error) throw new Error(error.message)
 
     return {
       props: { game: data }
@@ -22,7 +16,6 @@
 
 <script lang="ts">
   import { user } from "../stores/session"
-  import supabase from "$lib/db"
   import type { Game } from "$lib/types"
 
   import Category from "./categories/_category.svelte"
@@ -71,7 +64,8 @@
 
         { #if $user }
           <div class="mt-1/2">
-            <small><a href="/games/categories/{ game.id }">Edit categories</a></small>
+            <small><a href="/games/categories/{ game.id }">Edit categories</a></small> <br>
+            <small><a href="/games/edit-{ game.id }">Edit game</a></small>
           </div>
         { /if }
       </div>

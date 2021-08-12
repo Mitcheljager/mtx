@@ -17,6 +17,17 @@ export const createGame = async(properties: Game) => {
   return data
 }
 
+export const updateGame = async(properties: Game) => {
+  const { data, error } = await supabase
+  .from("games")
+  .update(properties)
+  .eq("id", properties.id)
+
+  if (error) throw new Error(error.message)
+
+  return data
+}
+
 export const createCategory = async(properties: Category) => {
   const { data, error } = await supabase
   .from("categories")
