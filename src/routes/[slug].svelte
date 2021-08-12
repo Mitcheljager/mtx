@@ -71,13 +71,21 @@
       </div>
     </aside>
 
-    { #if game.categories }
-      <div class="categories">
-        { #each sortCategories() as category (category.id) }        
-          <Category { category } />
-        { /each }
-      </div>
-    { /if }
+    <div>
+      { #if game.description }
+        <div class="description">
+          { @html game.description.replace("\n", "<br><br>") }
+        </div>
+      { /if }
+
+      { #if game.categories }
+        <div class="categories">
+          { #each sortCategories() as category (category.id) }        
+            <Category { category } />
+          { /each }
+        </div>
+      { /if }
+    </div>
 
     { #if game.image_url }
       <Background key={ game.id } />
@@ -163,5 +171,10 @@
       display: flex;
       align-items: flex-start;
     }
+  }
+
+  .description {
+    margin-bottom: 1.5rem;
+    line-height: 1.5em;
   }
 </style>

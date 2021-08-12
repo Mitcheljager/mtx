@@ -9,7 +9,7 @@ export const reachedEnd = writable(false)
 
 const table = "games"
 const select = `
-  id, title, publisher, year_of_release, image_url, slug,
+  id, title, description, publisher, year_of_release, image_url, slug,
   categories (id, title, type)`
 
 export async function getGames() {
@@ -48,11 +48,8 @@ export async function getGamesbySearch(query: string) {
 
 export async function getGame(column: string, value: string) {
   const { data, error } = await supabase
-  .from("games")
-  .select(`
-    id, title, publisher, year_of_release, image_url, slug,
-    categories (id, title, type)
-  `)
+  .from(table)
+  .select(select)
   .eq(column, value)
   .single()
 

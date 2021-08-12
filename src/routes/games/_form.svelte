@@ -12,6 +12,7 @@
   
   let submit = false
   let title: string
+  let description: string
   let publisher: string
   let year_of_release: any
   let image_url: string
@@ -24,6 +25,7 @@
 
   function setData() {
     title = game.title
+    description = game.description
     publisher = game.publisher
     year_of_release = game.year_of_release
     image_url = game.image_url
@@ -34,8 +36,8 @@
     let data: any
 
     try {
-      if (!game) data = await createGame({ title, publisher, year_of_release, image_url, slug })
-      if (game) data = await updateGame({ id: game.id, title, publisher, year_of_release, image_url, slug })
+      if (!game) data = await createGame({ title, description, publisher, year_of_release, image_url, slug })
+      if (game) data = await updateGame({ id: game.id, title, description, publisher, year_of_release, image_url, slug })
     } catch(error) {
       throw new Error(error.message)
     }
@@ -64,6 +66,12 @@
     <input class="form-input" type="text" name="slug" required bind:value={ slug }>
     <p class="help">
       How the name will appear in the browser URL bar. Should be unique.
+    </p>
+
+    <label class="form-label" for="title">Description</label>
+    <textarea class="form-input" type="text" name="description" rows="5" bind:value={ description } />
+    <p class="help">
+      Short description of how microtransactions affect this game. Supports HTML, newlines are automatically inserted.
     </p>
 
     <label class="form-label" for="publisher">Publisher</label>
