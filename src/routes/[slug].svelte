@@ -74,7 +74,7 @@
     <div>
       { #if game.description }
         <div class="description">
-          { @html game.description.replaceAll("\n", "<br>") }
+          { @html game.description.replace(/\n/g, "<br>") }
         </div>
       { /if }
 
@@ -174,7 +174,9 @@
   }
 
   .description {
+    position: relative;
     margin-bottom: 1.5rem;
     line-height: 1.5em;
+    z-index: 1;
   }
 </style>
