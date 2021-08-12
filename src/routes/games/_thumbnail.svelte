@@ -1,23 +1,32 @@
 <script lang="ts">
+  import { onMount } from "svelte"
+
   import supabase from "$lib/db"
+  import type { Game } from "$lib/types"
 
   import { images } from "../../stores/images"
 
-  export let game
+  export let game: Game
   export let width = 160
   export let height = 213
 
   let src: string
+  let initiatedLoad = false
 
-  $: if (game?.image_url) downloadImage()
+  let element: HTMLElement
 
-  // Fallback for parsers to prevent errors. This doesn't do anything in modern browsers.
-  function noOp () { }
-  if (typeof URL.createObjectURL === "undefined") { 
-    Object.defineProperty(URL, "createObjectURL", { value: noOp })
+  onMount(lazyLoad)
+
+  function lazyLoad() {
+    if (!game.image_url || initiatedLoad) return
+    if (element.getBoundingClientRect().top - window.innerHeight > window.innerHeight / 2) return
+
+    downloadImage()
   }
 
   async function downloadImage() {
+    initiatedLoad = true
+
     if ($images[game.id]) {
       src = $images[game.id]
       return
@@ -37,13 +46,24 @@
       console.error(error)
     }
   }
+
+  // Fallback for parsers to prevent errors. This doesn't do anything in modern browsers.
+  function noOp () { }
+  if (typeof URL.createObjectURL === "undefined") { 
+    Object.defineProperty(URL, "createObjectURL", { value: noOp })
+  }
 </script>
+
+
+
+<svelte:window on:scroll={ lazyLoad } />
 
 
 
 <img
   loading="lazy"
   alt={ game.title }
+  bind:this={ element }
   { width }
   { height }
   { src } />
