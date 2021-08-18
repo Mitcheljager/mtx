@@ -64,11 +64,6 @@
 
 
 <style lang="scss">
-  @keyframes loading {
-    from { transform: translateX(-100%) }
-    to { transform: translateX(100%) }
-  }
-
   .card {
 		position: relative;
 		display: block;

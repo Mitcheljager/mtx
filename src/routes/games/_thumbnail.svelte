@@ -11,21 +11,21 @@
   export let height = 213
 
   let src: string
-  let initiatedLoad = false
+  let loadingInitiated = false
 
   let element: HTMLElement
 
   onMount(lazyLoad)
 
   function lazyLoad() {
-    if (!game.image_url || initiatedLoad) return
+    if (!game.image_url || loadingInitiated) return
     if (element.getBoundingClientRect().top - window.innerHeight > window.innerHeight / 2) return
 
     downloadImage()
   }
 
   async function downloadImage() {
-    initiatedLoad = true
+    loadingInitiated = true
 
     if ($images[game.id]) {
       src = $images[game.id]
@@ -61,7 +61,6 @@
 
 
 <img
-  loading="lazy"
   alt={ game.title }
   bind:this={ element }
   { width }

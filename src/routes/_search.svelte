@@ -3,10 +3,10 @@
 
   import { fade } from "svelte/transition"
 
-  import { games, getGames, getGamesbySearch } from "../stores/games"
+  import { currentPage, games, getGames, getGamesbySearch, searchQuery } from "../stores/games"
 
   let debounce: any
-  let value = ""
+  let value = $searchQuery || ""
   let noResults = false
   let loading = false
 
@@ -21,6 +21,9 @@
 
     try {
       debounce = setTimeout(async() => {
+        $currentPage = 0
+        $searchQuery = value
+
         let data: Game[]
 
         if (value) data = await getGamesbySearch(value)
@@ -44,6 +47,7 @@
   type="text"
   placeholder="Search..."
   autocomplete="off"
+  { value }
   on:input={ getData } />
 
 { #if noResults }
