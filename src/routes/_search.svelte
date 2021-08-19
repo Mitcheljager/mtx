@@ -7,13 +7,11 @@
 
   let debounce: any
   let value = $searchQuery || ""
-  let noResults = false
   let loading = false
 
   function getData(event) {
     value = event.target.value
     loading = true
-    noResults = false
     
     $games = []
 
@@ -31,7 +29,6 @@
 
         $games = data
         
-        noResults = !data.length
         loading = false
       }, 500)
     } catch(error) {
@@ -50,7 +47,7 @@
   { value }
   on:input={ getData } />
 
-{ #if noResults }
+{ #if $searchQuery && !$games.length && !loading }
   <center in:fade={{ duration: 150 }}><em>No matches were found for your search query</em></center>
 { /if }
 
@@ -86,14 +83,14 @@
       width: 0;
       height: 0;
       opacity: 1;
-      box-shadow: inset 0 0 0 .25rem white;
+      box-shadow: inset 0 0 0 .25rem var(--text-color);
     }
 
     to {
       width: 100%;
       height: 100%;
       opacity: 0;
-      box-shadow: inset 0 0 0 .75rem white;
+      box-shadow: inset 0 0 0 .75rem var(--text-color);
     }
   }
 
@@ -113,7 +110,7 @@
       width: 0;
       height: 0;
       border-radius: 50%;
-      animation: spinner 1200ms cubic-bezier(0, .25, 0.75, 1) infinite forwards;
+      animation: spinner 1200ms cubic-bezier(0, .25, .75, 1) infinite forwards;
     }
 
     &::after {

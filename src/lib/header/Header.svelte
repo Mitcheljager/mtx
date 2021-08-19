@@ -2,17 +2,26 @@
 	import { page } from "$app/stores"
 
 	import github from "./github.svg"
+
+	function refreshIfCurrentPage(event) {
+		let href = event.target.href
+		if (!href) href = event.target.closest("a").href
+		
+		if (href != window.location.toString()) return
+
+		window.location.reload()
+	}
 </script>
 
 
 
 <header class="header">
-	<a class="logo" href="/" sveltekit:prefetch>
+	<a class="logo" href="/" sveltekit:prefetch on:click={ refreshIfCurrentPage }>
 		<mark>M<span class="hidden sm:visible">acro</span></mark>t<span class="hidden sm:visible">ransactions</span>
 	</a>
 
 	<nav class="nav">
-		<a class="nav__item" class:nav__item--active={ $page.path === "/" } sveltekit:prefetch href="/">Home</a>
+		<a class="nav__item" class:nav__item--active={ $page.path === "/" } sveltekit:prefetch href="/" on:click={ refreshIfCurrentPage }>Home</a>
 		<a class="nav__item" class:nav__item--active={ $page.path === "/about" } sveltekit:prefetch href="/about">About</a>
 	</nav>
 
