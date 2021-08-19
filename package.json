@@ -6,11 +6,13 @@
     "build": "svelte-kit build",
     "preview": "svelte-kit preview",
     "wrangler": "wrangler publish",
+    "wrangler:dev": "wrangler dev",
     "check": "svelte-check --tsconfig ./tsconfig.json",
     "check:watch": "svelte-check --tsconfig ./tsconfig.json --watch",
     "lint": "eslint --ignore-path .gitignore .",
     "test": "jest",
-    "test:watch": "yarn test -- --watch"
+    "test:watch": "yarn test -- --watch",
+    "postinstall": "patch-package"
   },
   "devDependencies": {
     "@babel/core": "^7.15.0",
@@ -52,6 +54,8 @@
     "@lukeed/uuid": "^2.0.0",
     "@supabase/supabase-js": "^1.21.0",
     "@sveltejs/adapter-cloudflare-workers": "^1.0.0-next.18",
-    "cookie": "^0.4.1"
+    "cookie": "^0.4.1",
+    "patch-package": "^6.4.7",
+    "postinstall-postinstall": "^2.1.0"
   }
 }
