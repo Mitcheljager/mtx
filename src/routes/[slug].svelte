@@ -4,9 +4,13 @@
 	export const prerender = true
 
   export async function load({ page }) {
-		const data = await getGame("slug", page.params.slug)
+    let data: Game
 
-    if (!data) return { status: 404, error: "Not found" }
+    try {
+      data = await getGame("slug", page.params.slug)
+    } catch(error) {
+      if (!data) return { status: 404, error: "Not found" }
+    }
 
     return {
       props: { game: data }
