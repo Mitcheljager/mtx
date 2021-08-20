@@ -1,5 +1,7 @@
 <script lang="ts">
-  export let categories
+	import type { Category } from "$lib/types"
+
+  export let categories: Category[]
   export let size = "small"
 
   const grade = categoriesToScore()

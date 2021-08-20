@@ -10,8 +10,7 @@
   font-family: var(--font-stack);
 
   &:focus {
-    outline: none;
-    box-shadow: 0 0 0 2px var(--text-color-dark);
+    outline: 2px solid var(--text-color-dark);
   }
 
   &::placeholder {
