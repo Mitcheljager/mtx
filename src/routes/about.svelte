@@ -115,6 +115,32 @@
 	<p>
 		<big>Not all microtransactions are bad, but it is a shame that "micro" is no longer a descriptor.</big>
 	</p>
+
+	<hr>
+
+	<h3>Sources</h3>
+
+	<p>If you would like to learn more about microtransactions, here's a few sources I can recommend:</p>
+
+	<strong>Reading</strong>
+	<ul>
+		<li>
+			<a href="https://psyarxiv.com/cdwhq" target="_blank" rel="noreferrer noopener">Predatory monetisation? A categorisation of unfair, misleading, and aggressive monetisation techniques in digital games from the perspective of players - Elena Petrovskaya, David Zendle, University of York</a>
+		</li>
+		<li>
+			<a href="https://www.ftc.gov/system/files/documents/reports/staff-perspective-paper-loot-box-workshop/loot_box_workshop_staff_perspective.pdf" target="_blank" rel="noreferrer noopener">FTC Video Game Loot Box Workshop - FTC Bureau of Consumer Protection</a>
+		</li>
+	</ul>
+
+	<strong>Video</strong>
+	<ul>
+		<li>
+			<a href="https://www.youtube.com/watch?v=7E5pcpanOto" target="_blank" rel="noreferrer noopener">The FALLACY of Video Game Prices and the Complete Evolution of Microtransactions - Upper Echelon Gamers</a>
+		</li>
+		<li>
+			<a href="https://www.youtube.com/watch?v=YLSX4yw6Jzo" target="_blank" rel="noreferrer noopener">The War of The Lootboxes and Microtransactions - Upper Echelon Gamers</a>
+		</li>
+	</ul>
 </article>
 
 

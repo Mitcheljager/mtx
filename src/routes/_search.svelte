@@ -13,7 +13,7 @@
   let columnPlaceholder: HTMLElement
   let selectWidth = 0
   
-  $: setSelectWidth(columnPlaceholder, column)
+  $: if (columnPlaceholder && column) setSelectWidth()
 
   function getData() {
     loading = true
@@ -58,18 +58,20 @@
     bind:value
     on:input={ getData } />
 
-  <div class="actions">
-    by
+  { #if selectWidth > 0 }
+    <div class="actions">
+      by
 
-    <select
-      bind:value={ column }
-      on:change={ () => { if (value) getData() } }
-      style="width: calc({ selectWidth }px + .25rem)">
+      <select
+        bind:value={ column }
+        on:change={ () => { if (value) getData() } }
+        style="width: calc({ selectWidth }px + .25rem)">
 
-      <option value="title">Title</option>
-      <option value="publisher">Publisher</option>
-    </select>
-  </div>
+        <option value="title">Title</option>
+        <option value="publisher">Publisher</option>
+      </select>
+    </div>
+  { /if }
 </div>
 
 <div class="column-placeholder" bind:this={ columnPlaceholder }>{ column }</div>
