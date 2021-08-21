@@ -10,12 +10,11 @@
   font-family: var(--font-stack);
 
   &:focus {
-    outline: none;
-    box-shadow: 0 0 0 2px var(--text-color-dark);
+    outline: 2px solid var(--text-color-dark);
   }
 
   &::placeholder {
-    color: var(--text-color-dark);
+    color: var(--text-color-medium);
     font-style: italic;
     font-size: .85rem;
   }

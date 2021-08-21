@@ -1,5 +1,6 @@
 <script lang="ts">
   import type { Game } from "$lib/types"
+  import { tick } from "svelte"
 
   import { fade } from "svelte/transition"
 
@@ -8,9 +9,13 @@
   let debounce: any
   let value = $searchQuery || ""
   let loading = false
+  let column = "title"
+  let columnPlaceholder: HTMLElement
+  let selectWidth = 0
+  
+  $: setSelectWidth(columnPlaceholder, column)
 
-  function getData(event) {
-    value = event.target.value
+  function getData() {
     loading = true
     
     $games = []
@@ -24,7 +29,7 @@
 
         let data: Game[]
 
-        if (value) data = await getGamesbySearch(value)
+        if (value) data = await getGamesbySearch(column, value)
         if (!value) data = await getGames()
 
         $games = data
@@ -35,17 +40,39 @@
       alert("Something went wrong!")
     }
   }
+
+  async function setSelectWidth() {
+    await tick()
+    if (column && columnPlaceholder) selectWidth = columnPlaceholder.offsetWidth
+  }
 </script>
 
 
 
-<input
-  class="form-input form-input--large"
-  type="text"
-  placeholder="Search..."
-  autocomplete="off"
-  { value }
-  on:input={ getData } />
+<div class="search">
+  <input
+    class="form-input form-input--large"
+    type="text"
+    placeholder="Search..."
+    autocomplete="off"
+    bind:value
+    on:input={ getData } />
+
+  <div class="actions">
+    by
+
+    <select
+      bind:value={ column }
+      on:change={ () => { if (value) getData() } }
+      style="width: calc({ selectWidth }px + .25rem)">
+
+      <option value="title">Title</option>
+      <option value="publisher">Publisher</option>
+    </select>
+  </div>
+</div>
+
+<div class="column-placeholder" bind:this={ columnPlaceholder }>{ column }</div>
 
 { #if $searchQuery && !$games.length && !loading }
   <center in:fade={{ duration: 150 }}><em>No matches were found for your search query</em></center>
@@ -62,14 +89,60 @@
 <style lang="scss">
   input {
     display: block;
-    max-width: clamp(300px, 100%, 50%);
-    margin: clamp(3rem, 10vw, 5rem) auto;
     background: var(--content-bg);
     box-shadow: var(--shadow-big);
     
     &::placeholder {
       font-size: 1.5rem;
     }
+  }
+
+  select {
+    -webkit-appearance: none;
+    appearance: none;
+    display: inline-block;
+    min-width: 0;
+    padding: .5rem 0;
+    margin-left: .15rem;
+    border: 0;
+    background: var(--content-bg);
+    font-size: 1rem;
+    color: var(--text-color);
+    font-family: var(--font-stack);
+    cursor: pointer;
+
+    &:hover,
+    &:active,
+    &:focus {
+      text-decoration: underline;
+      color: var(--text-color-light);
+    }
+  }
+
+  .search {
+    position: relative;
+    max-width: clamp(300px, 100%, 50%);
+    margin: clamp(3rem, 10vw, 5rem) auto;
+  }
+
+  .actions {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    right: 1.5rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--text-color-dark);
+  }
+
+  .column-placeholder {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 0;
+    opacity: 0;
+    overflow: hidden;
+    text-transform: capitalize;
   }
 
   .loading {

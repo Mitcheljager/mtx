@@ -1,6 +1,8 @@
+
 import { readable, writable, get } from "svelte/store"
 
 import supabase from "$lib/db"
+import type { Game } from "$lib/types"
 
 export const games = writable([])
 export const currentPage = writable(0)
@@ -13,7 +15,7 @@ const select = `
   id, title, publisher, year_of_release, image_url, slug,
   categories (id, title, type)`
 
-export async function getGames() {
+export async function getGames(): Promise<Game[]> {
   const startOfRange: number = get(currentPage) * get(itemsPerPage)
   const endOfRange: number = startOfRange + (get(itemsPerPage) - 1)
 
@@ -29,11 +31,11 @@ export async function getGames() {
   return data
 }
 
-export async function getGamesbySearch(query: string) {
+export async function getGamesbySearch(column: string, query: string): Promise<Game[]> {
   const { data, error } = await supabase
   .from(table)
   .select(select)
-  .textSearch("title", query, {
+  .textSearch(column, query, {
     type: "websearch",
     config: "english"
   })
@@ -46,8 +48,7 @@ export async function getGamesbySearch(query: string) {
   return data
 }
 
-
-export async function getGame(column: string, value: string) {
+export async function getGame(column: string, value: string): Promise<Game[]> {
   const { data, error } = await supabase
   .from(table)
   .select(`
