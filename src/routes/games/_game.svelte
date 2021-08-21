@@ -9,10 +9,6 @@
   export let game: Game
 	
 	const maxCategories = 10
-
-	function sortedCategories() {
-		return game.categories.sort((a, b) => (a.type > b.type) ? 1 : -1).filter((c, i) => i < maxCategories)
-	}
 </script>
 
 
@@ -45,7 +41,7 @@
 			</div>
 		</div>
 
-		{ #each sortedCategories() as category }
+		{ #each game.categories.filter((c, i) => i < maxCategories) as category }
 			<Category { category } />
 		{ /each }
 

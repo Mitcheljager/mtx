@@ -3,6 +3,7 @@ import { readable, writable, get } from "svelte/store"
 
 import supabase from "$lib/db"
 import type { Game } from "$lib/types"
+import { sortedCategories } from "./categories"
 
 export const games = writable([])
 export const currentPage = writable(0)
@@ -26,6 +27,9 @@ export async function getGames(): Promise<Game[]> {
   .range(startOfRange, endOfRange)
     
   if (error) throw new Error(error.message)
+
+  data.forEach(game => game.categories = sortedCategories(game.categories))
+
   reachedEnd.set(data.length < get(itemsPerPage))
 
   return data
@@ -43,6 +47,8 @@ export async function getGamesbySearch(column: string, query: string): Promise<G
     
   if (error) throw new Error(error.message)
 
+  data.forEach(game => game.categories = sortedCategories(game.categories))
+
   reachedEnd.set(true)
   
   return data
@@ -59,6 +65,8 @@ export async function getGame(column: string, value: string): Promise<Game[]> {
   .single()
 
   if (error) throw new Error(error.message)
+  
+  data.categories = sortedCategories(data.categories)
 
   return data
 }

@@ -28,10 +28,6 @@
   import Background from "./games/_background.svelte"
 
   export let game: Game
-
-  function sortCategories() {
-		return game.categories.sort((a, b) => (a.type > b.type) ? 1 : -1)
-	}
 </script>
 
 
@@ -84,7 +80,7 @@
 
       { #if game.categories }
         <div class="categories">
-          { #each sortCategories() as category (category.id) }        
+          { #each game.categories as category (category.id) }        
             <Category { category } />
           { /each }
         </div>
