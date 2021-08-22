@@ -19,6 +19,7 @@
 </script>
 
 <script lang="ts">
+
   import { user } from "../stores/session"
   import type { Game } from "$lib/types"
 
@@ -166,6 +167,7 @@
 
   .block {
     position: relative;
+    overflow: hidden;
 
     @media (min-width: $breakpoint) {
       display: flex;
