@@ -8,6 +8,12 @@
 
 
 
+<svelte:head>
+  <meta name="description" content="Macrotransactions.org does not collect data.">
+</svelte:head>
+
+
+
 <div class="wrapper">
   <h1>Privacy</h1>
 
@@ -16,10 +22,6 @@
   <p>
     No data is collected. <br>
     No cookies are set.
-  </p>
-
-  <p>
-    That's it.
   </p>
 </div>
 

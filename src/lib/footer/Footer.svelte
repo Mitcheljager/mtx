@@ -1,5 +1,5 @@
 <footer class="footer">
-	<div>Made by Mitchel Jager</div>
+	<div>Made by Mitchel Jager | Find me on Discord: Mitsiee#9370</div>
 
   <div>
     <a href="/privacy" sveltekit:prefetch>Privacy</a> |

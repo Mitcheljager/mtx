@@ -46,6 +46,7 @@
 
 <svelte:head>
 	<title>Macrotransactions - Highlighting monetisation in popular games</title>
+	<meta name="description" content="Macrotransactions highlights monetisation practises in popular games. Monetisation in games can be unethical, predatory, and exploitative. This website aims to make you aware of those practises.">
 </svelte:head>
 
 

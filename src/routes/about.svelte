@@ -18,6 +18,7 @@
 
 <svelte:head>
 	<title>Macrotransactions | About</title>
+	<meta name="description" content="Microtransactions are a way of monetising virtual goods in games. Microtransactions often times don't have the customers best interest in mind and only exist to squeeze as much money out of you as possible. That's not cool.">
 </svelte:head>
 
 

@@ -36,11 +36,13 @@
 
 <svelte:head>
 	<title>Macrotransactions | { game.title }</title>
+  <meta name="description" content="Are there microtransactions in { game.title }? This page details the monetisation practices in this game and rates it in comparison to other games.">
 </svelte:head>
 
 
 
 <div class="wrapper">
+  
   <h1>{ game.title }</h1>
 
   <div class="block">
