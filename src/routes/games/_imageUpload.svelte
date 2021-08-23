@@ -104,7 +104,7 @@
 
 { #if src }
   <div class="mt-1/2">
-    <img {src} { width } { height } alt="preview" />
+    <img { src } { width } { height } alt="preview" />
   </div>
 { /if }
 
@@ -128,5 +128,9 @@
     height: 0;
     width: 0;
     opacity: 0;
+  }
+
+  img {
+    width: auto;
   }
 </style>
