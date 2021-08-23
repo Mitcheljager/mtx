@@ -1,4 +1,5 @@
 <script context="module" lang="ts">
+  import supabase from "$lib/db"
   import { getGame } from "../stores/games"
 
 	export const prerender = true
@@ -19,12 +20,12 @@
 </script>
 
 <script lang="ts">
+  import { SupabaseLazyImage } from "svelte-supabase-lazy-images"
 
   import { user } from "../stores/session"
   import type { Game } from "$lib/types"
 
   import Category from "./categories/_category.svelte"
-  import Thumbnail from "./games/_thumbnail.svelte"
   import Grade from "./games/_grade.svelte"
   import Background from "./games/_background.svelte"
 
@@ -46,7 +47,12 @@
     <aside class="sidebar sm:mr-1/2">
       <div class="image mb-1/4">
         { #if game.image_url }
-          <Thumbnail { game } />
+          <SupabaseLazyImage { supabase }
+            from="games"
+            key={ game.image_url.split("games/")[1] }
+            width={ 160 }
+            height={ 213 }
+            alt={ game.title } />
         { /if }
       </div>
 
@@ -89,7 +95,7 @@
     </div>
 
     { #if game.image_url }
-      <Background key={ game.id } />
+      <Background key={ game.image_url.split("games/")[1] } />
     { /if }
   </div>
 </div>

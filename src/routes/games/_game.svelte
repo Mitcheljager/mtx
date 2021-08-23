@@ -1,8 +1,10 @@
 <script lang="ts">
+	import { SupabaseLazyImage } from "svelte-supabase-lazy-images"
+	
+	import supabase from "$lib/db"
 	import type { Game } from "$lib/types"
 
 	import Category from "../categories/_category.svelte"
-	import Thumbnail from "./_thumbnail.svelte"
 	import Background from "./_background.svelte"
 	import Grade from "./_grade.svelte"
 
@@ -16,13 +18,16 @@
 <div class="card">
 	<div class="card__content">
 		<div class="card__header">
-			<div class="card__image">
+			<a class="card__image" href="/{ game.slug }" tabindex="-1" sveltekit:prefetch>
 				{ #if game.image_url }
-					<a href="/{ game.slug }" tabindex="-1" sveltekit:prefetch>
-						<Thumbnail { game } width={ 80 } height={ 106 } />
-					</a>
+					<SupabaseLazyImage { supabase }
+						from="games"
+						key={ game.image_url.split("games/")[1] }
+						width={ 80 }
+						height={ 106 }
+						alt={ game.title } />
 				{ /if }
-			</div>
+			</a>
 
 			<div>
 				<div><a class="card__title" href="/{ game.slug }" sveltekit:prefetch>{ game.title }</a></div>
@@ -53,7 +58,7 @@
 	</div>
 
 	{ #if game.image_url }
-		<Background key={ game.id } />
+		<Background key={ game.image_url.split("games/")[1] } />
 	{ /if }
 </div>
 
@@ -92,12 +97,10 @@
 		box-shadow: inset 0 0 0 1px var(--border-color);
 		overflow: hidden;
 
-		a {
-			&:hover,
-			&:active,
-			&:focus {
-				filter: brightness(1.1);
-			}
+		&:hover,
+		&:active,
+		&:focus {
+			filter: brightness(1.1);
 		}
   }
 

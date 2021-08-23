@@ -48,6 +48,14 @@ mark {
   text-shadow: var(--shadow-big);
 }
 
+img {
+  display: block;
+  width: 100%;
+  height: auto;
+  color: var(--text-color-dark);
+  font-size: .75rem;
+}
+
 .wrapper {
   max-width: 480px;
   margin: 0 auto;

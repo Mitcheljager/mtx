@@ -4636,6 +4636,10 @@ svelte-preprocess@^4.0.0:
     detect-indent "^6.0.0"
     strip-indent "^3.0.0"
 
+svelte-supabase-lazy-images@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/svelte-supabase-lazy-images/-/svelte-supabase-lazy-images-1.0.1.tgz#6ebdf56bfe09769d17b4f190db9d8697dfe62897"
+
 svelte@^3.34.0:
   version "3.41.0"
   resolved "https://registry.yarnpkg.com/svelte/-/svelte-3.41.0.tgz#2009fd6681453ffb8b5aaa57f4a89a8be3dedd78"

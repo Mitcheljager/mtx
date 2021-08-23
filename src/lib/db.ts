@@ -3,6 +3,7 @@ import { createClient } from "@supabase/supabase-js"
 import type { Game, Category } from "$lib/types"
 
 const supabase = createClient(
+  // @ts-ignore
   import.meta.env.VITE_SUPABASE_URL,
   import.meta.env.VITE_SUPABASE_ANON_KEY
 )

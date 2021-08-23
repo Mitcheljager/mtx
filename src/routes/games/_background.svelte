@@ -1,9 +1,9 @@
 <script lang="ts">
-  import { images } from "../../stores/images"
+  import { supabaseImages } from "svelte-supabase-lazy-images"
 
   export let key: string
 
-  $: image_url = $images[key]
+  $: image_url = $supabaseImages[key]
 </script>
 
 
