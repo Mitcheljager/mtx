@@ -1,5 +1,7 @@
 @mixin safari() {
-  _::-webkit-full-page-media, _:future, :root .safari_only {
-    @content
+  @media not all and (min-resolution:.001dpcm) { 
+    @supports (-webkit-appearance:none) {
+      @content
+    }
   }
 }
