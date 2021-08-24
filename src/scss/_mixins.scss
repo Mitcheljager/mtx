@@ -1,0 +1,5 @@
+@mixin safari() {
+  _::-webkit-full-page-media, _:future, :root .safari_only {
+    @content
+  }
+}

@@ -15,6 +15,8 @@
 
 
 <style lang="scss">
+	@import "../../scss/mixins";
+
   .background {
 		$mask: linear-gradient(170deg, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0) 300px);
 
@@ -29,6 +31,10 @@
 		-webkit-mask-image: $mask;
 
 		@media (prefers-reduced-motion) {
+			display: none;
+		}
+
+		@include safari() {
 			display: none;
 		}
 	}
