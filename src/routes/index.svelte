@@ -22,8 +22,6 @@
 	async function getData() {
 		let data: any
 
-		await new Promise(res => setTimeout(res, 3000))
-
 		try {
 			data = await getGames()
 		} catch(error) {
