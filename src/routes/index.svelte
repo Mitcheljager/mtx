@@ -22,6 +22,8 @@
 	async function getData() {
 		let data: any
 
+		await new Promise(res => setTimeout(res, 3000))
+
 		try {
 			data = await getGames()
 		} catch(error) {
@@ -52,7 +54,7 @@
 
 
 <center>
-	<h1><mark>Macro</mark>transactions</h1>
+	<h1 aria-label="Macrotransactions"><mark>Macro</mark>transactions</h1>
 
 	<big>Monetisation in games can be <mark>unethical</mark>, <mark>predatory</mark>, and <mark>exploitative</mark>. This website highlights monetisation practises in popular games.</big>
 </center>
@@ -69,7 +71,7 @@
 
 { #if !$reachedEnd }
 	<div class="tray mt-1/1">
-		<button class="button button--large" class:button--primary={ !loadingMore } on:click={ getNextPage } disabled={ loadingMore }>
+		<button class="button button--large" class:button--primary={ !loadingMore } on:click={ getNextPage } disabled={ loadingMore } aria-busy={ loadingMore }>
 			{ loadingMore ? "Loading..." : "Load more" }
 		</button>
 	</div>

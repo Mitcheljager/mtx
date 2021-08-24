@@ -27,5 +27,9 @@
 		filter: blur(50px);
 		mask-image: $mask;
 		-webkit-mask-image: $mask;
+
+		@media (prefers-reduced-motion) {
+			display: none;
+		}
 	}
 </style>

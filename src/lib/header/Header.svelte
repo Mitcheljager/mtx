@@ -16,7 +16,7 @@
 
 
 <header class="header">
-	<a class="logo" href="/" sveltekit:prefetch on:click={ refreshIfCurrentPage }>
+	<a class="logo" href="/" sveltekit:prefetch on:click={ refreshIfCurrentPage } aria-label="Macrotransactions logo">
 		<mark>M<span class="hidden sm:visible">acro</span></mark>t<span class="hidden sm:visible">ransactions</span>
 	</a>
 

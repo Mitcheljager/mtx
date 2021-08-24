@@ -13,7 +13,7 @@
 
 
 <div class="category category--{ category.type }">
-  <div class="category__icon">{ categoryTypeIcon(category.type) }</div>
+  <div class="category__icon" aria-label="{ category.type } category">{ categoryTypeIcon(category.type) }</div>
 
   { category.title }
 </div>

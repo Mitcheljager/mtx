@@ -65,7 +65,8 @@
       <select
         bind:value={ column }
         on:change={ () => { if (value) getData() } }
-        style="width: calc({ selectWidth }px + .25rem)">
+        style="width: calc({ selectWidth }px + .25rem)"
+        aria-label="Search method">
 
         <option value="title">Title</option>
         <option value="publisher">Publisher</option>
@@ -81,7 +82,7 @@
 { /if }
 
 { #if loading }
-  <div class="loading" in:fade={{ duration: 500 }}>
+  <div class="loading" in:fade={{ duration: 500 }} aria-busy="true">
     <div class="spinner"></div>
   </div>
 { /if }
