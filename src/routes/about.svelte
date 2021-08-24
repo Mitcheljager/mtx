@@ -47,7 +47,7 @@
 		</li>
 
 		<li>
-			<strong>XP-Boosts</strong>: Leveling up can be a slow process. Your friends are all high level, and there you are, low level. Either you started player way after they did, or you simply don't have enough time to put in to the game. <br>
+			<strong>XP-Boosts</strong>: Leveling up can be a slow process. Your friends are all high level, and there you are, low level. Either you started playing way after they did, or you simply don't have enough time to put in to the game. <br>
 			Often times XP grinds are intentionally brutal to encourage you to spend money on meaningless boosts. These purchases can also be called "pay for convenience", or more accurately "pay to not be inconvenienced".
 		</li>
 
@@ -81,7 +81,7 @@
 	<h2>Don't like it? Don't buy it!</h2>
 
 	<p>
-		If you are the type of person to not buy cosmetics items, great, but you aren't the target audience anyway. A great statistics that is very relevant here is the 80-20 rule which states that <strong>80% of outcomes  result from 20% of all causes</strong>. In this case that means that 80% of microtransactions are made by 20% of users.
+		If you are the type of person to not buy cosmetics items, great, but you aren't the target audience anyway. A great statistic that is very relevant here is the 80-20 rule which states that <strong>80% of outcomes result from 20% of all causes</strong>. In this case that means that 80% of microtransactions are made by 20% of users.
 	</p>
 
 	<p>
@@ -99,7 +99,7 @@
 	</p>
 
 	<p>
-		So what's the alternative? That's not for me to say. All alternatives would likely result in less profit, and that's a big nono. It's no longer about what's best for the player, it's about what's best for the CEO of the company. <br>
+		So what's the alternative? That's not for me to say. All alternatives would likely result in less profit, and that's a big nono. It's no longer about what's best for the player, it's about what's best for the company. <br>
 	</p>
 
 	<hr>
