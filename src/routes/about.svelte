@@ -105,7 +105,7 @@
 	<hr>
 
 	<p>
-		This website sets to make you aware of different monetisation practises games might use and how they might try to exploit you as a person.
+		This website sets to make you aware of different monetisation practices games might use and how they might try to exploit you as a person.
 	</p>
 
 	<p>
