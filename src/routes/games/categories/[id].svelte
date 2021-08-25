@@ -65,7 +65,7 @@
 <div class="wrapper">
   <h1>Add categories</h1>
 
-  <div class="block">
+  <div class="block mb-1/4">
     <h3 class="mt-0">Current categories</h3>
 
     { #await getCategories() }
@@ -92,7 +92,7 @@
     { /await }
   </div>
     
-  <div class="block mt-1/4">
+  <div class="block mb-1/4">
     <h3 class="mt-0">Available categories</h3>
 
     { #await getAllCategories() }
@@ -120,6 +120,7 @@
 
 <style lang="scss">
   h1 {
+    grid-area: title;
     text-align: center;
   }
 
@@ -132,5 +133,16 @@
     margin: 0 .5rem .25rem 0;
     font-size: 1.2rem;
     border-radius: .5rem;
+  }
+
+  .wrapper {
+    max-width: 900px;
+
+    @media (min-width: 900px) {
+      display: grid;
+      grid-template: "title title" "current available";
+      grid-template-columns: 1fr 1fr;
+      grid-gap: 1.5rem;
+    }
   }
 </style>
