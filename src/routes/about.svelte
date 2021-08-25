@@ -109,7 +109,7 @@
 	</p>
 
 	<p>
-		The goal is not to stop you from purchasing microtransactions. By all means, if you enjoy a game and you want to support the developers, buy stuff! But be aware of how much you're spending and what it is you're buying. Is that skin for that weapon you never use really worth it? Is that 60 USD bundle really a good deal? Are lootboxes even fair? <br>
+		The goal is not to stop you from purchasing microtransactions. Microtransactions are not evil, they can be great way of supporting further development of a game. By all means, if you enjoy a game and you want to support the developers, buy stuff! But be aware of how much you're spending and what it is you're buying. Is that skin for that weapon you never use really worth it? Is that 60 USD bundle really a good deal? Are lootboxes even fair? <br>
 		Ask yourself questions before purchasing microtransactions and evaluate if the money you're spending justifies the time you've put in to the game.
 	</p>
 
@@ -137,6 +137,14 @@
 
 	<strong>Video</strong>
 	<ul>
+		<li>
+			<a href="https://www.youtube.com/watch?v=imLjs_HjGGg" target="_blank" rel="noreferrer noopener">I will now talk about microtransactions for just under 25 minutes</a>
+			- TotalBiscuit
+		</li>
+		<li>
+			<a href="https://www.youtube.com/watch?v=YMDGPSWWA18" target="_blank" rel="noreferrer noopener">I will now talk about Lootboxes and Gambling for just over 40 minutes</a>
+			- TotalBiscuit
+		</li>
 		<li>
 			<a href="https://www.youtube.com/watch?v=7E5pcpanOto" target="_blank" rel="noreferrer noopener">The FALLACY of Video Game Prices and the Complete Evolution of Microtransactions</a>
 			- Upper Echelon Gamers
