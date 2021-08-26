@@ -6,7 +6,7 @@ export async function get({ host }) {
 
   const headers = {
     "Cache-Control": "max-age=14400",
-    "Content-Type": "application/xml",
+    "Content-Type": "application/xml"
   }
 
   const body = `<?xml version="1.0" encoding="UTF-8"?>
@@ -17,24 +17,24 @@ export async function get({ host }) {
                 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
 
       <url>
-        <loc>${ host }</loc>
+        <loc>https://${ host }</loc>
         <changefreq>daily</changefreq>
         <priority>1.00</priority>
       </url>
 
       <url>
-        <loc>${ host }/about</loc>
+        <loc>https://${ host }/about</loc>
         <priority>0.9</priority>
       </url>
 
       <url>
-        <loc>${ host }/privacy</loc>
+        <loc>https://${ host }/privacy</loc>
         <priority>0.9</priority>
       </url>
 
       ${ games.map(game => `
         <url>
-          <loc>${ host }/${ game.slug }</loc>
+          <loc>https://${ host }/${ game.slug }</loc>
           <priority>0.8</priority>
         </url>
       `).join("") }
