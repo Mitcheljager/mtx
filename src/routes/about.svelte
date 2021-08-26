@@ -78,6 +78,10 @@
 		Cosmetics can cost very high amounts of money, often times even costing as much as entire full priced games. They do this because they know some people will buy them, and those who can't afford it are left out. Maybe you can't afford it because you're a kid and you don't have an income, or maybe you're from a country where these prices are en entire month of wages. Whatever the case might be, it sucks to miss out on cool thing because you aren't able to afford them.
 	</p>
 
+	<p>
+		If cosmetics didn't matter skins wouldn't exist, character creation wouldn't exist. Cosmetics allow you to express yourself and give you something to show off other than your skill at the game. Cosmetics are very much part of the enjoyment of the game. Perhaps you reading this don't care, but a lot of people do care.
+	</p>
+
 	<h2>Don't like it? Don't buy it!</h2>
 
 	<p>
