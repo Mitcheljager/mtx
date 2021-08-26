@@ -31,6 +31,10 @@
 	</p>
 
 	<p>
+		<em>This website focuses on PC and Console games only. Mobile games are not covered.</em>
+	</p>
+
+	<p>
 		Premium currency, lootboxes, xp-boosts, bundles, and timed-exclusives, are a couple of the most common techniques to screw you over. Let's go over them one by one and see why they suck.
 	</p>
 
@@ -158,6 +162,14 @@
 			- Upper Echelon Gamers
 		</li>
 	</ul>
+
+	<hr>
+
+	<h3>How to contribute</h3>
+
+	<p>Current there is no way to submit new games yourself. This might change in the future but at the moment the moderating overhead would simply be too much work. If you find a game with false categories you can contact Mitsiee#9370 on Discord.</p>
+
+	<p>The website is open source and you can contribute on GitHub at <a href="https://github.com/Mitcheljager/mtx/" target="_blank" rel="noreferrer noopener">https://github.com/Mitcheljager/mtx/</a>. The website is written using SvelteKit with the database running on Supabase.</p>
 </article>
 
 
