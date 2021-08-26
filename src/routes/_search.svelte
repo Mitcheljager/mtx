@@ -7,13 +7,13 @@
   import { currentPage, games, getGames, getGamesbySearch, searchQuery } from "../stores/games"
 
   let debounce: any
-  let value = $searchQuery || ""
   let loading = false
   let column = "title"
   let columnPlaceholder: HTMLElement
   let selectWidth = 0
   
   $: if (columnPlaceholder && column) setSelectWidth()
+  $: value = $searchQuery
 
   function getData() {
     loading = true

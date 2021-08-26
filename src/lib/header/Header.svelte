@@ -1,15 +1,18 @@
 <script lang="ts">
 	import { page } from "$app/stores"
+	import { currentPage, games, getGames, searchQuery } from "../../stores/games"
 
 	import github from "./github.svg"
 
-	function refreshIfCurrentPage(event) {
+	async function refreshIfCurrentPage(event) {
 		let href = event.target.href
 		if (!href) href = event.target.closest("a").href
 		
 		if (href != window.location.toString()) return
 
-		window.location.reload()
+		$searchQuery = ""
+		$currentPage = 0
+		$games = await getGames()
 	}
 </script>
 
