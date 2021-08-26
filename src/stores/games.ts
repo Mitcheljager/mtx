@@ -70,3 +70,14 @@ export async function getGame(column: string, value: string): Promise<Game[]> {
 
   return data
 }
+
+export async function getSitemapData(): Promise<Game[]> {
+  const { data, error } = await supabase
+  .from(table)
+  .select(`slug`)
+  .order("created_at", { ascending: false })
+    
+  if (error) throw new Error(error.message)
+
+  return data
+}

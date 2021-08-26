@@ -1,8 +1,8 @@
 import type { Game } from "$lib/types"
-import { getGames } from "../stores/games"
+import { getSitemapData } from "../stores/games"
 
 export async function get({ host }) {
-  const games: Game[] = await getGames()
+  const games: Game[] = await getSitemapData()
 
   const headers = {
     "Cache-Control": "max-age=14400",
