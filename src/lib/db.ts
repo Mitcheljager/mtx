@@ -1,6 +1,6 @@
 import { createClient } from "@supabase/supabase-js"
 
-import type { Game, Category } from "$lib/types"
+import type { Game, Category, GameCategory } from "$lib/types"
 
 const supabase = createClient(
   // @ts-ignore
@@ -8,7 +8,7 @@ const supabase = createClient(
   import.meta.env.VITE_SUPABASE_ANON_KEY
 )
 
-export const createGame = async(properties: Game) => {
+export async function createGame(properties: Game): Promise<Game[]> {
   const { data, error } = await supabase
   .from("games")
   .insert([properties])
@@ -18,7 +18,7 @@ export const createGame = async(properties: Game) => {
   return data
 }
 
-export const updateGame = async(properties: Game) => {
+export async function updateGame(properties: Game): Promise<Game[]> {
   const { data, error } = await supabase
   .from("games")
   .update(properties)
@@ -29,7 +29,7 @@ export const updateGame = async(properties: Game) => {
   return data
 }
 
-export const createCategory = async(properties: Category) => {
+export async function createCategory(properties: Category): Promise<Category[]> {
   const { data, error } = await supabase
   .from("categories")
   .insert([properties])
@@ -39,7 +39,7 @@ export const createCategory = async(properties: Category) => {
   return data
 }
 
-export const createGameCategory = async(category_id: string, game_id: string) => {
+export async function createGameCategory(category_id: string, game_id: string): Promise<GameCategory[]> {
   const { data, error } = await supabase
   .from("game_category")
   .insert([{ category_id, game_id }])
@@ -49,7 +49,7 @@ export const createGameCategory = async(category_id: string, game_id: string) =>
   return data
 }
 
-export const destroyGameCategory = async(category_id: string, game_id: string) => {
+export async function destroyGameCategory(category_id: string, game_id: string): Promise<GameCategory[]> {
   const { data, error } = await supabase
     .from("game_category")
     .delete()
@@ -60,7 +60,7 @@ export const destroyGameCategory = async(category_id: string, game_id: string) =
   return data
 }
 
-export const uploadImage = async(file: any, filename: string) => {
+export async function uploadImage(file: File, filename: string) {
   const { data, error } = await supabase
   .storage
   .from("games")

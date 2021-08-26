@@ -4,7 +4,7 @@ export async function get({ params }) {
   let body: string
   
   try {
-    let data: any = await getGame("slug", params.slug)
+    const data: any = await getGame("slug", params.slug)
 
     body = `
       <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="670" viewBox="0 0 1200 670">

@@ -74,7 +74,7 @@ export async function getGame(column: string, value: string): Promise<Game[]> {
 export async function getSitemapData(): Promise<Game[]> {
   const { data, error } = await supabase
   .from(table)
-  .select(`slug`)
+  .select("slug")
   .order("created_at", { ascending: false })
     
   if (error) throw new Error(error.message)

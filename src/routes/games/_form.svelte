@@ -18,7 +18,7 @@
   let image_url: string
   let slug: string
 
-  onMount(() => { 
+  onMount(() => {
     if (!$user) goto("/login")
     if (game) setData()
   })

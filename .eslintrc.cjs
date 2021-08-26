@@ -71,6 +71,7 @@ module.exports = {
     "template-curly-spacing": [
       "error",
       "always"
-    ]
+    ],
+    "@typescript-eslint/ban-ts-comment": "off"
   }
 };

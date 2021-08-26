@@ -22,3 +22,9 @@ export type Category = {
   title: string,
   type: string
 }
+
+export type GameCategory = {
+  game_id: string,
+  category_id: string,
+  created_at: string
+}
