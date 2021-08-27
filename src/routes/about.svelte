@@ -96,6 +96,10 @@
 		These companies practically survive on a small percentage of players making them most of their money, these players are also referred to as "Whales". Whales can spend absurd amounts of money, some even thousands per year. Some of these people are rich and can afford it, others are not and are simply bad with their money for various reasons. These companies don't care, they will gladly take your money, no matter your financial position.
 	</p>
 
+	<p>
+		I want to spend money on my favorite games. I want to support them. I don't want them to fade away because the developers can no longer afford to continue working on it. It's just a shame that in many games spending money <em>feels</em> bad. Lootboxes that end in disappointment, purchases that require you to spend countless hours just to get your money's worth, terribly overpriced cosmetics. None of it feels good to spend money on, yet it's all over the place.
+	</p>
+
 	<h2>But they have to make money somehow!</h2>
 
 	<p>
