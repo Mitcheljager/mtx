@@ -35,15 +35,12 @@ export async function getGames(): Promise<Game[]> {
   return data
 }
 
-export async function getGamesbySearch(column: string, query: string): Promise<Game[]> {
+export async function getGamesbySearch(query: string): Promise<Game[]> {
   const { data, error } = await supabase
   .from(table)
   .select(select)
-  .textSearch(column, query, {
-    type: "websearch",
-    config: "english"
-  })
-  .limit(6)
+  .or(["title", "publisher"].map(field => `${ field }.ilike.%${ query }%`).join(","))
+  .limit(50)
     
   if (error) throw new Error(error.message)
 

@@ -1,18 +1,13 @@
 <script lang="ts">
-  import type { Game } from "$lib/types"
-  import { tick } from "svelte"
-
   import { fade } from "svelte/transition"
+
+  import type { Game } from "$lib/types"
 
   import { currentPage, games, getGames, getGamesbySearch, searchQuery } from "../stores/games"
 
   let debounce: any
   let loading = false
-  let column = "title"
-  let columnPlaceholder: HTMLElement
-  let selectWidth = 0
   
-  $: if (columnPlaceholder && column) setSelectWidth()
   $: value = $searchQuery
 
   function getData() {
@@ -29,7 +24,7 @@
 
         let data: Game[]
 
-        if (value) data = await getGamesbySearch(column, value)
+        if (value) data = await getGamesbySearch(value)
         if (!value) data = await getGames()
 
         $games = data
@@ -40,42 +35,17 @@
       alert("Something went wrong!")
     }
   }
-
-  async function setSelectWidth() {
-    await tick()
-    if (column && columnPlaceholder) selectWidth = columnPlaceholder.offsetWidth
-  }
 </script>
 
 
 
-<div class="search">
-  <input
-    class="form-input form-input--large"
-    type="text"
-    placeholder="Search..."
-    autocomplete="off"
-    bind:value
+<input
+  class="search form-input form-input--large"
+  type="text"
+  placeholder="Search..."
+  autocomplete="off"
+  bind:value
     on:input={ getData } />
-
-  { #if selectWidth > 0 }
-    <div class="actions">
-      by
-
-      <select
-        bind:value={ column }
-        on:change={ () => { if (value) getData() } }
-        style="width: calc({ selectWidth }px + .25rem)"
-        aria-label="Search method">
-
-        <option value="title">Title</option>
-        <option value="publisher">Publisher</option>
-      </select>
-    </div>
-  { /if }
-</div>
-
-<div class="column-placeholder" bind:this={ columnPlaceholder }>{ column }</div>
 
 { #if $searchQuery && !$games.length && !loading }
   <center in:fade={{ duration: 150 }}><em>No matches were found for your search query</em></center>
@@ -92,6 +62,9 @@
 <style lang="scss">
   input {
     display: block;
+    position: relative;
+    max-width: clamp(300px, 100%, 50%);
+    margin: clamp(3rem, 10vw, 5rem) auto;
     background: var(--content-bg);
     box-shadow: var(--shadow-big);
     
@@ -120,12 +93,6 @@
       text-decoration: underline;
       color: var(--text-color-light);
     }
-  }
-
-  .search {
-    position: relative;
-    max-width: clamp(300px, 100%, 50%);
-    margin: clamp(3rem, 10vw, 5rem) auto;
   }
 
   .actions {
