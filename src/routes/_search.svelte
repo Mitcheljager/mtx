@@ -73,48 +73,6 @@
     }
   }
 
-  select {
-    -webkit-appearance: none;
-    appearance: none;
-    display: inline-block;
-    min-width: 0;
-    padding: .5rem 0;
-    margin-left: .15rem;
-    border: 0;
-    background: var(--content-bg);
-    font-size: 1rem;
-    color: var(--text-color);
-    font-family: var(--font-stack);
-    cursor: pointer;
-
-    &:hover,
-    &:active,
-    &:focus {
-      text-decoration: underline;
-      color: var(--text-color-light);
-    }
-  }
-
-  .actions {
-    position: absolute;
-    display: flex;
-    align-items: center;
-    right: 1.5rem;
-    top: 50%;
-    transform: translateY(-50%);
-    color: var(--text-color-dark);
-  }
-
-  .column-placeholder {
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 0;
-    opacity: 0;
-    overflow: hidden;
-    text-transform: capitalize;
-  }
-
   .loading {
     display: flex;
     align-items: center;
