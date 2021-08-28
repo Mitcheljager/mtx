@@ -126,6 +126,10 @@
 	</p>
 
 	<p>
+		Many monetisaion pracices we see today would have been deemed unacceptable 5 years ago. What changed? And better yet, how much worse is it going to get?
+	</p>
+
+	<p>
 		<big>Not all microtransactions are bad, but it is a shame that "micro" is no longer a descriptor.</big>
 	</p>
 
