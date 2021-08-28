@@ -9,7 +9,7 @@
 </script>
 
 <script lang="ts">
-	import { getGames, games, currentPage, reachedEnd } from "../stores/games"
+	import { getGames, games, currentPage, reachedEnd, searchQuery } from "../stores/games"
 
 	import Game from "./games/_game.svelte"
 	import Search from "./_search.svelte"
@@ -67,7 +67,7 @@
 	{ /if }
 </div>
 
-{ #if !$reachedEnd }
+{ #if !$reachedEnd && !$searchQuery }
 	<div class="tray mt-1/1">
 		<button class="button button--large" class:button--primary={ !loadingMore } on:click={ getNextPage } disabled={ loadingMore } aria-busy={ loadingMore }>
 			{ loadingMore ? "Loading..." : "Load more" }
