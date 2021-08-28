@@ -165,6 +165,14 @@
 			<a href="https://www.youtube.com/watch?v=YLSX4yw6Jzo" target="_blank" rel="noreferrer noopener">The War of The Lootboxes and Microtransactions</a>
 			- Upper Echelon Gamers
 		</li>
+		<li>
+			<a href="https://www.youtube.com/watch?v=Ce5CDrq4dGg" target="_blank" rel="noreferrer noopener">It's Just Cosmetic (The Jimquisition)</a>
+			- Jim Sterling			
+		</li>
+		<li>
+			<a href="https://www.youtube.com/watch?v=7S-DGTBZU14" target="_blank" rel="noreferrer noopener">The Addictive Cost Of Predatory Videogame Monetization (The Jimquisition)</a>
+			- Jim Sterling			
+		</li>
 	</ul>
 
 	<hr>
