@@ -99,8 +99,9 @@
     grid-template-columns: repeat(auto-fill, minmax(clamp(250px, 45vw, 350px), 1fr));
     grid-gap: 1.5rem;
 		
-		&--single:global(> div) {
-			grid-column: 2;
+		&--single {
+			max-width: 450px;
+			margin: 0 auto;
 		}
   }
 
