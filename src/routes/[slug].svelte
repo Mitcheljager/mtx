@@ -5,7 +5,7 @@
 	export const prerender = true
 
   export async function load({ page }) {
-    let data: Game | {}
+    let data: any
 
     try {
       data = await getGame("slug", page.params.slug)
