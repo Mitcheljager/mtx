@@ -10,8 +10,8 @@ export type Game = {
   id?: string,
   title: string,
   description?: string,
-  publisher: string,
-  year_of_release: number,
+  publisher?: string,
+  year_of_release?: number,
   image_url?: string,
   slug?: string,
   categories?: Category[]

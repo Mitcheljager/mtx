@@ -5,7 +5,7 @@
 	export const prerender = true
 
   export async function load({ page }) {
-    let data: Game
+    let data: Game | {}
 
     try {
       data = await getGame("slug", page.params.slug)
@@ -20,7 +20,7 @@
 </script>
 
 <script lang="ts">
-  import { SupabaseLazyImage } from "svelte-supabase-lazy-images"
+  import { SupabaseLazyImage } from "svelte-supabase-lazy-images/src"
 
   import { user } from "../stores/session"
   import type { Game } from "$lib/types"

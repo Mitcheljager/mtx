@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { SupabaseLazyImage } from "svelte-supabase-lazy-images"
+	import { SupabaseLazyImage } from "svelte-supabase-lazy-images/src"
 	
 	import supabase from "$lib/db"
 	import type { Game } from "$lib/types"

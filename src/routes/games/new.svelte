@@ -7,7 +7,7 @@
 <div class="wrapper">
   <h1>Add new game</h1>
     
-  <Form />
+  <Form game={{ title: "" }} />
 </div>
 
 

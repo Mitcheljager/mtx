@@ -8,7 +8,7 @@
 
   import ImageUpload from "./_imageUpload.svelte"
 
-  export let game: Game
+  export let game: Game | any
   
   let submit = false
   let title: string

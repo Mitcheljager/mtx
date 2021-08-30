@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { supabaseImages } from "svelte-supabase-lazy-images"
+  import { supabaseImages } from "svelte-supabase-lazy-images/src"
 
   export let key: string
 
