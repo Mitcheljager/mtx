@@ -42,7 +42,6 @@
 
 
 <div class="wrapper">
-  
   <h1>{ game.title }</h1>
 
   <div class="block">

@@ -60,7 +60,7 @@
 		</li>
 
 		<li>
-			<strong>Timed-exclusives</strong>: A common practise is to have a daily/weekly revolving in-game shop with discounts and special items only available during that time period. You don't want to miss out on that sale, and you certainly don't want to miss out on that exclusive item that might not return for a long time. <br>
+			<strong>Timed-exclusives (artificial scarcity)</strong>: A common practise is to have a daily/weekly revolving in-game shop with discounts and special items only available during that time period. You don't want to miss out on that sale, and you certainly don't want to miss out on that exclusive item that might not return for a long time. <br>
 			Another example are Battle Passes. Battle passes contain an unlock path of virtual items that are only available during a specific time period. <br>
 			Time-exclusives prey on your fear of missing out.
 		</li>
@@ -111,7 +111,7 @@
 	</p>
 
 	<p>
-		So what's the alternative? That's not for me to say. All alternatives would likely result in less profit, and that's a big nono. It's no longer about what's best for the player, it's about what's best for the company. <br>
+		So what would make an acceptable form of monetisation? Direct purchase (no Premium Currencies), reasonable prices, without artificial scarcity. However this will likely result in less profit, and that's a big nono. It's no longer about what's best for the player, it's about what's best for the company. <br>
 	</p>
 
 	<hr>
