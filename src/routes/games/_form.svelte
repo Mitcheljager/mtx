@@ -8,7 +8,7 @@
 
   import ImageUpload from "./_imageUpload.svelte"
 
-  export let game: Game | any
+  export let game: Game
   
   let submit = false
   let title: string
@@ -36,8 +36,8 @@
     let data: any
 
     try {
-      if (!game) data = await createGame({ title, description, publisher, year_of_release, image_url, slug })
-      if (game) data = await updateGame({ id: game.id, title, description, publisher, year_of_release, image_url, slug })
+      if (!game.id) data = await createGame({ title, description, publisher, year_of_release, image_url, slug })
+      if (game.id) data = await updateGame({ id: game.id, title, description, publisher, year_of_release, image_url, slug })
     } catch(error) {
       throw new Error(error.message)
     }
