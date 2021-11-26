@@ -2,7 +2,8 @@ create table categories (
  id uuid default uuid_generate_v4() primary key,
  created_at timestamp default now() not null,
  title text not null,
- type text not null
+ type text not null,
+ description text
 );
 
 create table games (

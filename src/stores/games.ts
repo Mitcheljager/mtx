@@ -14,7 +14,7 @@ export const searchQuery = writable("")
 const table = "games"
 const select = `
   id, title, publisher, year_of_release, image_url, slug,
-  categories (id, title, type)`
+  categories (id, title, type, description)`
 
 export async function getGames(): Promise<Game[]> {
   const startOfRange: number = get(currentPage) * get(itemsPerPage)
@@ -25,7 +25,7 @@ export async function getGames(): Promise<Game[]> {
   .select(select)
   .order("created_at", { ascending: false })
   .range(startOfRange, endOfRange)
-    
+
   if (error) throw new Error(error.message)
 
   data.forEach(game => game.categories = sortedCategories(game.categories))
@@ -41,13 +41,13 @@ export async function getGamesbySearch(query: string): Promise<Game[]> {
   .select(select)
   .or(["title", "publisher"].map(field => `${ field }.ilike.%${ query }%`).join(","))
   .limit(50)
-    
+
   if (error) throw new Error(error.message)
 
   data.forEach(game => game.categories = sortedCategories(game.categories))
 
   reachedEnd.set(true)
-  
+
   return data
 }
 
@@ -56,13 +56,13 @@ export async function getGame(column: string, value: string): Promise<Game[]> {
   .from(table)
   .select(`
     id, description, title, publisher, year_of_release, image_url, slug,
-    categories (id, title, type)
+    categories (id, title, type, description)
   `)
   .eq(column, value)
   .single()
 
   if (error) throw new Error(error.message)
-  
+
   data.categories = sortedCategories(data.categories)
 
   return data
@@ -73,7 +73,7 @@ export async function getSitemapData(): Promise<Game[]> {
   .from(table)
   .select("slug")
   .order("created_at", { ascending: false })
-    
+
   if (error) throw new Error(error.message)
 
   return data

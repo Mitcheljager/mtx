@@ -7,7 +7,7 @@
 	async function refreshIfCurrentPage(event) {
 		let href = event.target.href
 		if (!href) href = event.target.closest("a").href
-		
+
 		if (href != window.location.toString()) return
 
 		$searchQuery = ""

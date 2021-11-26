@@ -1,26 +1,29 @@
 <script lang="ts">
   import { onMount } from "svelte"
   import { goto } from "$app/navigation"
-  
+
   import { createCategory } from "$lib/db"
   import { user } from "../../stores/session"
-  
+
   let submit = false
-  let title: string, type: string
+  let title: string
+  let type: string
+  let description: string
 
   onMount(() => { if (!$user) goto("/login") })
-  
+
   async function submitForm() {
     let data: any
 
     try {
-      data = await createCategory({ title, type })
+      data = await createCategory({ title, type, description })
     } catch(error) {
       throw new Error(error.message)
     }
 
     title = ""
     type = ""
+    description = ""
 
     return data
   }
@@ -30,7 +33,7 @@
 
 <div class="wrapper">
   <h1>Add new category</h1>
-    
+
   <form class="block" on:submit|preventDefault={ () => submit = true }>
     { #if !submit }
       <label class="form-label mt-0" for="title">Title</label>
@@ -46,6 +49,12 @@
         <option value="negative">Negative</option>
       </select>
 
+      <label class="form-label" for="description">Description</label>
+      <textarea class="form-input" name="description" required bind:value={ description } />
+      <p class="help">
+        A longer description explaining the impact of this category and why it is rated the way it is.
+      </p>
+
       <input class="button button--primary button--block button--large mt-1/2" type="submit" value="Submit">
     { :else }
       { #await submitForm() }
@@ -56,7 +65,7 @@
         <div class="alert alert--error">Something went wrong while sending the data: <pre>{ error }</pre></div>
       { /await }
     { /if }
-  </form>    
+  </form>
 </div>
 
 

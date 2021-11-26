@@ -20,7 +20,8 @@ export type Game = {
 export type Category = {
   id?: string,
   title: string,
-  type: string
+  type: string,
+  description: string
 }
 
 export type GameCategory = {
