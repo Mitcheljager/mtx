@@ -25,7 +25,7 @@ export async function getGames(): Promise<Game[]> {
   .select(select)
   .order("created_at", { ascending: false })
   .range(startOfRange, endOfRange)
-    
+
   if (error) throw new Error(error.message)
 
   data.forEach(game => game.categories = sortedCategories(game.categories))
@@ -35,19 +35,19 @@ export async function getGames(): Promise<Game[]> {
   return data
 }
 
-export async function getGamesbySearch(query: string): Promise<Game[]> {
+export async function getGamesBySearch(query: string): Promise<Game[]> {
   const { data, error } = await supabase
   .from(table)
   .select(select)
   .or(["title", "publisher"].map(field => `${ field }.ilike.%${ query }%`).join(","))
   .limit(50)
-    
+
   if (error) throw new Error(error.message)
 
   data.forEach(game => game.categories = sortedCategories(game.categories))
 
   reachedEnd.set(true)
-  
+
   return data
 }
 
@@ -62,7 +62,7 @@ export async function getGame(column: string, value: string): Promise<Game[]> {
   .single()
 
   if (error) throw new Error(error.message)
-  
+
   data.categories = sortedCategories(data.categories)
 
   return data
@@ -73,7 +73,7 @@ export async function getSitemapData(): Promise<Game[]> {
   .from(table)
   .select("slug")
   .order("created_at", { ascending: false })
-    
+
   if (error) throw new Error(error.message)
 
   return data

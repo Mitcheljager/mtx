@@ -4,13 +4,13 @@
 
   import type { Game } from "$lib/types"
 
-  import { currentPage, games, getGames, getGamesbySearch, searchQuery } from "../stores/games"
+  import { currentPage, games, getGames, getGamesBySearch, searchQuery } from "../stores/games"
 
   let debounce: any
   let loading = false
 
   $: value = $searchQuery
-  $: if (value != undefined) getData()
+  $: if (value != "") getData()
 
   onMount(getCurrentUrlParam)
 
@@ -28,7 +28,7 @@
 
         let data: Game[]
 
-        if (value) data = await getGamesbySearch(value)
+        if (value) data = await getGamesBySearch(value)
         if (!value) data = await getGames()
 
         $games = data
@@ -59,7 +59,7 @@
   function getCurrentUrlParam() {
     const urlParams = new URLSearchParams(window.location.search)
 
-    $searchQuery = urlParams.get("search")
+    if (urlParams.has("search")) $searchQuery = urlParams.get("search")
   }
 </script>
 
@@ -70,6 +70,7 @@
   type="text"
   placeholder="Search..."
   autocomplete="off"
+  on:input={ event => { if (event.target.value == "") getData() } }
   bind:value />
 
 { #if $searchQuery && !$games.length && !loading }
