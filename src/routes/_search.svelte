@@ -53,7 +53,7 @@
 
     params.toString()
 
-    window.history.replaceState({}, "", `${location.pathname}?${params.toString()}`)
+    window.history.replaceState({}, "", `${ location.pathname }?${ params.toString() }`)
   }
 
   function getCurrentUrlParam() {

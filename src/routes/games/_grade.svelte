@@ -21,7 +21,7 @@
 	}
 
 	function outsideClick(event) {
-		if (event.target == gradeElement || event.target.closest(".grade") == gradeElement) return;
+		if (event.target == gradeElement || event.target.closest(".grade") == gradeElement) return
 
 		showTooltip = false
 	}
