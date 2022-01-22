@@ -30,13 +30,15 @@
   import Background from "./games/_background.svelte"
 
   export let game: Game
+
+  const defaultMetaDescription = `Are there microtransactions in { game.title }? This page details the monetisation practices in this game and rates it in comparison to other games.`
 </script>
 
 
 
 <svelte:head>
 	<title>Macrotransactions | { game.title }</title>
-  <meta name="description" content="Are there microtransactions in { game.title }? This page details the monetisation practices in this game and rates it in comparison to other games.">
+  <meta name="description" content={ game.description || defaultMetaDescription }>
 </svelte:head>
 
 

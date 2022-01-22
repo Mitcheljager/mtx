@@ -71,7 +71,7 @@
 	<h2>But they are just cosmetics, who cares?</h2>
 
 	<p>
-		Of course most games only cosmetic microtransactions. They don't make you any stronger, they don't give you any advantage. But that's not the point. These monetisation practices prey on every insecurity and addictive quality you have. Gambling, fear of missing out, impulsive buying, and wanting to "fit in". All of these are psychological traits that are exploited to get you to spend all of your money.
+		Of course most games only offer cosmetic microtransactions. They don't make you any stronger, they don't give you any advantage. But that's not the point. These monetisation practices prey on every insecurity and addictive quality you have. Gambling, fear of missing out, impulsive buying, and wanting to "fit in". All of these are psychological traits that are exploited to get you to spend all of your money.
 	</p>
 
 	<p>
