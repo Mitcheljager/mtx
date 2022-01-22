@@ -1,5 +1,6 @@
 <script lang="ts">
   import { fade } from "svelte/transition"
+  import { onMount } from "svelte"
 
   import type { Game } from "$lib/types"
 
@@ -7,12 +8,15 @@
 
   let debounce: any
   let loading = false
-  
+
   $: value = $searchQuery
+  $: if (value != undefined) getData()
+
+  onMount(getCurrentUrlParam)
 
   function getData() {
     loading = true
-    
+
     $games = []
 
     clearTimeout(debounce)
@@ -28,12 +32,34 @@
         if (!value) data = await getGames()
 
         $games = data
-        
+
         loading = false
+
+        setUrlParam()
       }, 500)
     } catch(error) {
       alert("Something went wrong!")
     }
+  }
+
+  function setUrlParam() {
+    if (!value) {
+      window.history.replaceState({}, "", location.pathname)
+      return
+    }
+
+    const params = new URLSearchParams(location.search)
+    params.set("search", value)
+
+    params.toString()
+
+    window.history.replaceState({}, "", `${location.pathname}?${params.toString()}`)
+  }
+
+  function getCurrentUrlParam() {
+    const urlParams = new URLSearchParams(window.location.search)
+
+    $searchQuery = urlParams.get("search")
   }
 </script>
 
@@ -44,8 +70,7 @@
   type="text"
   placeholder="Search..."
   autocomplete="off"
-  bind:value
-    on:input={ getData } />
+  bind:value />
 
 { #if $searchQuery && !$games.length && !loading }
   <center in:fade={{ duration: 150 }}><em>No matches were found for your search query</em></center>
@@ -67,7 +92,7 @@
     margin: clamp(3rem, 10vw, 5rem) auto;
     background: var(--content-bg);
     box-shadow: var(--shadow-big);
-    
+
     &::placeholder {
       font-size: 1.5rem;
     }

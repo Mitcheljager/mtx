@@ -65,7 +65,7 @@
 
       <div class="info">
         { #if game.publisher }
-          <div class="name sm:mt-1/8">{ game.publisher }</div>
+          <a href="/?search={ game.publisher }" sveltekit:prefetch class="name sm:mt-1/8">{ game.publisher }</a>
         { /if }
 
         { #if game.year_of_release }
@@ -159,6 +159,13 @@
 
 	.name {
 		color: var(--text-color-medium);
+    text-decoration: none;
+
+    &:hover,
+    &:active,
+    &:focus-visible {
+      color: var(--text-color);
+    }
 	}
 
   .wrapper {

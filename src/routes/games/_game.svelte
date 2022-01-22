@@ -1,16 +1,23 @@
 <script lang="ts">
 	import { SupabaseLazyImage } from "svelte-supabase-lazy-images/src"
-	
+
 	import supabase from "$lib/db"
 	import type { Game } from "$lib/types"
+	import { searchQuery } from "../../stores/games"
 
 	import Category from "../categories/_category.svelte"
 	import Background from "./_background.svelte"
 	import Grade from "./_grade.svelte"
 
   export let game: Game
-	
+
 	const maxCategories = 10
+
+	function setSearchQuery() {
+		$searchQuery = game.publisher
+
+		window.scrollTo(0, 0)
+	}
 </script>
 
 
@@ -33,7 +40,7 @@
 				<div><a class="card__title" href="/{ game.slug }" sveltekit:prefetch>{ game.title }</a></div>
 
 				{ #if game.publisher }
-					<div class="card__name">{ game.publisher }</div>
+					<a href="/?search={ game.publisher }" on:click={ setSearchQuery } class="card__name">{ game.publisher }</a>
 				{ /if }
 
 				{ #if game.year_of_release }
@@ -126,6 +133,13 @@
 
 	.card__name {
 		color: var(--text-color-medium);
+		text-decoration: none;
+
+		&:hover,
+		&:active,
+		&:focus-visible {
+			color: var(--text-color);
+		}
 	}
 
 	.card__grade {
