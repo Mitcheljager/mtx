@@ -171,7 +171,7 @@
     grid-template: "image info" "grade grade";
     grid-template-columns: 6rem auto;
     grid-gap: 0 .75rem;
-    z-index: 1;
+    z-index: 10;
 
     @media (min-width: $breakpoint) {
       display: block;
@@ -197,9 +197,7 @@
   }
 
   .description {
-    position: relative;
     margin: 0 0 1.5rem;
     line-height: 1.5em;
-    z-index: 1;
   }
 </style>

@@ -43,6 +43,10 @@ a {
 	}
 }
 
+button {
+  font-family: inherit;
+}
+
 mark {
   background: linear-gradient(130deg, var(--primary), var(--secondary));
   background-clip: text;
