@@ -1,15 +1,19 @@
 <script context="module" lang="ts">
 	export const prerender = true
-	
-	export async function load() {
+
+	export async function load({ page }) {
+		const data = page.query.get("search") ?
+								 await getGamesBySearch(page.query.get("search")) :
+								 await getGames()
+
 		return {
-      props: { _games: await getGames() }
+      props: { _games: data }
     }
 	}
 </script>
 
 <script lang="ts">
-	import { getGames, games, currentPage, reachedEnd, searchQuery } from "../stores/games"
+	import { getGames, getGamesBySearch, games, currentPage, reachedEnd, searchQuery } from "../stores/games"
 
 	import Game from "./games/_game.svelte"
 	import Search from "./_search.svelte"
@@ -18,7 +22,7 @@
 	if (!$games.length) $games = _games
 
 	let loadingMore = false
-	
+
 	async function getData() {
 		let data: any
 
@@ -98,7 +102,7 @@
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(clamp(250px, 45vw, 350px), 1fr));
     grid-gap: 1.5rem;
-		
+
 		&--single {
 			max-width: 450px;
 			margin: 0 auto;

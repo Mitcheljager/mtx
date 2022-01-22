@@ -8,9 +8,11 @@
 
   let debounce: any
   let loading = false
+  let lastSearch = null
 
   $: value = $searchQuery
-  $: if (value != "") getData()
+  $: if (lastSearch != null && lastSearch != $searchQuery) console.log(lastSearch, $searchQuery)
+  $: if (lastSearch != null && lastSearch != $searchQuery) getData()
 
   onMount(getCurrentUrlParam)
 
@@ -60,6 +62,7 @@
     const urlParams = new URLSearchParams(window.location.search)
 
     if (urlParams.has("search")) $searchQuery = urlParams.get("search")
+    lastSearch = $searchQuery
   }
 </script>
 
@@ -70,7 +73,7 @@
   type="text"
   placeholder="Search..."
   autocomplete="off"
-  on:input={ event => { if (event.target.value == "") getData() } }
+  on:input={ getData }
   bind:value />
 
 { #if $searchQuery && !$games.length && !loading }

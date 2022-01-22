@@ -3,7 +3,6 @@
 
 	import supabase from "$lib/db"
 	import type { Game } from "$lib/types"
-	import { searchQuery } from "../../stores/games"
 
 	import Category from "../categories/_category.svelte"
 	import Background from "./_background.svelte"
@@ -12,12 +11,6 @@
   export let game: Game
 
 	const maxCategories = 10
-
-	function setSearchQuery() {
-		$searchQuery = game.publisher
-
-		window.scrollTo(0, 0)
-	}
 </script>
 
 
@@ -40,7 +33,7 @@
 				<div><a class="card__title" href="/{ game.slug }" sveltekit:prefetch>{ game.title }</a></div>
 
 				{ #if game.publisher }
-					<a href="/?search={ game.publisher }" on:click={ setSearchQuery } class="card__name">{ game.publisher }</a>
+					<a href="/?search={ game.publisher }" class="card__name">{ game.publisher }</a>
 				{ /if }
 
 				{ #if game.year_of_release }

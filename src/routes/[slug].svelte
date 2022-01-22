@@ -1,6 +1,6 @@
 <script context="module" lang="ts">
   import supabase from "$lib/db"
-  import { getGame } from "../stores/games"
+  import { getGame, getGamesBySearch } from "../stores/games"
 
 	export const prerender = true
 
