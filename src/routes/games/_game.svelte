@@ -3,6 +3,7 @@
 
 	import supabase from "$lib/db"
 	import type { Game } from "$lib/types"
+	import { searchQuery } from "../../stores/games"
 
 	import Category from "../categories/_category.svelte"
 	import Background from "./_background.svelte"
@@ -11,6 +12,7 @@
   export let game: Game
 
 	const maxCategories = 10
+	const publisherQuery = game.publisher?.replace(/[.,]/g, " ")
 </script>
 
 
@@ -33,7 +35,8 @@
 				<div><a class="card__title" href="/{ game.slug }" sveltekit:prefetch>{ game.title }</a></div>
 
 				{ #if game.publisher }
-					<a href="/?search={ game.publisher }" class="card__name">{ game.publisher }</a>
+					<a on:click={ () => $searchQuery = publisherQuery }
+						href="/?search={ publisherQuery }" sveltekit:prefetch class="card__name">{ game.publisher }</a>
 				{ /if }
 
 				{ #if game.year_of_release }
