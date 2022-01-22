@@ -57,7 +57,7 @@
         { /if }
       </div>
 
-      <div class="grade mb-1/4">
+      <div class="grade mb-1/2 sm:mb-1/4">
         <Grade categories={ game.categories } size="large" />
       </div>
 
@@ -80,15 +80,17 @@
     </aside>
 
     <div>
+      <h3>Microtransactions in <em>{ game.title }</em> are summarized as...</h3>
+
       { #if game.description }
-        <div class="description">
+        <p class="description">
           { @html game.description.replace(/\n/g, "<br>") }
-        </div>
+        </p>
       { /if }
 
       { #if game.categories }
         <div class="categories">
-          { #each game.categories as category (category.id) }        
+          { #each game.categories as category (category.id) }
             <Category { category } />
           { /each }
         </div>
@@ -112,6 +114,16 @@
 		-webkit-background-clip: text;
 		color: transparent;
     text-align: center;
+  }
+
+  h3 {
+    margin: 0 0 1rem;
+    font-size: 1rem;
+    color: var(--text-color);
+
+    em {
+      color: white;
+    }
   }
 
   @keyframes loading {
@@ -184,7 +196,7 @@
 
   .description {
     position: relative;
-    margin-bottom: 1.5rem;
+    margin: 0 0 1.5rem;
     line-height: 1.5em;
     z-index: 1;
   }
