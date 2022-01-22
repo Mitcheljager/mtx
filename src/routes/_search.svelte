@@ -8,11 +8,9 @@
 
   let debounce: any
   let loading = false
-  let lastSearch = null
 
   $: value = $searchQuery
-  $: if (lastSearch != null && lastSearch != $searchQuery) console.log(lastSearch, $searchQuery)
-  $: if (lastSearch != null && lastSearch != $searchQuery) getData()
+  $: if ($searchQuery) getData()
 
   onMount(getCurrentUrlParam)
 
@@ -62,7 +60,6 @@
     const urlParams = new URLSearchParams(window.location.search)
 
     if (urlParams.has("search")) $searchQuery = urlParams.get("search")
-    lastSearch = $searchQuery
   }
 </script>
 
