@@ -17,7 +17,7 @@
 
 		score -= negativeCategories
 
-		return Object.values(Grade).filter(g => score >= g.min_score)[0]
+		return Object.values(Grade).filter(g => Math.max(score, 0) >= g.min_score)[0]
 	}
 
 	function outsideClick(event) {
