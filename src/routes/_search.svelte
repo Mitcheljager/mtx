@@ -23,8 +23,8 @@
 
     try {
       debounce = setTimeout(async() => {
-        $currentPage = 0
         $searchQuery = value
+        $currentPage = 0
 
         let data: Game[]
 

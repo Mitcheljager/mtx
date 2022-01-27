@@ -71,7 +71,13 @@
 	{ /if }
 </div>
 
-{ #if !$reachedEnd && !$searchQuery }
+{ #if $reachedEnd }
+	{ #if !$searchQuery}
+		<p class="mt-1/1 mb-1/1">
+			<center>You've reached the end.</center>
+		</p>
+	{ /if }
+{ :else }
 	<div class="tray mt-1/1">
 		<button class="button button--large" class:button--primary={ !loadingMore } on:click={ getNextPage } disabled={ loadingMore } aria-busy={ loadingMore }>
 			{ loadingMore ? "Loading..." : "Load more" }

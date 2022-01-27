@@ -30,7 +30,7 @@ export async function getGames(): Promise<Game[]> {
 
   data.forEach(game => game.categories = sortedCategories(game.categories))
 
-  reachedEnd.set(data.length < get(itemsPerPage))
+  reachedEnd.set(!data.length)
 
   return data
 }
