@@ -72,12 +72,12 @@
 </div>
 
 { #if $reachedEnd }
-	{ #if !$searchQuery}
+	{ #if $games.length }
 		<p class="mt-1/1 mb-1/1">
 			<center>You've reached the end.</center>
 		</p>
 	{ /if }
-{ :else }
+{ :else if $games.length }
 	<div class="tray mt-1/1">
 		<button class="button button--large" class:button--primary={ !loadingMore } on:click={ getNextPage } disabled={ loadingMore } aria-busy={ loadingMore }>
 			{ loadingMore ? "Loading..." : "Load more" }
