@@ -56,6 +56,14 @@ mark {
   text-shadow: var(--shadow-big);
 }
 
+blockquote {
+  margin: 1rem 0;
+  padding: 1rem 1rem 1rem 1.5rem;
+  background: var(--body-bg);
+  border-left: 2px solid var(--border-color);
+  border-radius: 0 1rem 1rem 0;
+}
+
 img {
   display: block;
   width: 100%;
