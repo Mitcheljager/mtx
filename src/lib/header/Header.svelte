@@ -8,7 +8,7 @@
 		let href = event.target.href
 		if (!href) href = event.target.closest("a").href
 
-		if (href != window.location.toString().split('?')[0]) return
+		if (href != window.location.toString().split("?")[0]) return
 
 		$searchQuery = ""
 		$currentPage = 0
