@@ -3,8 +3,8 @@
 
 	export async function load({ page }) {
 		const data = page.query.get("search") ?
-								 await getGamesBySearch(page.query.get("search")) :
-								 await getGames()
+			await getGamesBySearch(page.query.get("search")) :
+			await getGames()
 
 		return {
       props: { _games: data }
