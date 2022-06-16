@@ -28,6 +28,7 @@
   import Category from "./categories/_category.svelte"
   import Grade from "./games/_grade.svelte"
   import Background from "./games/_background.svelte"
+import Tentative from "./games/_tentative.svelte";
 
   export let game: Game
 
@@ -82,6 +83,10 @@
     </aside>
 
     <div>
+      { #if game.tentative }
+        <Tentative />
+      { /if }
+
       <h3>Microtransactions in <em>{ game.title }</em> are summarized as...</h3>
 
       { #if game.description }
@@ -170,6 +175,10 @@
 
   .wrapper {
     max-width: 640px;
+
+    :global(.tentative) {
+      margin-top: 0;
+    }
   }
 
   .sidebar {

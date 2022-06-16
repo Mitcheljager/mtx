@@ -13,7 +13,7 @@ export const searchQuery = writable("")
 
 const table = "games"
 const select = `
-  id, title, publisher, year_of_release, image_url, slug,
+  id, title, publisher, year_of_release, image_url, slug, tentative,
   categories (id, title, type)`
 
 export async function getGames(): Promise<Game[]> {
@@ -55,7 +55,7 @@ export async function getGame(column: string, value: string): Promise<Game[]> {
   const { data, error } = await supabase
   .from(table)
   .select(`
-    id, description, title, publisher, year_of_release, image_url, slug,
+    id, description, title, publisher, year_of_release, image_url, slug, tentative,
     categories (id, title, type)
   `)
   .eq(column, value)

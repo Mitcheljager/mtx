@@ -14,6 +14,7 @@ export type Game = {
   year_of_release?: number,
   image_url?: string,
   slug?: string,
+  tentative: boolean,
   categories?: Category[]
 }
 

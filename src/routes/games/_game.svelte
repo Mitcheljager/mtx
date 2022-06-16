@@ -8,6 +8,7 @@
 	import Category from "../categories/_category.svelte"
 	import Background from "./_background.svelte"
 	import Grade from "./_grade.svelte"
+	import Tentative from "./_tentative.svelte"
 
   export let game: Game
 
@@ -48,6 +49,10 @@
 				</div>
 			</div>
 		</div>
+
+		{ #if game.tentative }
+			<Tentative />
+		{ /if }
 
 		{ #each game.categories.filter((c, i) => i < maxCategories) as category }
 			<Category { category } />

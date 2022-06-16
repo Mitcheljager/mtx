@@ -1,7 +1,7 @@
 <script lang="ts">
   import { onMount } from "svelte"
   import { goto } from "$app/navigation"
-  
+
   import { createGame, updateGame } from "$lib/db"
   import type { Game } from "$lib/types"
   import { user } from "../../stores/session"
@@ -9,7 +9,7 @@
   import ImageUpload from "./_imageUpload.svelte"
 
   export let game: Game
-  
+
   let submit = false
   let title: string
   let description: string
@@ -17,6 +17,7 @@
   let year_of_release: any
   let image_url: string
   let slug: string
+  let tentative: boolean
 
   onMount(() => {
     if (!$user) goto("/login")
@@ -30,14 +31,15 @@
     year_of_release = game.year_of_release
     image_url = game.image_url
     slug = game.slug
+    tentative = game.tentative
   }
-  
+
   async function submitForm() {
     let data: any
 
     try {
-      if (!game.id) data = await createGame({ title, description, publisher, year_of_release, image_url, slug })
-      if (game.id) data = await updateGame({ id: game.id, title, description, publisher, year_of_release, image_url, slug })
+      if (!game.id) data = await createGame({ title, description, publisher, year_of_release, image_url, slug, tentative })
+      if (game.id) data = await updateGame({ id: game.id, title, description, publisher, year_of_release, image_url, slug, tentative })
     } catch(error) {
       throw new Error(error.message)
     }
@@ -47,13 +49,14 @@
     year_of_release = ""
     image_url = ""
     slug = ""
+    tentative = false
 
     return data
   }
 </script>
 
 
-    
+
 <form class="block" on:submit|preventDefault={ () => submit = true }>
   { #if !submit }
     <label class="form-label mt-0" for="title">Title</label>
@@ -62,13 +65,19 @@
       The name of the game. Full name, no abbreviations.
     </p>
 
-    <label class="form-label" for="title">Slug</label>
+    <label class="form-label" for="slug">Slug</label>
     <input class="form-input" type="text" name="slug" required bind:value={ slug }>
     <p class="help">
       How the name will appear in the browser URL bar. Should be unique.
     </p>
 
-    <label class="form-label" for="title">Description</label>
+    <label class="form-label" for="title">Tentative</label>
+    <p class="help">
+      Check if the game is not yet released and not all details are known.
+    </p>
+    <input class="form-checkbox" type="checkbox" name="tentative" bind:checked={ tentative }>
+
+    <label class="form-label" for="description">Description</label>
     <textarea class="form-input" type="text" name="description" rows="5" bind:value={ description } />
     <p class="help">
       Short description of how microtransactions affect this game. Supports HTML, newlines are automatically inserted.

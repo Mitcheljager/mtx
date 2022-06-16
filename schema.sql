@@ -13,7 +13,8 @@ create table games (
  slug text not null,
  year_of_release smallint,
  image_url text,
- description text
+ description text,
+ tentative default false not null
 );
 
 create table game_category (
