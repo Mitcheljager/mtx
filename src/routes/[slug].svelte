@@ -28,7 +28,7 @@
   import Category from "./categories/_category.svelte"
   import Grade from "./games/_grade.svelte"
   import Background from "./games/_background.svelte"
-import Tentative from "./games/_tentative.svelte";
+  import Tentative from "./games/_tentative.svelte"
 
   export let game: Game
 
