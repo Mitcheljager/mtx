@@ -14,8 +14,8 @@ html, body {
 
 body {
 	position: relative;
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-rows: 4.5rem auto auto;
 	margin: 0;
 	padding: 0 1.5rem;
 	background-color: var(--body-bg);
