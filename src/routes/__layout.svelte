@@ -1,11 +1,28 @@
 <script lang="ts">
+	import { navigating } from "$app/stores"
 	import { user } from "../stores/session"
 	import supabase from "$lib/db"
 
+  import { getNavigationStore } from "$lib/viewTransition"
 	import Header from "$lib/header/Header.svelte"
 	import Footer from "$lib/footer/Footer.svelte"
 
 	import "../app.scss"
+
+	let awaitingNavigating = false
+
+	$: if ($navigating) awaitingNavigating = true
+	$: if (awaitingNavigating) {
+		if (document?.startViewTransition) {
+			const navigation = getNavigationStore()
+			const navigationComplete = navigation.complete()
+
+			document.startViewTransition(async() => {
+				await navigationComplete
+				awaitingNavigating = false
+			})
+		}
+	}
 
 	$user = supabase.auth.user()
 

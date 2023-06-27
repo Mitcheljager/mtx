@@ -45,11 +45,11 @@
 
 
 <div class="wrapper">
-  <h1>{ game.title }</h1>
+  <h1 style="view-transition-name: title-{game.id}">{ game.title }</h1>
 
-  <div class="block">
+  <div class="block" style="view-transition-name: card-{game.id}">
     <aside class="sidebar sm:mr-1/2">
-      <div class="image mb-1/4">
+      <div class="image mb-1/4" style="--view-transition-name: image-{game.id}">
         { #if game.image_url }
           <SupabaseLazyImage { supabase }
             from="games"

@@ -18,10 +18,10 @@
 
 
 
-<div class="card">
+<div class="card" style="view-transition-name: card-{game.id}">
 	<div class="card__content">
 		<div class="card__header">
-			<a class="card__image" href="/{ game.slug }" tabindex="-1" sveltekit:prefetch>
+			<a class="card__image" style="view-transition-name: image-{game.id}" href="/{ game.slug }" tabindex="-1">
 				{ #if game.image_url }
 					<SupabaseLazyImage { supabase }
 						from="games"
@@ -33,7 +33,7 @@
 			</a>
 
 			<div>
-				<div><a class="card__title" href="/{ game.slug }" sveltekit:prefetch>{ game.title }</a></div>
+				<div><a class="card__title" style="view-transition-name: title-{game.id}" href="/{ game.slug }">{ game.title }</a></div>
 
 				{ #if game.publisher }
 					<a on:click={ () => $searchQuery = publisherQuery }

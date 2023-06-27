@@ -83,3 +83,7 @@ img {
   background: var(--bg-dark);
   box-shadow: var(--shadow-big);
 }
+
+[style*='--view-transition-name'] {
+  view-transition-name: var(--view-transition-name);
+}
