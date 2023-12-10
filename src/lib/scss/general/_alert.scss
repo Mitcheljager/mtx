@@ -1,0 +1,16 @@
+.alert {
+	display: block;
+	padding: 0.5rem 0.75rem;
+	border-radius: 0.5rem;
+	background: var(--border-color);
+
+	&--success {
+		background: var(--green);
+		color: white;
+	}
+
+	&--error {
+		background: var(--red);
+		color: white;
+	}
+}

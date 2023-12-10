@@ -1,25 +1,12 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 	<head>
 		<meta charset="utf-8" />
-		<meta http-equiv=”content-language” content="en" />
+		<link rel="icon" href="%sveltekit.assets%/favicon.png" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<meta name="theme-color" content="#16181d">
-		<meta name="keywords" content="Microtransactions, monetisation, gaming, games">
-
-		<meta property="og:image" content="/og-image.jpg">
-		<meta property="og:image:width" content="1200">
-		<meta property="og:image:height" content="630">
-
-		<link rel="icon" href="/favicon.png" />
-		<link rel="manifest" href="/manifest.json">
-		
-		<style>body { background: black }</style>
-
-		%svelte.head%
+		%sveltekit.head%
 	</head>
-
-	<body>
-		%svelte.body%
+	<body data-sveltekit-preload-data="hover">
+		<div style="display: contents">%sveltekit.body%</div>
 	</body>
 </html>
