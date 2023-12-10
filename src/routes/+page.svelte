@@ -12,7 +12,7 @@
 
 	export let data
 
-	if (browser && !$games?.length) $games = data._games
+	if (!browser || (browser && !$games?.length)) $games = data._games
 
 	let loadingMore = false
 
