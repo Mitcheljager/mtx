@@ -1,6 +1,4 @@
 <script lang="ts">
-	import { SupabaseLazyImage } from "svelte-supabase-lazy-images/src"
-
 	import supabase from "$lib/db"
 	import type { Game } from "$lib/types"
 	import { searchQuery } from "../../stores/games"
@@ -9,6 +7,7 @@
 	import Background from "./_background.svelte"
 	import Grade from "./_grade.svelte"
 	import Tentative from "./_tentative.svelte"
+	import Image from "./_image.svelte"
 
   export let game: Game
 
@@ -23,7 +22,7 @@
 		<div class="card__header">
 			<a class="card__image" style="view-transition-name: image-{game.id}" href="/{ game.slug }" tabindex="-1">
 				{ #if game.image_url }
-					<SupabaseLazyImage { supabase }
+					<Image { supabase }
 						from="games"
 						key={ game.image_url.split("games/")[1] }
 						width={ 80 }

@@ -20,8 +20,6 @@
 </script>
 
 <script lang="ts">
-  import { SupabaseLazyImage } from "svelte-supabase-lazy-images/src"
-
   import { user } from "../stores/session"
   import type { Game } from "$lib/types"
 
@@ -29,6 +27,7 @@
   import Grade from "./games/_grade.svelte"
   import Background from "./games/_background.svelte"
   import Tentative from "./games/_tentative.svelte"
+  import Image from "./games/_image.svelte"
 
   export let game: Game
 
@@ -51,7 +50,7 @@
     <aside class="sidebar sm:mr-1/2">
       <div class="image mb-1/4" style="--view-transition-name: image-{game.id}">
         { #if game.image_url }
-          <SupabaseLazyImage { supabase }
+          <Image { supabase }
             from="games"
             key={ game.image_url.split("games/")[1] }
             width={ 160 }
