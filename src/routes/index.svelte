@@ -1,6 +1,4 @@
 <script context="module" lang="ts">
-	export const prerender = true
-
 	export async function load({ page }) {
 		const data = page.query.get("search") ?
 			await getGamesBySearch(page.query.get("search")) :
