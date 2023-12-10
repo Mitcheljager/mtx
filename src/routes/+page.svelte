@@ -1,19 +1,18 @@
 <script>
 	import {
 		getGames,
-		getGamesBySearch,
 		games,
 		currentPage,
 		reachedEnd,
-		searchQuery
 	} from "$lib/stores/games"
+	import { browser } from '$app/environment'
 
 	import Game from "$lib/components/Game.svelte"
 	import Search from "$lib/components/Search.svelte"
 
 	export let data
 
-	$games = data._games
+	if (browser && !$games?.length) $games = data._games
 
 	let loadingMore = false
 
