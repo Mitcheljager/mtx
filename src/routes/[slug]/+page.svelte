@@ -67,7 +67,7 @@
 			</div>
 		</aside>
 
-		<div>
+		<div class="content">
 			{#if game.tentative}
 				<Tentative />
 			{/if}
@@ -179,6 +179,11 @@
 		@media (min-width: $breakpoint) {
 			display: block;
 		}
+	}
+
+	.content {
+		position: relative;
+		z-index: 1;
 	}
 
 	.grade {
