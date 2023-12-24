@@ -14,13 +14,19 @@
 	font-weight: 700;
 	text-transform: lowercase;
 	text-decoration: none;
-	transition: box-shadow 50ms;
+	transition: box-shadow 50ms, outline-offset 200ms;
 	cursor: pointer;
 	z-index: 5;
 
 	&:hover,
-	&:active {
+	&:active,
+	&:focus {
 		color: white;
+	}
+
+	&:focus-visible {
+		outline: 2px solid white;
+		outline-offset: 5px;
 	}
 
 	&[disabled] {

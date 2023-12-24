@@ -14,8 +14,8 @@ const select = `
   id, title, publisher, year_of_release, image_url, slug, tentative,
   categories (id, title, type)`
 
-export async function getGames() {
-	const startOfRange = get(currentPage) * get(itemsPerPage)
+export async function getGames(page = 0) {
+	const startOfRange = page * get(itemsPerPage)
 	const endOfRange = startOfRange + (get(itemsPerPage) - 1)
 
 	const { data, error } = await supabase
@@ -28,7 +28,7 @@ export async function getGames() {
 
 	data.forEach((game) => (game.categories = sortedCategories(game.categories)))
 
-	reachedEnd.set(!data.length)
+	reachedEnd.set(!data.length || data.length < get(itemsPerPage))
 
 	return data
 }

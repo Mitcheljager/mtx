@@ -4,23 +4,29 @@
 		games,
 		currentPage,
 		reachedEnd,
+		itemsPerPage
 	} from "$lib/stores/games"
 	import { browser } from '$app/environment'
+	import { page } from '$app/stores'
 
 	import Game from "$lib/components/Game.svelte"
 	import Search from "$lib/components/Search.svelte"
 
 	export let data
 
-	if (!browser || (browser && !$games?.length)) $games = data._games
+	if (!browser || (browser && !$games?.length)) $games = data.games
 
 	let loadingMore = false
+
+	$: $currentPage = data.page || 0
+	$: $reachedEnd = data.games.length < $itemsPerPage
+	$: nextPageHref = `${$page.url.origin}/?page=${$currentPage + 1}`
 
 	async function getData() {
 		let data
 
 		try {
-			data = await getGames()
+			data = await getGames($currentPage)
 		} catch (error) {
 			throw new Error(error.message)
 		}
@@ -74,15 +80,17 @@
 	{/if}
 {:else if $games?.length}
 	<div class="tray mt-1/1">
-		<button
+		<a
+			href={nextPageHref}
 			class="button button--large"
 			class:button--primary={!loadingMore}
-			on:click={getNextPage}
-			disabled={loadingMore}
+			data-sveltekit-preload-data="off"
+			on:click|preventDefault={getNextPage}
+			disabled={loadingMore || null}
 			aria-busy={loadingMore}
 		>
 			{loadingMore ? "Loading..." : "Load more"}
-		</button>
+	</a>
 	</div>
 {/if}
 
