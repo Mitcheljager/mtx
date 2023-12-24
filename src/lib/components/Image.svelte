@@ -7,29 +7,22 @@
 	export let from
 	export let key
 
-	let src = null
-
-	onMount(getImage)
+	$: getImage()
 
 	async function getImage() {
-		if (key in $images) {
-			src = $images[key]
-			return
-		}
+		if (key in $images) return
 
 		try {
 			const data = await getSupabaseImage(supabase, from, key)
 
-			src = URL.createObjectURL(data)
-
-			$images = { ...$images, [key]: src }
+			$images = { ...$images, [key]: data?.publicUrl }
 		} catch (error) {
 			console.error(error)
 		}
 	}
 
 	export async function getSupabaseImage(supabase, from, key) {
-		const { data, error } = await supabase.storage.from(from).download(key)
+		const { data, error } = await supabase.storage.from(from).getPublicUrl(key)
 
 		if (error) throw error
 
@@ -44,4 +37,4 @@
 </script>
 
 <!-- svelte-ignore a11y-missing-attribute -->
-<img loading="lazy" {src} {...$$restProps} />
+<img loading="lazy" src={$images[key]} {...$$restProps} />
