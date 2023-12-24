@@ -8,7 +8,7 @@
 		try {
 			loading = true
 
-			const { error } = await supabase.auth.signIn({ email })
+			const { error } = await supabase.auth.signInWithOtp({ email })
 
 			if (error) throw error
 

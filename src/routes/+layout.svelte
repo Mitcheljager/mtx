@@ -24,10 +24,13 @@
 		}
 	}
 
-	$user = supabase.auth.user()
+	$: async () => {
+		session = { data: { session } } = await supabase.auth.getSession()
+		$user = session?.user
+	}
 
 	supabase.auth.onAuthStateChange((_, session) => {
-		$user = session.user
+		$user = session?.user
 	})
 </script>
 

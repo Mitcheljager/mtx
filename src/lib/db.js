@@ -7,7 +7,7 @@ export const supabase = createClient(
 )
 
 export async function createGame(properties) {
-	const { data, error } = await supabase.from("games").insert([properties])
+	const { data, error } = await supabase.from("games").insert([properties]).select()
 
 	if (error) throw new Error(error.message)
 
@@ -15,7 +15,7 @@ export async function createGame(properties) {
 }
 
 export async function updateGame(properties) {
-	const { data, error } = await supabase.from("games").update(properties).eq("id", properties.id)
+	const { data, error } = await supabase.from("games").update(properties).eq("id", properties.id).select()
 
 	if (error) throw new Error(error.message)
 
@@ -23,7 +23,7 @@ export async function updateGame(properties) {
 }
 
 export async function createCategory(properties) {
-	const { data, error } = await supabase.from("categories").insert([properties])
+	const { data, error } = await supabase.from("categories").insert([properties]).select()
 
 	if (error) throw new Error(error.message)
 

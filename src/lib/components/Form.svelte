@@ -19,7 +19,6 @@
 	let tentative
 
 	onMount(() => {
-		if (!$user) goto("/login")
 		if (game) setData()
 	})
 
@@ -37,7 +36,7 @@
 		let data
 
 		try {
-			if (!game.id)
+			if (!game.id) {
 				data = await createGame({
 					title,
 					description,
@@ -47,7 +46,7 @@
 					slug,
 					tentative
 				})
-			if (game.id)
+			} else {
 				data = await updateGame({
 					id: game.id,
 					title,
@@ -58,9 +57,12 @@
 					slug,
 					tentative
 				})
+			}
 		} catch (error) {
 			throw new Error(error.message)
 		}
+
+		console.log('data', data)
 
 		title = ""
 		publisher = ""
@@ -121,7 +123,7 @@
 		/>
 		<p class="help">The year the game initially released.</p>
 
-		<ImageUpload on:upload={(event) => (image_url = event.detail.image.Key)} />
+		<ImageUpload on:upload={(event) => (image_url = event.detail.image.fullPath)} />
 
 		<input
 			class="button button--primary button--block button--large mt-1/2"
