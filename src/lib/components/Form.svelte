@@ -1,9 +1,6 @@
 <script>
 	import { onMount } from "svelte"
-	import { goto } from "$app/navigation"
-
 	import { createGame, updateGame } from "$lib/db"
-	import { user } from "$lib/stores/session"
 
 	import ImageUpload from "$lib/components/ImageUpload.svelte"
 
@@ -61,8 +58,6 @@
 		} catch (error) {
 			throw new Error(error.message)
 		}
-
-		console.log('data', data)
 
 		title = ""
 		publisher = ""

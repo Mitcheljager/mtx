@@ -1,7 +1,12 @@
 <script>
+	import { onMount } from "svelte"
+
 	import Form from "$lib/components/Form.svelte"
+	import { user } from "$lib/stores/session"
 
 	export let data
+
+	onMount(() => { if (!$user) goto("/login") })
 
 	$: ({ game } = data)
 </script>
