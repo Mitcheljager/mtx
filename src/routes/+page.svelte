@@ -94,6 +94,8 @@
 	</div>
 {/if}
 
+<div class="page-background" />
+
 <style lang="scss">
 	center {
 		max-width: clamp(300px, 100%, 50%);
@@ -132,5 +134,16 @@
 		width: 100%;
 		max-width: clamp(200px, 100%, 25%);
 		padding: 1rem 3rem;
+	}
+
+	.page-background {
+		position: absolute;
+		top: 0;
+		left: 0;
+		height: 50vh;
+		width: 100%;
+		background: linear-gradient(to bottom, var(--primary), transparent);
+		z-index: -1;
+		opacity: 0.15;
 	}
 </style>

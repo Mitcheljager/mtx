@@ -95,6 +95,12 @@
 	</div>
 </div>
 
+{#if game.image_url}
+	<div class="page-background">
+		<Background key={game.image_url.split("games/")[1]} />
+	</div>
+{/if}
+
 <style lang="scss">
 	$breakpoint: 640px;
 
@@ -207,5 +213,14 @@
 	.description {
 		margin: 0 0 1.5rem;
 		line-height: 1.5em;
+	}
+
+	.page-background :global(.background) {
+		height: 50vh;
+		object-fit: cover;
+		mask-image: none;
+		-webkit-mask-image: none;
+		z-index: -1;
+		filter: blur(100px);
 	}
 </style>
