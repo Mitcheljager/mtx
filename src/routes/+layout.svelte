@@ -1,28 +1,23 @@
 <script>
-	import { navigating } from "$app/stores"
 	import { user } from "$lib/stores/session"
 	import { supabase } from "$lib/db"
+	import { onNavigate } from '$app/navigation'
 
-	import { getNavigationStore } from "$lib/viewTransition"
 	import Header from "$lib/components/Header.svelte"
 	import Footer from "$lib/components/Footer.svelte"
 
 	import "$lib/scss/app.scss"
 
-	let awaitingNavigating = false
+	onNavigate((navigation) => {
+		if (!document.startViewTransition) return
 
-	$: if ($navigating) awaitingNavigating = true
-	$: if (awaitingNavigating) {
-		if (document?.startViewTransition) {
-			const navigation = getNavigationStore()
-			const navigationComplete = navigation.complete()
-
+		return new Promise((resolve) => {
 			document.startViewTransition(async () => {
-				await navigationComplete
-				awaitingNavigating = false
+				resolve()
+				await navigation.complete
 			})
-		}
-	}
+		})
+	})
 
 	$: async () => {
 		session = { data: { session } } = await supabase.auth.getSession()
