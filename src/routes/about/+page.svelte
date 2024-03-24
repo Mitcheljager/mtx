@@ -7,154 +7,103 @@
 </svelte:head>
 
 <article class="wrapper">
-	<h1>Microtransactions, what and why?</h1>
+	<h1>Microtransactions, what and why.</h1>
 
 	<p>
-		TL;DR: "Micro"transactions are a way of monetising virtual goods in games. Microtransactions
-		often times don't have the customers best interest in mind and only exist to squeeze as much
-		money out of you as possible. That's not cool.
+		Over time games have shifted from being finished products that are sold to the customers, to services that exist as a means to sell more goods over time. With that shift came a change in how content for games is delivered. In many cases this has led to games no longer selling content, but instead selling cosmetics. Games are secondary to the monetisation and that can be noticeable in the way games are now advertised. It is no longer about the experience of the game itself, it's about showing your worth through unfairly priced cosmetics.
 	</p>
 
 	<p>
-		<em>This website focuses on PC and Console games only. Mobile games are not covered.</em>
-	</p>
-
-	<p>
-		Premium currency, lootboxes, xp-boosts, bundles, and timed-exclusives, are a couple of the most
-		common techniques to screw you over. Let's go over them one by one and see why they suck.
+		This website seeks to make you aware of malicious monetisation practices that only exist to take as much money from you as possible while disguising it as a good thing for the players. To start off, let's go over some common practices and look at what makes them malicious.
 	</p>
 
 	<ul>
 		<li>
-			<strong>Premium Currency</strong>: Premium currencies are virtual currencies you buy with real
-			money, which are then used to buy virtual goods. So why can't you simply buy these virtual
-			goods with real currencies? To force you to spend more without it feeling like you spend more.
-			<br />
-			Take this example; The exchange rate for Coins in game is 1000 coins = 10 USD. A skins costs 1800
-			coins. So a skin costs 18 USD, right? Except you can only buy these Coins in set values, 1000 Coins,
-			2000 coins, 5000 coins. You're forced to spend 20 USD even though 18 USD would be enough. This
-			goes a step further when skins go on "sale". For this week only the skin costs 1200 Coins instead
-			of 1800! You can still only obtain 1200 Coins by spending 20 USD, the same amount as before the
-			sale.
+			<p>
+				<strong>Premium Currency</strong>: Premium currencies are virtual currencies you buy with real money, which are then used to buy virtual goods. For example, rather than buying a new look for your character for 15 USD, instead you need to purchase 1500 of a virtual currency. However, in many games you might not simply be able to buy 1500 currency. The only option is to purchase bundles that come in quantities that do not match the item. You might be able to buy 1100 currency, or 2200 currency, but not the 1500 we need. You end up overspending, leaving you with currency you either will never spend, or will need to hold on for another purchase that also leaves you with leftovers. This currency exists to make you spend more for less.
+			</p>
+			<p>
+				Another reason for these currencies is to disguise how much you are actually paying for something. While 20 USD is easy to compare to other products, 2000 fantasy currency is not. It masks the fact that you are spending real money, making it much easier to continuously spend. This is especially made clear by the fact that games heavily encourage you by purchasing large bundles of currency as they often have a better exchange rate. You might get 1000 currency for 10 USD, but 6000 currency for 50 USD, making it tough to purchase the "cheaper" options as you might feel like you're taking the best deal. Once you've made this initial purchase the price of items is abstracted away and it's less of a mental hurdle to spend it, as the frame of reference is gone.
+			</p>
+			<p>
+				Games often offer a way to earn the premium currency through in-game means that do not require a purchase. But often times this is at such a snail's pace that it makes the purchase feel like a much better option. Why spend months of your time when you could just purchase the thing instead? They intentionally give you breadcrumbs so you have something to compare it to. If you are never given anything you might not have cared to begin with.
+			</p>
+			<p>
+				Additionally, these currencies make it very hard to request refunds, as you have received the thing you purchased (the currency), any purchase you make with the currency itself does not necessarily fall under refund laws.
+			</p>
 		</li>
 
 		<li>
-			<strong>Lootboxes</strong>: You get a box with unknown contents. It could contain a rare cool
-			item, but more likely it contains something you didn't want and will never use. You're given
-			lootboxes for "free" from time to time, giving you a little taste of what they could contain.
-			Did it contain something cool? Great, let's get some more lootboxes for more cool stuff! Did
-			it contain trash? Surely the next one is going to be better? <br />
-			So why not just buy the item directly instead of gambling? Either because you're hoping to save
-			a few bucks, or because you can't. Lootboxes are the only way. Lootboxes prey on gambling highs
-			and try and exploit the same emotions as slot machines.
+			<p>
+				<strong>Lootboxes and Gacha mechanics</strong>: Many games feature purchasable items that grant random items. This can range from cosmetics to gameplay-altering items. This preys on the exact same emotions that gambling does. Not getting the item you want feels bad, but surely the next time you will be more lucky. Getting the item you want feels good, and you might want to go in for more. Often times you end up spending far more than you otherwise would have because the smaller individual purchases of those random grabs mask the actual price. Preying on gambling addictions or tendencies in order to increase profits.
+			</p>
 		</li>
 
 		<li>
-			<strong>XP-Boosts</strong>: Leveling up can be a slow process. Your friends are all high
-			level, and there you are, low level. Either you started playing way after they did, or you
-			simply don't have enough time to put in to the game. <br />
-			Often times XP grinds are intentionally brutal to encourage you to spend money on meaningless boosts.
-			These purchases can also be called "pay for convenience", or more accurately "pay to not be inconvenienced".
+			<p>
+				<strong>Bypassable inconveniences</strong>: Many games require a considerable time investment. That's perfectly fine as long as everyone is on a level playing field. It might be why you play games in the first place, to waste time. Not everyone has the time or will to play these sorts of games, so some games offer ways to bypass this with purchasable items. This could come in the form of XP-Boosts, level skips, and more.
+			</p>
+			<p>
+				Many game mechanics are limited on purpose. You might have limited inventory space, you might only be able to make a certain amount of progress each day, or you might only be able to create a limited amount of characters. That's fine when it's the same for everyone, but some games offer ways to bypass these inconveniences, giving them unfair advantages compared to those who don't pay extra.
+			</p>
+			<p>
+				Keep in mind that these bypasses are not added as a convenience to players. But rather these inconveniences were added in order to sell the convenience. They created the problem but also sell the solution.
+			</p>
 		</li>
 
 		<li>
-			<strong>Bundles</strong>: Bundles are made to look enticing. An item you would want, and it
-			comes with a couple of other things for a good discount? Great deal right? Except that if the
-			bundle didn't exist you probably wouldn't have bought the other items. So why not just buy the
-			item instead of the bundle? It can be for a couple of reasons. Either psychologically you feel
-			like you don't want to miss out on the great deal, or more commonly; it's only available in
-			the bundle. So either spend more or go fuck yourself.
+			<p>
+				<strong>Bundles</strong>: In many games items are not necessarily sold directly, instead you have to purchase them via bundles. These bundles include more than just the item you want, allowing them to raise the price while making it look like you are actually saving money. The bundles often list a discount price compared to purchasing the items individually, but often times you are not even able to purchase them individually, forcing you to pay more than you otherwise would have.
+			</p>
 		</li>
 
 		<li>
-			<strong>Timed-exclusives (artificial scarcity)</strong>: A common practise is to have a
-			daily/weekly revolving in-game shop with discounts and special items only available during
-			that time period. You don't want to miss out on that sale, and you certainly don't want to
-			miss out on that exclusive item that might not return for a long time. <br />
-			Another example are Battle Passes. Battle passes contain an unlock path of virtual items that are
-			only available during a specific time period. <br />
-			Time-exclusives prey on your fear of missing out.
+			<p>
+				<strong>Timed-exclusives (artificial scarcity) and FOMO</strong>: A common practice is to sell items only for a limited amount of time. This might be through daily or weekly rotating shops, or through limited time events. The items might rarely or never return, making it feel like you will miss out if you do not purchase them in time.
+			</p>
+
+			<p>
+				Another example of this is Battle Passes. These are purchasable unlock paths that don't get you anything when you purchase them. Instead, you are given the privilege to unlock items through playing the game, but only if you do it in time. Battle Passes are often time-limited and if you do not finish them in time you do not get what you paid for. But instead of investing time, you could also spend more money to unlock the items directly.
+			</p>
+		</li>
+
+		<li>
+			<p>
+				<strong>Advertisements and Collabs</strong>: A newer practice is "collabs". These are different brands working together to put their brands together. This often comes in the form of characters appearing as characters from a different franchise in an attempt to target fans from both franchises to check out or spend money on each other. Often times these "collabs" blur the line between merging two fandoms and being straight up advertisements. Many collabs fall in between either end, but the existence of this spectrum makes it easy to deceive customers by playing off new products as something made for a fandom, while in reality, it's just an advertisement.
+			</p>
 		</li>
 	</ul>
 
-	These are just a couple of examples, but keep in mind that many games don't contain just some of
-	these, they contain<em>all</em>, and almost always at revolting prices.
-
-	<h2>But they are just cosmetics, who cares?</h2>
-
 	<p>
-		Of course most games only offer cosmetic microtransactions. They don't make you any stronger,
-		they don't give you any advantage. But that's not the point. These monetisation practices prey
-		on every insecurity and addictive quality you have. Gambling, fear of missing out, impulsive
-		buying, and wanting to "fit in". All of these are psychological traits that are exploited to get
-		you to spend all of your money.
+		These are just a handful of examples of common practices. On their own they are bad enough, but it's very common to have not just one of these in a game, but <em>all of them</em>. These practices are specifically targeting exploitable weaknesses in order to get you to spend more money. This is made worse by the fact that these games are often targeting children.
 	</p>
 
 	<p>
-		This is only made worse when you realise that a large portion of the target audience is kids.
+		Many of the practices we see today were unthinkable just a few years ago. Premium Currencies were unique to mobile games, lootboxes were worthy of news articles, advertisements were seen as reasons to write off entire franchises. But nowadays these things are expected, people ask for them, they want more. Developers have played into this fully and instead of delivering meaningful content that takes months or years to produce, they can now produce much lower volumes of content while asking a much higher price. Where we draw the line nowadays will be drastically different from a few years from now. Games are more and more becoming a marketing platform.
+	</p>
+
+	<h2>"But they have to make money somehow!"</h2>
+
+	<p>
+		Games are made for profit, they do have to make money somehow. Modern monetisation is not the way it is because the developers are doing this out of goodwill, instead these practices exist precisely because that's how they can make the most money possible. Games are now designed around that monetisation, with every aspect being carefully planned not to be the most fun, but to be able to monetise it. This was different when games were a single purchase. The game better sell well from the start, otherwise that's it. Now the start is just the start and it's fine if content is half completed and trickled in over time, as that only drives people to stick around for longer and feel the need to spend money in order to support their favorite game.
 	</p>
 
 	<p>
-		Cosmetics can cost very high amounts of money, often times even costing as much as entire full
-		priced games. They do this because they know some people will buy them, and those who can't
-		afford it are left out. Maybe you can't afford it because you're a kid and you don't have an
-		income, or maybe you're from a country where these prices are en entire month of wages. Whatever
-		the case might be, it sucks to miss out on cool thing because you aren't able to afford them.
+		These practices don't exist "to make money", they exist to increase profits, a burden that should not fall upon the customer, and yet it does. Many of these companies are massively profitable, worth hundreds of millions, or perhaps even several billions. These companies have passed the "somehow" bridge and are squarely in the "we want everything" ocean. Greed is killing games, and it's being played off as something that is beneficial to the customer.
+	</p>
+
+	<h2>"Don't like it? Don't buy it!"</h2>
+
+	<p>
+		"Vote with your wallet" is a phrase you will often hear when microtransactions are brought up. And while that's true in theory, in practice voting doesn't work when votes aren't weighed equally. Your stance to purchase nothing is vastly outweighed by the next person who spends double, or perhaps even triple, the average.
 	</p>
 
 	<p>
-		If cosmetics didn't matter skins wouldn't exist, character creation wouldn't exist. Cosmetics
-		allow you to express yourself and give you something to show off other than your skill at the
-		game. Cosmetics are very much part of the enjoyment of the game. Perhaps you reading this don't
-		care, but a lot of people do care.
-	</p>
-
-	<h2>Don't like it? Don't buy it!</h2>
-
-	<p>
-		If you are the type of person to not buy cosmetics items, great, but you aren't the target
-		audience anyway. A great statistic that is very relevant here is the 80-20 rule which states
-		that <strong>80% of outcomes result from 20% of all causes</strong>. In this case that means
-		that 80% of microtransactions are made by 20% of users.
+		These companies practically survive on a small percentage of players making them most of their money. Some of these will be people who can afford it, others cannot but will still spend. Ultimately we all want to buy the shiny new thing, but these companies target those with lower impulse control or those with more spending power, and leave everyone behind because they don't drive profit.
 	</p>
 
 	<p>
-		These companies practically survive on a small percentage of players making them most of their
-		money, these players are also referred to as "Whales". Whales can spend absurd amounts of money,
-		some even thousands per year. Some of these people are rich and can afford it, others are not
-		and are simply bad with their money for various reasons. These companies don't care, they will
-		gladly take your money, no matter your financial position.
-	</p>
-
-	<p>
-		I want to spend money on my favorite games. I want to support them. I don't want them to fade
-		away because the developers can no longer afford to continue working on it. It's just a shame
-		that in many games spending money <em>feels</em> bad. Lootboxes that end in disappointment, purchases
-		that require you to spend countless hours just to get your money's worth, terribly overpriced cosmetics.
-		None of it feels good to spend money on, yet it's all over the place.
-	</p>
-
-	<h2>But they have to make money somehow!</h2>
-
-	<p>
-		Let's start off by saying; Microtransactions are not exclusive to free-to-play games. They are
-		very present in full-priced AAA games (Even in singleplayer only games!). But let's focus on
-		free-to-play games for the sake of this argument.
-	</p>
-
-	<p>
-		Sure, free-to-play games have to make money somehow. But does that have to be through
-		exploitative means? Keep in mind that these games are <strong>not</strong> free-to-play because of
-		the good will of the developers. They didn't choose to go free-to-play because they want everyone
-		to have a chance of playing their game. They choose free-to-play because that's how they can make
-		the most amount of money.
-	</p>
-
-	<p>
-		So what would make an acceptable form of monetisation? Direct purchase (no Premium Currencies),
-		reasonable prices, without artificial scarcity. However this will likely result in less profit,
-		and that's a big nono. It's no longer about what's best for the player, it's about what's best
-		for the company. <br />
+		We all want to experience the game to the fullest, it's a shame we're not allowed to.
 	</p>
 
 	<hr />
@@ -165,24 +114,11 @@
 	</p>
 
 	<p>
-		The goal is not to stop you from purchasing microtransactions. Microtransactions are not evil,
-		they can be great way of supporting further development of a game. By all means, if you enjoy a
-		game and you want to support the developers, buy stuff! But be aware of how much you're spending
-		and what it is you're buying. Is that skin for that weapon you never use really worth it? Is
-		that 60 USD bundle really a good deal? Are lootboxes even fair? <br />
-		Ask yourself questions before purchasing microtransactions and evaluate if the money you're spending
-		justifies the time you've put in to the game.
+		The goal is not to stop you from purchasing anything in games. By all means, if you think a purchase makes you happy and you have the funds for it, please make that purchase! But please evaluate if it truly is that thing you're after, or if you're trying to spend for other reasons. Ask yourself if these practices are truly okay for you. And if they are, that's okay too. You shouldn't feel bad about wanting to purchase anything in games. We all have different views and needs, and sometimes all you want to do is sit down and enjoy the video games, and that's valid.
 	</p>
 
 	<p>
-		Many monetisaion pracices we see today would have been deemed unacceptable 5 years ago. What
-		changed? And better yet, how much worse is it going to get?
-	</p>
-
-	<p>
-		<big
-			>Not all microtransactions are bad, but it is a shame that "micro" is no longer a descriptor.</big
-		>
+		All of this is not to say that games are bad and we're on a downward spiral towards certain doom. Not at all, there are many wonderful experiences out there, but more often than not they come from studios that haven't (yet) given in to their investors. Studios that are, of course, also in it for profit, and would like as much money as possible, and yet they do not sacrifice their product in every way possible. Games are great, greed is not.
 	</p>
 
 	<hr />
@@ -196,18 +132,14 @@
 	<strong>Reading</strong>
 	<ul>
 		<li>
-			<a href="https://psyarxiv.com/cdwhq" target="_blank" rel="noreferrer noopener"
-				>Predatory monetisation? A categorisation of unfair, misleading, and aggressive monetisation
-				techniques in digital games from the perspective of players</a
-			>
+			<a href="https://psyarxiv.com/cdwhq" target="_blank" rel="noreferrer noopener">Predatory monetisation? A categorisation of unfair, misleading, and aggressive monetisation techniques in digital games from the perspective of players</a>
 			- Elena Petrovskaya, David Zendle, University of York
 		</li>
 		<li>
 			<a
 				href="https://www.ftc.gov/system/files/documents/reports/staff-perspective-paper-loot-box-workshop/loot_box_workshop_staff_perspective.pdf"
 				target="_blank"
-				rel="noreferrer noopener">FTC Video Game Loot Box Workshop</a
-			>
+				rel="noreferrer noopener">FTC Video Game Loot Box Workshop</a>
 			- FTC Bureau of Consumer Protection
 		</li>
 	</ul>
@@ -218,35 +150,28 @@
 			<a
 				href="https://www.youtube.com/watch?v=imLjs_HjGGg"
 				target="_blank"
-				rel="noreferrer noopener"
-				>I will now talk about microtransactions for just under 25 minutes</a
-			>
+				rel="noreferrer noopener">I will now talk about microtransactions for just under 25 minutes</a>
 			- TotalBiscuit
 		</li>
 		<li>
 			<a
 				href="https://www.youtube.com/watch?v=YMDGPSWWA18"
 				target="_blank"
-				rel="noreferrer noopener"
-				>I will now talk about Lootboxes and Gambling for just over 40 minutes</a
-			>
+				rel="noreferrer noopener">I will now talk about Lootboxes and Gambling for just over 40 minutes</a>
 			- TotalBiscuit
 		</li>
 		<li>
 			<a
 				href="https://www.youtube.com/watch?v=7E5pcpanOto"
 				target="_blank"
-				rel="noreferrer noopener"
-				>The FALLACY of Video Game Prices and the Complete Evolution of Microtransactions</a
-			>
+				rel="noreferrer noopener">The FALLACY of Video Game Prices and the Complete Evolution of Microtransactions</a>
 			- Upper Echelon Gamers
 		</li>
 		<li>
 			<a
 				href="https://www.youtube.com/watch?v=YLSX4yw6Jzo"
 				target="_blank"
-				rel="noreferrer noopener">The War of The Lootboxes and Microtransactions</a
-			>
+				rel="noreferrer noopener">The War of The Lootboxes and Microtransactions</a>
 			- Upper Echelon Gamers
 		</li>
 	</ul>
@@ -258,15 +183,13 @@
 	<p>
 		Current there is no way to submit new games yourself. This might change in the future but at the
 		moment the moderating overhead would simply be too much work. If you find a game with false
-		categories you can contact Mitsiee#9370 on Discord.
+		categories you can contact Mitsiee on Discord.
 	</p>
 
 	<p>
-		The website is open source and you can contribute on GitHub at <a
-			href="https://github.com/Mitcheljager/mtx/"
+		The website is open source and you can contribute on GitHub at <a	href="https://github.com/Mitcheljager/mtx/"
 			target="_blank"
-			rel="noreferrer noopener">https://github.com/Mitcheljager/mtx/</a
-		>. The website is written using SvelteKit with the database running on Supabase.
+			rel="noreferrer noopener">https://github.com/Mitcheljager/mtx/</a>. The website is written using SvelteKit with the database running on Supabase.
 	</p>
 </article>
 
