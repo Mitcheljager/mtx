@@ -15,9 +15,7 @@
 </article>
 
 <style lang="scss">
-  article {
-    :global(p) {
-      line-height: 1.5em;
-    }
+  article :global(p) {
+    line-height: 1.5em;
   }
 </style>
