@@ -1,11 +1,9 @@
 <footer class="footer">
-	<div>Find me on Discord: Mitsiee#9370</div>
+	<div>Find me on Discord: Mitsiee</div>
 
 	<div>
 		<a href="/privacy">Privacy</a> | Contribute on
-		<a href="https://github.com/Mitcheljager/mtx/" target="_blank" rel="noreferrer noopener"
-			>GitHub</a
-		>
+		<a href="https://github.com/Mitcheljager/mtx/" target="_blank" rel="noreferrer noopener">GitHub</a>
 	</div>
 </footer>
 
