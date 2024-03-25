@@ -1,18 +1,27 @@
 import preprocess from "svelte-preprocess"
 import adapter from "@sveltejs/adapter-auto"
+import { mdsvex } from "mdsvex"
 
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
-	preprocess: preprocess({
-		preserve: ["ld+json"],
-		scss: {
-			includePaths: ["src"],
-			prependData: `
-				@import "src/lib/scss/_variables.scss";
-				@import "src/lib/scss/_mixins.scss";
-			`
-		}
-	}),
+	preprocess: [
+		preprocess({
+			preserve: ["ld+json"],
+			scss: {
+				includePaths: ["src"],
+				prependData: `
+					@import "src/lib/scss/_variables.scss";
+					@import "src/lib/scss/_mixins.scss";
+				`
+			},
+		}),
+		mdsvex({
+      extensions: [".md"],
+      layout: "./src/routes/post.svelte"
+    })
+	],
+
+	extensions: [".svelte", ".md"],
 
 	kit: {
 		// adapter-auto only supports some environments, see https://kit.svelte.dev/docs/adapter-auto for a list.
