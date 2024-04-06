@@ -37,17 +37,18 @@
 
 			<div>
 				<div>
-					<a class="card__title" style="view-transition-name: title-{game.id}" href="/{game.slug}"
-						>{game.title}</a
-					>
+					<a class="card__title" style="view-transition-name: title-{game.id}" href="/{game.slug}" tabindex="-1">
+						{game.title}
+					</a>
 				</div>
 
 				{#if game.publisher}
 					<a
 						on:click={() => ($searchQuery = publisherQuery)}
 						href="/?search={publisherQuery}"
-						class="card__name">{game.publisher}</a
-					>
+						class="card__name">
+						{game.publisher}
+					</a>
 				{/if}
 
 				{#if game.year_of_release}
@@ -73,6 +74,10 @@
 				and {game.categories.length - maxCategories} more...
 			</a>
 		{/if}
+
+		<a class="card__continue button" href="/{game.slug}" tabindex="-1">
+			Read more
+		</a>
 	</div>
 
 	{#if game.image_url}
@@ -158,6 +163,7 @@
 	.card__more {
 		display: inline-block;
 		margin-top: 0.5rem;
+		line-height: 1em;
 		color: var(--text-color-medium);
 		text-decoration: none;
 
@@ -165,6 +171,19 @@
 		&:active,
 		&:focus {
 			color: var(--text-color);
+		}
+	}
+
+	.card__continue {
+		width: 100%;
+		margin-top: 1rem;
+		border-radius: 0.5rem;
+		background: $base-bg;
+		color: var(--text-color-light);
+
+		&:hover {
+			background: var(--content-bg);
+			color: white;
 		}
 	}
 </style>
