@@ -1,16 +1,20 @@
 <script>
 	import { fade } from "svelte/transition"
-	import { onMount } from "svelte"
+	import { page } from "$app/stores"
+	import { goto, afterNavigate } from "$app/navigation"
+	import { browser } from "$app/environment"
 
-	import { currentPage, games, getGames, getGamesBySearch, searchQuery } from "$lib/stores/games"
+	import { currentPage, games, getGames, getGamesBySearch } from "$lib/stores/games"
 
 	let debounce = null
 	let loading = false
+	let value = $page.url.searchParams.get("search")
 
-	$: value = $searchQuery
-	$: if ($searchQuery) getData()
+	$: if (value && browser) getData()
 
-	onMount(getCurrentUrlParam)
+	afterNavigate(() =>{
+		value = $page.url.searchParams.get("search")
+	})
 
 	function getData() {
 		loading = true
@@ -21,7 +25,6 @@
 
 		try {
 			debounce = setTimeout(async () => {
-				$searchQuery = value
 				$currentPage = 0
 
 				let data = null
@@ -42,22 +45,14 @@
 
 	function setUrlParam() {
 		if (!value) {
-			window.history.replaceState({}, "", location.pathname)
+			$page.url.searchParams.delete("search")
+			goto(`/`, { replaceState: true, keepFocus: true })
+
 			return
 		}
 
-		const params = new URLSearchParams(location.search)
-		params.set("search", value)
-
-		params.toString()
-
-		window.history.replaceState({}, "", `${location.pathname}?${params.toString()}`)
-	}
-
-	function getCurrentUrlParam() {
-		const urlParams = new URLSearchParams(window.location.search)
-
-		if (urlParams.has("search")) $searchQuery = urlParams.get("search")
+		$page.url.searchParams.set("search", value)
+		goto(`?${$page.url.searchParams.toString()}`, { replaceState: true, keepFocus: true })
 	}
 </script>
 
@@ -67,11 +62,10 @@
 	placeholder="Search..."
 	autocomplete="off"
 	on:input={getData}
-	bind:value
-/>
+	bind:value />
 
-{#if $searchQuery && !$games.length && !loading}
-	<center in:fade={{ duration: 150 }}><em>No matches were found for your search query</em></center>
+{#if !$games.length && !loading}
+	<center in:fade={{ duration: 150 }}><em>No results were found</em></center>
 {/if}
 
 {#if loading}

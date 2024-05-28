@@ -1,6 +1,5 @@
 <script>
 	import { supabase } from "$lib/db"
-	import { searchQuery } from "$lib/stores/games"
 
 	import Category from "$lib/components/Category.svelte"
 	import Background from "$lib/components/Background.svelte"
@@ -44,7 +43,6 @@
 
 				{#if game.publisher}
 					<a
-						on:click={() => ($searchQuery = publisherQuery)}
 						href="/?search={publisherQuery}"
 						class="card__name">
 						{game.publisher}

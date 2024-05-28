@@ -1,23 +1,11 @@
 <script>
 	import { page } from "$app/stores"
-	import { currentPage, games, getGames, searchQuery } from "$lib/stores/games"
 
 	import github from "$lib/images/github.svg"
-
-	async function refreshIfCurrentPage(event) {
-		let href = event.target.href
-		if (!href) href = event.target.closest("a").href
-
-		if (href != window.location.toString().split("?")[0]) return
-
-		$searchQuery = ""
-		$currentPage = 0
-		$games = await getGames()
-	}
 </script>
 
 <header class="header">
-	<a class="logo" href="/" on:click={refreshIfCurrentPage} aria-label="Macrotransactions logo">
+	<a class="logo" href="/" aria-label="Macrotransactions logo">
 		<mark>M<span class="hidden sm:visible">acro</span></mark>t<span class="hidden sm:visible"
 			>ransactions</span
 		>
@@ -27,9 +15,7 @@
 		<a
 			class="nav__item"
 			class:nav__item--active={$page.path === "/"}
-			href="/"
-			on:click={refreshIfCurrentPage}>Home</a
-		>
+			href="/">Home</a>
 		<a class="nav__item" class:nav__item--active={$page.path === "/about"} href="/about">About</a>
 	</nav>
 

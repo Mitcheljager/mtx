@@ -7,7 +7,6 @@ export const games = writable([])
 export const currentPage = writable(0)
 export const itemsPerPage = readable(36)
 export const reachedEnd = writable(false)
-export const searchQuery = writable("")
 
 const table = "games"
 const select = `

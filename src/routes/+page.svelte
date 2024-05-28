@@ -6,18 +6,17 @@
 		reachedEnd,
 		itemsPerPage
 	} from "$lib/stores/games"
-	import { browser } from '$app/environment'
-	import { page } from '$app/stores'
+	import { browser } from "$app/environment"
+	import { page } from "$app/stores"
 
 	import Game from "$lib/components/Game.svelte"
 	import Search from "$lib/components/Search.svelte"
 
 	export let data
 
-	if (!browser || (browser && !$games?.length)) $games = data.games
-
 	let loadingMore = false
 
+	$: $games = data.games
 	$: $currentPage = data.page || 1
 	$: $reachedEnd = data.games.length < $itemsPerPage
 	$: nextPageHref = `${$page.url.origin}/?page=${$currentPage + 1}`
