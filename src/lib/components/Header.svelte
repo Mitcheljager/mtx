@@ -6,9 +6,7 @@
 
 <header class="header">
 	<a class="logo" href="/" aria-label="Macrotransactions logo">
-		<mark>M<span class="hidden sm:visible">acro</span></mark>t<span class="hidden sm:visible"
-			>ransactions</span
-		>
+		<mark>M<span class="hidden sm:visible">acro</span></mark>t<span class="hidden sm:visible">ransactions</span>
 	</a>
 
 	<nav class="nav">

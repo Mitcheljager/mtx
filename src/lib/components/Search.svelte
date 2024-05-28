@@ -1,7 +1,7 @@
 <script>
 	import { fade } from "svelte/transition"
 	import { page } from "$app/stores"
-	import { goto, afterNavigate } from "$app/navigation"
+	import { replaceState, afterNavigate } from "$app/navigation"
 	import { browser } from "$app/environment"
 
 	import { currentPage, games, getGames, getGamesBySearch } from "$lib/stores/games"
@@ -46,13 +46,13 @@
 	function setUrlParam() {
 		if (!value) {
 			$page.url.searchParams.delete("search")
-			goto(`/`, { replaceState: true, keepFocus: true })
+			replaceState(`/`)
 
 			return
 		}
 
 		$page.url.searchParams.set("search", value)
-		goto(`?${$page.url.searchParams.toString()}`, { replaceState: true, keepFocus: true })
+		replaceState(`?${$page.url.searchParams.toString()}`)
 	}
 </script>
 
