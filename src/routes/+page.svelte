@@ -18,7 +18,7 @@
 
 	let loadingMore = false
 
-	$: $currentPage = data.page || 0
+	$: $currentPage = data.page || 1
 	$: $reachedEnd = data.games.length < $itemsPerPage
 	$: nextPageHref = `${$page.url.origin}/?page=${$currentPage + 1}`
 
