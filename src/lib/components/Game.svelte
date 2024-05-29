@@ -44,6 +44,7 @@
 				{#if game.publisher}
 					<a
 						href="/?search={publisherQuery}"
+						data-sveltekit-reload
 						class="card__name">
 						{game.publisher}
 					</a>
