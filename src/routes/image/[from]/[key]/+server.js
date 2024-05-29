@@ -1,4 +1,4 @@
-import { supabase } from "$lib/db";
+import { supabase } from "$lib/db"
 
 export async function GET({ params }) {
   const { data, error } = await supabase.storage.from(params.from).getPublicUrl(params.key)
