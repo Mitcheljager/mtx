@@ -1,5 +1,6 @@
 <script>
 	import { onMount } from "svelte"
+	import { browser } from "$app/environment"
 
 	import { images } from "$lib/stores/image"
 
@@ -7,7 +8,7 @@
 	export let from
 	export let key
 
-	$: getImage()
+	onMount(getImage)
 
 	async function getImage() {
 		if (key in $images) return
