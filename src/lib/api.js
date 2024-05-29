@@ -6,8 +6,9 @@ export async function api(path, serverFetch = null) {
     if (cachedInStore) return cachedInStore
 
     const response = await (serverFetch || fetch)(`/api/${path}`)
-    const parsed = await response.json()
+    if (!response.ok) throw new Error()
 
+    const parsed = await response.json()
     cache.add(path, parsed)
 
     return parsed
