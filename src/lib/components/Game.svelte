@@ -20,17 +20,14 @@
 				class="card__image"
 				style="view-transition-name: image-{game.id}"
 				href="/{game.slug}"
-				tabindex="-1"
-			>
+				tabindex="-1">
 				{#if game.image_url}
 					<Image
-						{supabase}
 						from="games"
 						key={game.image_url.split("games/")[1]}
 						width={80}
 						height={106}
-						alt={game.title}
-					/>
+						alt={game.title} />
 				{/if}
 			</a>
 

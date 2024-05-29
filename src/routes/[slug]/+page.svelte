@@ -1,6 +1,5 @@
 <script>
 	import { user } from "$lib/stores/session"
-	import { supabase } from "$lib/db"
 
 	import Category from "$lib/components/Category.svelte"
 	import Grade from "$lib/components/Grade.svelte"
@@ -10,19 +9,17 @@
 
 	export let data
 
-	$: ({ game } = data)
+	const defaultMetaDescription = "This page details the monetisation practices in this game and rates it in comparison to other games."
 
-	const defaultMetaDescription =
-		"This page details the monetisation practices in this game and rates it in comparison to other games."
+	$: ({ game } = data)
+	$: ([_, key] = game.image_url.split("games/"))
 </script>
 
 <svelte:head>
 	<title>Macrotransactions | {game.title}</title>
 	<meta
 		name="description"
-		content={`Are there microtransactions in ${game.title}? ` +
-			(game.description || defaultMetaDescription)}
-	/>
+		content="Are there microtransactions in {game.title}? {game.description || defaultMetaDescription}" />
 </svelte:head>
 
 <div class="wrapper">
@@ -33,13 +30,11 @@
 			<div class="image mb-1/4" style="--view-transition-name: image-{game.id}">
 				{#if game.image_url}
 					<Image
-						{supabase}
+						{key}
 						from="games"
-						key={game.image_url.split("games/")[1]}
 						width={160}
 						height={213}
-						alt={game.title}
-					/>
+						alt={game.title} />
 				{/if}
 			</div>
 
@@ -90,14 +85,14 @@
 		</div>
 
 		{#if game.image_url}
-			<Background key={game.image_url.split("games/")[1]} />
+			<Background {key} />
 		{/if}
 	</div>
 </div>
 
 {#if game.image_url}
 	<div class="page-background">
-		<Background key={game.image_url.split("games/")[1]} />
+		<Background {key} />
 	</div>
 {/if}
 

@@ -1,14 +1,17 @@
 <script>
-	import { images } from "$lib/stores/image"
+  import Image from "$lib/components/Image.svelte"
 
 	export let key
-
-	$: image_url = $images[key]
 </script>
 
-{#if image_url}
-	<img src={image_url} loading="lazy" class="background" alt="" role="presentation" />
-{/if}
+<div class="background">
+	<Image
+		from="games"
+		{key}
+		width={80}
+		height={106}
+		alt="" />
+</div>
 
 <style lang="scss">
 	.background {

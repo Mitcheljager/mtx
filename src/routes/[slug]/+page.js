@@ -7,7 +7,6 @@ export async function load({ params, fetch }) {
 
 	try {
 		game = await api(`game/slug/${params.slug}`, fetch)
-		console.log('game', game)
 		if (!game) throw new Error()
 	} catch {
 		throw error(404, { message: "Not found" })
