@@ -13,6 +13,7 @@
 		<a
 			class="nav__item"
 			class:nav__item--active={$page.path === "/"}
+			data-sveltekit-reload
 			href="/">Home</a>
 		<a class="nav__item" class:nav__item--active={$page.path === "/about"} href="/about">About</a>
 	</nav>
