@@ -5,7 +5,7 @@
 </script>
 
 <header class="header">
-	<a class="logo" href="/" aria-label="Macrotransactions logo">
+	<a class="logo" data-sveltekit-reload href="/" aria-label="Macrotransactions logo">
 		<mark>M<span class="hidden sm:visible">acro</span></mark>t<span class="hidden sm:visible">ransactions</span>
 	</a>
 
