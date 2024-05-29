@@ -14,7 +14,8 @@ export async function GET({ params }) {
 
   return new Response(imageBuffer, {
     headers: {
-      "Content-Type": contentType
+      "Content-Type": contentType,
+      "cache-control": 604800
     }
   })
 }
