@@ -1,5 +1,6 @@
 import { supabase } from "$lib/db"
 import { gamesTable } from "$lib/stores/games"
+import { sortedCategories } from "$lib/utils/categories"
 
 export async function GET({ params }) {
   const headers = { "cache-control": `max-age=3600` }
@@ -15,6 +16,8 @@ export async function GET({ params }) {
 		.single()
 
 	if (error) throw new Error(error.message)
+
+  data.categories = sortedCategories(data.categories)
 
   return new Response(JSON.stringify(data), { headers })
 }
