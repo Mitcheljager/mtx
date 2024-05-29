@@ -1,14 +1,15 @@
-import { getGames, getGamesBySearch } from "$lib/stores/games"
+import { api } from "$lib/api"
 
 /** @type {import('./$types').PageLoad} */
-export async function load({ url }) {
+export async function load({ fetch, url }) {
 	const query = url.searchParams.get("search")
 	const page = parseInt(url.searchParams.get("page") || 1)
 
-	const data = query ? await getGamesBySearch(query) : await getGames(page)
+	const path = query ? `search?query=${query}` : `games?page=${page}`
+	const data = await api(path, fetch)
 
 	return {
-		games: data,
+		games: data || [],
 		page,
 	}
 }

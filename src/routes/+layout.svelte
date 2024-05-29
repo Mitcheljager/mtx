@@ -1,7 +1,7 @@
 <script>
-	import { user } from "$lib/stores/session"
+	import { user, userLoaded } from "$lib/stores/session"
 	import { supabase } from "$lib/db"
-	import { onNavigate } from '$app/navigation'
+	import { onNavigate } from "$app/navigation"
 
 	import Header from "$lib/components/Header.svelte"
 	import Footer from "$lib/components/Footer.svelte"
@@ -22,10 +22,12 @@
 	$: async () => {
 		session = { data: { session } } = await supabase.auth.getSession()
 		$user = session?.user
+		$userLoaded = true
 	}
 
 	supabase.auth.onAuthStateChange((_, session) => {
 		$user = session?.user
+		$userLoaded = true
 	})
 </script>
 

@@ -1,9 +1,15 @@
-import { getSitemapData } from "$lib/stores/games"
+import { supabase } from "$lib/db"
+import { gamesTable } from "$lib/stores/games"
 
 export async function GET({ setHeaders }) {
 	const host = "macrotransactions.org"
 
-	const games = await getSitemapData()
+	const { data, error } = await supabase
+		.from(gamesTable)
+		.select("slug")
+		.order("created_at", { ascending: false })
+
+	if (error) throw new Error(error.message)
 
 	setHeaders({
 		"Cache-Control": "max-age=14400",
@@ -33,16 +39,12 @@ export async function GET({ setHeaders }) {
         <priority>0.9</priority>
       </url>
 
-      ${games
-				.map(
-					(game) => `
+      ${data.map((game) => `
         <url>
           <loc>https://${host}/${game.slug}</loc>
           <priority>0.8</priority>
         </url>
-      `
-				)
-				.join("")}
+      `).join("")}
     </urlset>
   `
 

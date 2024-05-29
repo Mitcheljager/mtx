@@ -1,12 +1,13 @@
 import { error } from "@sveltejs/kit"
-import { getGame } from "$lib/stores/games"
+import { api } from "$lib/api"
 
 /** @type {import('./$types').PageLoad} */
-export async function load({ params }) {
+export async function load({ params, fetch }) {
 	let data
 
 	try {
-		data = await getGame("id", params.id)
+		data = await api(`game/id/${params.id}`, fetch)
+		if (!data) throw new Error
 	} catch {
 		throw error(404, { message: "Not found" })
 	}

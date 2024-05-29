@@ -1,14 +1,13 @@
 <script>
-	import { onMount } from "svelte"
-
 	import Form from "$lib/components/Form.svelte"
-	import { user } from "$lib/stores/session"
+	import { user, userLoaded } from "$lib/stores/session"
+	import { goto } from "$app/navigation"
+	import { browser } from "$app/environment"
 
 	export let data
 
-	onMount(() => { if (!$user) goto("/login") })
-
 	$: ({ game } = data)
+	$: if (browser && $userLoaded && !$user) goto("/login")
 </script>
 
 <div class="wrapper">

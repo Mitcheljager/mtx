@@ -2,21 +2,19 @@
 	import { fade } from "svelte/transition"
 	import { page } from "$app/stores"
 	import { replaceState, afterNavigate } from "$app/navigation"
-	import { browser } from "$app/environment"
 
-	import { currentPage, games, getGames, getGamesBySearch } from "$lib/stores/games"
+	import { currentPage, games } from "$lib/stores/games"
+	import { api } from "$lib/api"
 
 	let debounce = null
 	let loading = false
 	let value = $page.url.searchParams.get("search")
 
-	$: if (value && browser) getData()
-
 	afterNavigate(() =>{
 		value = $page.url.searchParams.get("search")
 	})
 
-	function getData() {
+	function search() {
 		loading = true
 
 		$games = []
@@ -25,17 +23,13 @@
 
 		try {
 			debounce = setTimeout(async () => {
-				$currentPage = 0
+				$currentPage = 1
 
-				let data = null
-
-				if (value) data = await getGamesBySearch(value)
-				if (!value) data = await getGames()
-
-				$games = data
+				const path = value ? `search?query=${value}` : "games"
+				const data = await api(path)
 
 				loading = false
-
+				$games = data
 				setUrlParam()
 			}, 500)
 		} catch (error) {
@@ -61,7 +55,7 @@
 	type="text"
 	placeholder="Search..."
 	autocomplete="off"
-	on:input={getData}
+	on:input={search}
 	bind:value />
 
 {#if !$games.length && !loading}

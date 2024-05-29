@@ -1,12 +1,11 @@
 <script>
 	import {
-		getGames,
 		games,
 		currentPage,
 		reachedEnd,
 		itemsPerPage
 	} from "$lib/stores/games"
-	import { browser } from "$app/environment"
+	import { api } from "$lib/api"
 	import { page } from "$app/stores"
 
 	import Game from "$lib/components/Game.svelte"
@@ -14,33 +13,30 @@
 
 	export let data
 
-	let loadingMore = false
+	let loading = false
 
 	$: $games = data.games
 	$: $currentPage = data.page || 1
-	$: $reachedEnd = data.games.length < $itemsPerPage
+	$: $reachedEnd = data.games.length < itemsPerPage
 	$: nextPageHref = `${$page.url.origin}/?page=${$currentPage + 1}`
 
-	async function getData() {
+	async function getNextPage() {
 		let data
 
+		loading = true
+
 		try {
-			data = await getGames($currentPage)
+			data = await api(`games?page=${$currentPage + 1}`)
+
+			$currentPage += 1
+			$reachedEnd = data.length < itemsPerPage
 		} catch (error) {
 			throw new Error(error.message)
+		} finally {
+			loading = false
 		}
 
 		$games = [...$games, ...data]
-	}
-
-	async function getNextPage() {
-		$currentPage += 1
-
-		loadingMore = true
-
-		await getData()
-
-		loadingMore = false
 	}
 </script>
 
@@ -82,13 +78,13 @@
 		<a
 			href={nextPageHref}
 			class="button button--large"
-			class:button--primary={!loadingMore}
+			class:button--primary={!loading}
 			data-sveltekit-preload-data="off"
 			on:click|preventDefault={getNextPage}
-			disabled={loadingMore || null}
-			aria-busy={loadingMore}
+			disabled={loading || null}
+			aria-busy={loading}
 		>
-			{loadingMore ? "Loading..." : "Load more"}
+			{loading ? "Loading..." : "Load more"}
 	</a>
 	</div>
 {/if}
