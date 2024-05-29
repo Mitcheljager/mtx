@@ -1,6 +1,6 @@
 import { supabase } from "$lib/db"
 import { gamesSelect, gamesTable, itemsPerPage } from "$lib/stores/games"
-import { sortedCategories } from "$lib/stores/categories"
+import { sortedCategories } from "$lib/utils/categories"
 
 export async function GET({ url }) {
   const headers = { "cache-control": `max-age=3600` }
