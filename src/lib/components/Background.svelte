@@ -26,6 +26,7 @@
 		filter: blur(50px);
 		mask-image: $mask;
 		-webkit-mask-image: $mask;
+		overflow: hidden;
 
 		@media (prefers-reduced-motion) {
 			display: none;
@@ -33,6 +34,11 @@
 
 		@include safari() {
 			display: none;
+		}
+
+		:global(img) {
+			width: 100%;
+			height: auto;
 		}
 	}
 </style>
