@@ -21,22 +21,22 @@
 	$: nextPageHref = `${$page.url.origin}/?page=${$currentPage + 1}`
 
 	async function getNextPage() {
-		let data
+		let response
 
 		loading = true
 
 		try {
-			data = await api(`games?page=${$currentPage + 1}`)
+			response = await api(`games?page=${$currentPage + 1}`)
 
 			$currentPage += 1
-			$reachedEnd = data.length < itemsPerPage
+			$reachedEnd = response.length < itemsPerPage
 		} catch (error) {
 			throw new Error(error.message)
 		} finally {
 			loading = false
 		}
 
-		$games = [...$games, ...data]
+		$games = [...$games, ...response]
 	}
 </script>
 
