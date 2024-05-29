@@ -17,7 +17,7 @@
 
 	$: $games = data.games
 	$: $currentPage = data.page || 1
-	$: $reachedEnd = data.games.length < itemsPerPage
+	$: $reachedEnd = data.reachedEnd || data.games.length < itemsPerPage
 	$: nextPageHref = `${$page.url.origin}/?page=${$currentPage + 1}`
 
 	async function getNextPage() {
