@@ -1,13 +1,13 @@
 import { browser } from "$app/environment"
 import { api } from "$lib/api"
 import { get } from "svelte/store"
-import { games, currentPage, reachedEnd, query as queryStore } from "$lib/stores/games"
+import { games, currentPage, reachedEnd } from "$lib/stores/games"
 
 /** @type {import('./$types').PageLoad} */
 export async function load({ fetch, url, depends }) {
 	depends("games")
 
-	const query = browser && get(queryStore) ? get(queryStore) : url.searchParams.get("search")
+	const query = url.searchParams.get("search")
 	const page = browser && get(currentPage) ? get(currentPage) : parseInt(url.searchParams.get("page") || 1)
 
 	const path = query ? `search?query=${query}` : `games?page=${page}`

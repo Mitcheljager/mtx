@@ -1,15 +1,13 @@
 <script>
 	import { fade } from "svelte/transition"
 	import { page } from "$app/stores"
-	import { replaceState, afterNavigate, invalidate } from "$app/navigation"
+	import { goto, afterNavigate, invalidate } from "$app/navigation"
 
-	import { currentPage, games, query } from "$lib/stores/games"
+	import { currentPage, games } from "$lib/stores/games"
 
 	let debounce = null
 	let loading = false
 	let value = $page.url.searchParams.get("search")
-
-	$: if (loading && $games.length) loading = false
 
 	afterNavigate(() =>{
 		value = $page.url.searchParams.get("search")
@@ -19,33 +17,32 @@
 		loading = true
 
 		$games = []
+		$currentPage = 1
 
 		clearTimeout(debounce)
 
 		try {
 			debounce = setTimeout(async () => {
-				$currentPage = 1
-				$query = value
-
-				setUrlParam()
-
+				await navigate()
 				invalidate("games")
+
+				loading = false
 			}, 200)
 		} catch (error) {
 			alert("Something went wrong!")
 		}
 	}
 
-	function setUrlParam() {
+	async function navigate() {
 		if (!value) {
 			$page.url.searchParams.delete("search")
-			replaceState(`/`)
+			await goto(`/`, { replaceState: true, keepFocus: true })
 
 			return
 		}
 
 		$page.url.searchParams.set("search", value)
-		replaceState(`?${$page.url.searchParams.toString()}`)
+		await goto(`?${$page.url.searchParams.toString()}`, { replaceState: true, keepFocus: true })
 	}
 </script>
 
