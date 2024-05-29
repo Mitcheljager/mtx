@@ -1,14 +1,15 @@
 <script>
 	import { fade } from "svelte/transition"
 	import { page } from "$app/stores"
-	import { replaceState, afterNavigate } from "$app/navigation"
+	import { replaceState, afterNavigate, invalidate } from "$app/navigation"
 
-	import { currentPage, games } from "$lib/stores/games"
-	import { api } from "$lib/api"
+	import { currentPage, games, query } from "$lib/stores/games"
 
 	let debounce = null
 	let loading = false
 	let value = $page.url.searchParams.get("search")
+
+	$: if (loading && $games.length) loading = false
 
 	afterNavigate(() =>{
 		value = $page.url.searchParams.get("search")
@@ -24,14 +25,12 @@
 		try {
 			debounce = setTimeout(async () => {
 				$currentPage = 1
+				$query = value
 
-				const path = value ? `search?query=${value}` : "games"
-				const data = await api(path)
-
-				loading = false
-				$games = data
 				setUrlParam()
-			}, 500)
+
+				invalidate("games")
+			}, 200)
 		} catch (error) {
 			alert("Something went wrong!")
 		}
