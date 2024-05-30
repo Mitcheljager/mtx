@@ -21,7 +21,7 @@
 
     paragraphs.forEach(paragraph => {
       if (/<[^>]+>/.test(paragraph)) result += paragraph.trim()
-      else result += `<p>${paragraph.trim()}</p>`
+      else result += `<p>${paragraph.replaceAll(/\n/g, "<br>").trim()}</p>`
     })
 
     return result
