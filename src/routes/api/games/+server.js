@@ -3,8 +3,6 @@ import { gamesSelect, gamesTable, itemsPerPage } from "$lib/stores/games"
 import { sortedCategories } from "$lib/utils/categories"
 
 export async function GET({ url }) {
-  const headers = { "cache-control": `max-age=3600` }
-
   const page = url.searchParams.get("page") || 1
 
   const startOfRange = (page - 1) * itemsPerPage
@@ -20,5 +18,5 @@ export async function GET({ url }) {
 
 	data.forEach((game) => (game.categories = sortedCategories(game.categories)))
 
-  return new Response(JSON.stringify(data), { headers })
+  return new Response(JSON.stringify(data))
 }

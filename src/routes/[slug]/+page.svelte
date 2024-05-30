@@ -17,7 +17,7 @@
 
 	function parseDescription(description) {
     const paragraphs = description.split(/\n\s*\n/)
-    let result = ''
+    let result = ""
 
     paragraphs.forEach(paragraph => {
       if (/<[^>]+>/.test(paragraph)) result += paragraph.trim()
