@@ -13,6 +13,19 @@
 
 	$: ({ game } = data)
 	$: ([_, key] = game.image_url.split("games/"))
+	$: description = parseDescription(game.description)
+
+	function parseDescription(description) {
+    const paragraphs = description.split(/\n\s*\n/)
+    let result = ''
+
+    paragraphs.forEach(paragraph => {
+      if (/<[^>]+>/.test(paragraph)) result += paragraph.trim()
+      else result += `<p>${paragraph.trim()}</p>`
+    })
+
+    return result
+  }
 </script>
 
 <svelte:head>
@@ -70,9 +83,9 @@
 			<h3>Microtransactions in <em>{game.title}</em> are summarized as...</h3>
 
 			{#if game.description}
-				<p class="description">
-					{@html game.description.replace(/\n/g, "<br>")}
-				</p>
+				<div class="description">
+					{@html description}
+				</div>
 			{/if}
 
 			{#if game.categories}
@@ -208,6 +221,12 @@
 	.description {
 		margin: 0 0 1.5rem;
 		line-height: 1.5em;
+
+		:global(h2),
+		:global(h3),
+		:global(h4) {
+			margin: 1rem 0 0;
+		}
 	}
 
 	.page-background :global(.background) {
