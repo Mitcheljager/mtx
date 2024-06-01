@@ -16,6 +16,8 @@
 	$: description = parseDescription(game.description)
 
 	function parseDescription(description) {
+		if (!description) return ""
+
     const paragraphs = description.split(/\n\s*\n/)
     let result = ""
 
