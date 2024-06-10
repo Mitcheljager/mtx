@@ -27,7 +27,7 @@
 				invalidate("games")
 
 				loading = false
-			}, 200)
+			}, 500)
 		} catch (error) {
 			alert("Something went wrong!")
 		}
