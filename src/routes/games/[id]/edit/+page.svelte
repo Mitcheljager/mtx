@@ -1,6 +1,4 @@
 <script>
-	import { run } from 'svelte/legacy';
-
 	import Form from "$lib/components/Form.svelte"
 	import { user, userLoaded } from "$lib/stores/session"
 	import { goto } from "$app/navigation"
