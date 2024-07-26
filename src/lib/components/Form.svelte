@@ -4,16 +4,17 @@
 
 	import ImageUpload from "$lib/components/ImageUpload.svelte"
 
-	export let game
+	/** @type {{game: object}} */
+	let { game } = $props();
 
-	let submit = false
-	let title
-	let description
-	let publisher
-	let year_of_release
-	let image_url
-	let slug
-	let tentative
+	let submit = $state(false)
+	let title = $state("")
+	let description = $state("")
+	let publisher = $state("")
+	let year_of_release = $state("")
+	let image_url = $state("")
+	let slug = $state("")
+	let tentative = $state(false)
 
 	onMount(() => {
 		if (game) setData()
@@ -70,7 +71,10 @@
 	}
 </script>
 
-<form class="block" on:submit|preventDefault={() => (submit = true)}>
+<form class="block" onsubmit={(event) => {
+	event.preventDefault();
+	submit = true
+}}>
 	{#if !submit}
 		<label class="form-label mt-0" for="title">Title</label>
 		<input
@@ -79,7 +83,7 @@
 			name="title"
 			required
 			bind:value={title}
-			on:change={() => (slug = title.replace(/[^a-z0-9]/gi, "-").toLowerCase())}
+			onchange={() => (slug = title.replace(/[^a-z0-9]/gi, "-").toLowerCase())}
 		/>
 		<p class="help">The name of the game. Full name, no abbreviations.</p>
 
@@ -92,7 +96,7 @@
 		<input class="form-checkbox" type="checkbox" name="tentative" bind:checked={tentative} />
 
 		<label class="form-label" for="description">Description</label>
-		<textarea class="form-input" type="text" name="description" rows="5" bind:value={description} />
+		<textarea class="form-input" type="text" name="description" rows="5" bind:value={description}></textarea>
 		<p class="help">
 			Short description of how microtransactions affect this game. Supports HTML, newlines are
 			automatically inserted.
@@ -118,7 +122,7 @@
 		/>
 		<p class="help">The year the game initially released.</p>
 
-		<ImageUpload on:upload={(event) => (image_url = event.detail.image.fullPath)} />
+		<ImageUpload onComplete={(image) => (image_url = image.fullPath)} />
 
 		<input
 			class="button button--primary button--block button--large mt-1/2"

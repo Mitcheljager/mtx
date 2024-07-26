@@ -2,12 +2,11 @@
 	import { fade } from "svelte/transition"
 	import { page } from "$app/stores"
 	import { goto, afterNavigate, invalidate } from "$app/navigation"
-
 	import { currentPage, games } from "$lib/stores/games"
 
 	let debounce = null
-	let loading = false
-	let value = $page.url.searchParams.get("search")
+	let loading = $state(false)
+	let value = $state($page.url.searchParams.get("search"))
 
 	afterNavigate(() =>{
 		value = $page.url.searchParams.get("search")
@@ -51,7 +50,7 @@
 	type="text"
 	placeholder="Search..."
 	autocomplete="off"
-	on:input={search}
+	oninput={search}
 	bind:value />
 
 {#if !$games.length && !loading}

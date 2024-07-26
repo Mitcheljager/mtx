@@ -1,13 +1,12 @@
 <script>
-	import { supabase } from "$lib/db"
-
 	import Category from "$lib/components/Category.svelte"
 	import Background from "$lib/components/Background.svelte"
 	import Grade from "$lib/components/Grade.svelte"
 	import Tentative from "$lib/components/Tentative.svelte"
 	import Image from "$lib/components/Image.svelte"
 
-	export let game
+	/** @type {{game: object}} */
+	let { game } = $props();
 
 	const maxCategories = 10
 	const publisherQuery = game.publisher?.replace(/[.,]/g, " ")

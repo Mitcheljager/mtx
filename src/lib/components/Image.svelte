@@ -1,7 +1,7 @@
 <script>
-	export let from
-	export let key
+	/** @type {{Record<string, any>}} */
+	let { from, key, ...rest } = $props();
 </script>
 
-<!-- svelte-ignore a11y-missing-attribute -->
-<img loading="lazy" src="/image/{from}/{key}" {...$$restProps} />
+<!-- svelte-ignore a11y_missing_attribute -->
+<img loading="lazy" src="/image/{from}/{key}" {...rest} />

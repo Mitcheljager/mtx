@@ -1,13 +1,8 @@
 <script>
-	import { createEventDispatcher } from "svelte"
-
 	import { uploadImage } from "$lib/db"
 
-	export let height = 213
-	export let width = 160
-	export let src = ""
-
-	const dispatch = createEventDispatcher()
+	/** @type {{height?: number, width?: number, src?: string, onComplete?: function}} */
+	let { height = 213, width = 160, src = $bindable(""), onComplete = (image) => image } = $props();
 
 	let file
 
@@ -104,7 +99,7 @@
 	async function upload(blob, filename) {
 		try {
 			const image = await uploadImage(blob, filename)
-			dispatch("upload", { image })
+			onComplete(image)
 		} catch (error) {
 			console.log(error)
 			alert(error.message)
@@ -121,7 +116,7 @@
 <label class="button {src ? 'mt-1/4' : 'mt-1/2'}">
 	{src ? "Change" : "Upload"} image
 
-	<input type="file" on:change={input} />
+	<input type="file" onchange={input} />
 </label>
 
 <style lang="scss">

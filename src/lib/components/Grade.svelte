@@ -2,11 +2,11 @@
 	import { fade } from "svelte/transition"
 	import { Grade } from "$lib/enums"
 
-	export let categories
-	export let size = "small"
+	/** @type {{categories: array, size?: string}} */
+	let { categories, size = "small" } = $props();
 
-	let gradeElement
-	let showTooltip = false
+	let gradeElement = $state(null)
+	let showTooltip = $state(false)
 
 	const grade = categoriesToScore()
 
@@ -27,15 +27,15 @@
 	}
 </script>
 
-<svelte:window on:click={outsideClick} />
+<svelte:window onclick={outsideClick} />
 
 <button
 	class="grade grade--{grade.letter}"
 	class:grade--large={size == "large"}
 	bind:this={gradeElement}
-	on:mouseenter={() => (showTooltip = true)}
-	on:mouseleave={() => (showTooltip = false)}
-	on:click={() => (showTooltip = !showTooltip)}
+	onmouseenter={() => (showTooltip = true)}
+	onmouseleave={() => (showTooltip = false)}
+	onclick={() => (showTooltip = !showTooltip)}
 >
 	{#if size == "large"}
 		<small>Grade</small>

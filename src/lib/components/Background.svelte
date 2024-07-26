@@ -1,7 +1,8 @@
 <script>
   import Image from "$lib/components/Image.svelte"
 
-	export let key
+	/** @type {{key: string}} */
+	let { key } = $props();
 </script>
 
 <div class="background">
