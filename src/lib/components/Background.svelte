@@ -2,7 +2,7 @@
   import Image from "$lib/components/Image.svelte"
 
 	/** @type {{key: string}} */
-	let { key } = $props();
+	let { key } = $props()
 </script>
 
 <div class="background">

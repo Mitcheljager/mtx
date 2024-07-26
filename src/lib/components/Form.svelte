@@ -5,7 +5,7 @@
 	import ImageUpload from "$lib/components/ImageUpload.svelte"
 
 	/** @type {{game: object}} */
-	let { game } = $props();
+	let { game } = $props()
 
 	let submit = $state(false)
 	let title = $state("")

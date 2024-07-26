@@ -1,6 +1,6 @@
 <script>
 	/** @type {{key: object}} */
-	let { category } = $props();
+	let { category } = $props()
 
 	function categoryTypeIcon(type) {
 		if (type == "positive") return "👍"
