@@ -71,10 +71,10 @@
 
 		{#await getCategories()}
 			Loading categories...
-		{:then data}
+		{:then}
 			{#each categories as category (category.id)}
 				<div class="item" animate:flip={{ duration: 200 }}>
-					<div class="add button" onclick={() => removeCategory(category)}>-</div>
+					<button class="add button" onclick={() => removeCategory(category)}>-</button>
 
 					<div>
 						<Category {category} />
@@ -83,10 +83,7 @@
 			{/each}
 
 			{#if categories.length == 0}
-				<em
-					>You've not yet added any categories. Select categories from below to add them to this
-					game.</em
-				>
+				<em>You've not yet added any categories. Select categories from below to add them to thisgame.</em>
 			{/if}
 		{:catch error}
 			<p>Something went wrong while fetching the data:</p>
@@ -102,7 +99,7 @@
 		{:then}
 			{#each availableCategories as category (category.id)}
 				<div class="item" animate:flip={{ duration: 200 }}>
-					<div class="add button" onclick={() => addCategory(category)}>+</div>
+					<button class="add button" onclick={() => addCategory(category)}>+</button>
 
 					<div>
 						<Category {category} />
