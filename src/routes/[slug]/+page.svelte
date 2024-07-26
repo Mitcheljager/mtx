@@ -7,13 +7,14 @@
 	import Tentative from "$lib/components/Tentative.svelte"
 	import Image from "$lib/components/Image.svelte"
 
-	export let data
+	/** @type {{data: any}} */
+	let { data } = $props()
 
 	const defaultMetaDescription = "This page details the monetisation practices in this game and rates it in comparison to other games."
 
-	$: ({ game } = data)
-	$: ([_, key] = game.image_url.split("games/"))
-	$: description = parseDescription(game.description)
+	let { game } = $derived(data)
+	let [_, key] = $derived(game.image_url.split("games/"))
+	let description = $derived(parseDescription(game.description))
 
 	function parseDescription(description) {
 		if (!description) return ""
@@ -110,6 +111,8 @@
 		<Background {key} />
 	</div>
 {/if}
+
+
 
 <style lang="scss">
 	$breakpoint: 640px;

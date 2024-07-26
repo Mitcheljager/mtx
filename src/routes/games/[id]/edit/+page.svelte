@@ -1,13 +1,19 @@
 <script>
+	import { run } from 'svelte/legacy';
+
 	import Form from "$lib/components/Form.svelte"
 	import { user, userLoaded } from "$lib/stores/session"
 	import { goto } from "$app/navigation"
 	import { browser } from "$app/environment"
 
-	export let data
+	/** @type {{data: any}} */
+	let { data } = $props()
 
-	$: ({ game } = data)
-	$: if (browser && $userLoaded && !$user) goto("/login")
+	let { game } = $derived(data)
+
+	$effect.pre(() => {
+		if (browser && $userLoaded && !$user) goto("/login")
+	})
 </script>
 
 <div class="wrapper">

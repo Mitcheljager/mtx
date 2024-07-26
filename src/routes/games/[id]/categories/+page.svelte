@@ -10,10 +10,10 @@
 
 	const { id } = $page.params
 
-	let categories = []
-	let allCategories = []
+	let categories = $state([])
+	let allCategories = $state([])
 
-	$: availableCategories = allCategories.filter((c) => !categories.some((i) => i.id == c.id))
+	let availableCategories = $derived(allCategories.filter((c) => !categories.some((i) => i.id == c.id)))
 
 	onMount(() => {
 		if (!$user) goto("/login")
@@ -22,12 +22,10 @@
 	async function getCategories() {
 		const { data, error } = await supabase
 			.from("game_category")
-			.select(
-				`
-      game_id, category_id,
-			categories (id, title, type)
-    `
-			)
+			.select(`
+				game_id, category_id,
+				categories (id, title, type)
+			`)
 			.eq("game_id", id)
 
 		if (error) throw new Error(error.message)
@@ -76,7 +74,7 @@
 		{:then data}
 			{#each categories as category (category.id)}
 				<div class="item" animate:flip={{ duration: 200 }}>
-					<div class="add button" on:click={() => removeCategory(category)}>-</div>
+					<div class="add button" onclick={() => removeCategory(category)}>-</div>
 
 					<div>
 						<Category {category} />
@@ -101,10 +99,10 @@
 
 		{#await getAllCategories()}
 			Loading categories...
-		{:then data}
+		{:then}
 			{#each availableCategories as category (category.id)}
 				<div class="item" animate:flip={{ duration: 200 }}>
-					<div class="add button" on:click={() => addCategory(category)}>+</div>
+					<div class="add button" onclick={() => addCategory(category)}>+</div>
 
 					<div>
 						<Category {category} />

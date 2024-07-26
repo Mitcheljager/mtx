@@ -1,9 +1,9 @@
 <script lang="ts">
   import { createCategory } from "$lib/db"
 
-  let submit = false
-  let title
-  let type
+  let submit = $state(false)
+  let title = $state()
+  let type = $state()
 
   async function submitForm() {
     let data
@@ -24,7 +24,10 @@
 <div class="wrapper">
   <h1>Add new category</h1>
 
-  <form class="block" on:submit|preventDefault={() => submit = true}>
+  <form class="block" onsubmit={(event) => {
+    event.preventDefault();
+    submit = true
+  }}>
     {#if !submit}
       <label class="form-label mt-0" for="title">Title</label>
       <input class="form-input" type="text" name="title" required bind:value={title}>
