@@ -41,7 +41,7 @@
 	function setStoresFromData() {
 		$games = data.games
 		$currentPage = data.page || 1
-		$reachedEnd = data.reachedEnd.length < itemsPerPage
+		$reachedEnd = data.games.length < itemsPerPage
 	}
 </script>
 
