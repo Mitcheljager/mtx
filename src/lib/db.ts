@@ -1,4 +1,5 @@
 import { createClient } from "@supabase/supabase-js"
+import type { Game } from "$lib/types/Game"
 
 export const supabase = createClient(
 	// @ts-ignore
@@ -6,7 +7,7 @@ export const supabase = createClient(
 	import.meta.env.VITE_SUPABASE_ANON_KEY
 )
 
-export async function createGame(properties) {
+export async function createGame(properties: Game) {
 	const { data, error } = await supabase.from("games").insert([properties]).select()
 
 	if (error) throw new Error(error.message)
@@ -14,7 +15,7 @@ export async function createGame(properties) {
 	return data
 }
 
-export async function updateGame(properties) {
+export async function updateGame(properties: Game) {
 	const { data, error } = await supabase.from("games").update(properties).eq("id", properties.id).select()
 
 	if (error) throw new Error(error.message)
@@ -22,7 +23,7 @@ export async function updateGame(properties) {
 	return data
 }
 
-export async function createCategory(properties) {
+export async function createCategory(properties: Game) {
 	const { data, error } = await supabase.from("categories").insert([properties]).select()
 
 	if (error) throw new Error(error.message)
@@ -30,7 +31,7 @@ export async function createCategory(properties) {
 	return data
 }
 
-export async function createGameCategory(category_id, game_id) {
+export async function createGameCategory(category_id: string, game_id: string) {
 	const { data, error } = await supabase.from("game_category").insert([{ category_id, game_id }])
 
 	if (error) throw new Error(error.message)
@@ -38,7 +39,7 @@ export async function createGameCategory(category_id, game_id) {
 	return data
 }
 
-export async function destroyGameCategory(category_id, game_id) {
+export async function destroyGameCategory(category_id: string, game_id: string) {
 	const { data, error } = await supabase
 		.from("game_category")
 		.delete()
@@ -49,7 +50,7 @@ export async function destroyGameCategory(category_id, game_id) {
 	return data
 }
 
-export async function uploadImage(file, filename) {
+export async function uploadImage(file: File, filename: string) {
 	const { data, error } = await supabase.storage.from("games").upload(filename, file)
 
 	if (error) throw new Error(error.message)
