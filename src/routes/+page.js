@@ -5,7 +5,7 @@ import { games, currentPage, reachedEnd } from "$lib/stores/games"
 
 /** @type {import('./$types').PageLoad} */
 export async function load({ fetch, url, depends }) {
-	depends("games")
+	depends("games:index")
 
 	const query = url.searchParams.get("search")
 	const page = browser && get(currentPage) ? get(currentPage) : parseInt(url.searchParams.get("page") || 1)

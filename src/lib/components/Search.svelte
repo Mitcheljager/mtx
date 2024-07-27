@@ -23,7 +23,7 @@
 		try {
 			debounce = setTimeout(async () => {
 				await navigate()
-				invalidate("games")
+				invalidate("games:index")
 
 				loading = false
 			}, 500)
