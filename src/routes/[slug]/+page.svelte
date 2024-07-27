@@ -14,9 +14,9 @@
 
 	const defaultMetaDescription = "This page details the monetisation practices in this game and rates it in comparison to other games."
 
-	let { game } = $derived(data)
-	let [_, key] = $derived(game.image_url.split("games/"))
-	let description = $derived(parseDescription(game.description || ""))
+	const { game } = $derived(data)
+	const [_, key] = $derived(game.image_url.split("games/"))
+	const description = $derived(parseDescription(game.description || ""))
 
 	function parseDescription(description: string) : string {
 		if (!description) return ""
