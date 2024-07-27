@@ -1,11 +1,13 @@
-<script>
+<script lang="ts">
 	import Form from "$lib/components/Form.svelte"
 	import { user, userLoaded } from "$lib/stores/session"
 	import { goto } from "$app/navigation"
 	import { browser } from "$app/environment"
+  import type { Game } from "$lib/types/Game"
 
-	/** @type {{data: any}} */
-	const { data } = $props()
+	interface Props { data: { game: Game } }
+
+	const { data } : Props = $props()
 
 	const { game } = $derived(data)
 

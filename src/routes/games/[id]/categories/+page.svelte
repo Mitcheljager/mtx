@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
 	import { onMount } from "svelte"
 	import { flip } from "svelte/animate"
 	import { page } from "$app/stores"
@@ -7,11 +7,12 @@
 	import { user } from "$lib/stores/session"
 	import { supabase, createGameCategory, destroyGameCategory } from "$lib/db"
 	import Category from "$lib/components/Category.svelte"
+	import type { Category as CategoryType } from "$lib/types/Category"
 
 	const { id } = $page.params
 
-	let categories = $state([])
-	let allCategories = $state([])
+	let categories: Array<CategoryType> = $state([])
+	let allCategories: Array<CategoryType> = $state([])
 
 	let availableCategories = $derived(allCategories.filter((c) => !categories.some((i) => i.id == c.id)))
 
@@ -30,7 +31,7 @@
 
 		if (error) throw new Error(error.message)
 
-		categories = data.map((d) => d.categories)
+		categories = data.map((d) => d.categories).flat()
 	}
 
 	async function getAllCategories() {
@@ -44,21 +45,21 @@
 		allCategories = data
 	}
 
-	async function addCategory(category) {
+	async function addCategory(category: CategoryType) {
 		try {
 			categories = [...categories, category]
 			await createGameCategory(category.id, id)
-		} catch (error) {
-			alert(error.message)
+		} catch (error: any) {
+			alert(error?.message)
 		}
 	}
 
-	async function removeCategory(category) {
+	async function removeCategory(category: CategoryType) {
 		try {
 			categories = categories.filter((c) => c.id != category.id)
 			await destroyGameCategory(category.id, id)
-		} catch (error) {
-			alert(error.message)
+		} catch (error: any) {
+			alert(error?.message)
 		}
 	}
 </script>

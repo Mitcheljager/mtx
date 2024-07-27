@@ -10,8 +10,8 @@
 
     try {
       data = await createCategory({ title, type })
-    } catch(error) {
-      throw new Error(error.message)
+    } catch(error: any) {
+      throw new Error(error?.message)
     }
 
     title = ""
@@ -46,7 +46,7 @@
     {:else}
       {#await submitForm()}
         <div class="alert">Sending data...</div>
-      {:then data}
+      {:then}
         <div class="alert alert--success">Success. Your request will be reviewed. <strong>Thank you!</strong></div>
       {:catch error}
         <div class="alert alert--error">Something went wrong while sending the data: <pre>{error}</pre></div>

@@ -5,7 +5,7 @@
 <div class="wrapper">
 	<h1>Add new game</h1>
 
-	<Form game={{ title: "" }} />
+	<Form game={{ title: "", description: "", slug: "", publisher: "", image_url: "", id: "", tentative: false, year_of_release: 0, categories: [] }} />
 </div>
 
 <style lang="scss">

@@ -20,25 +20,25 @@
 
 	let nextPageHref = $derived(`${$page.url.origin}/?page=${$currentPage + 1}`);
 
-	async function getNextPage(event) {
+	async function getNextPage(event: Event) {
 		event.preventDefault()
 
-		let response
+		if (loading) return
 
 		loading = true
 
 		try {
-			response = await api(`games?page=${$currentPage + 1}`)
+			const response = await api(`games?page=${$currentPage + 1}`)
 
 			$currentPage += 1
 			$reachedEnd = response.length < itemsPerPage
+
+			$games = [...$games, ...response]
 		} catch (error: any) {
 			throw new Error(error?.message)
 		} finally {
 			loading = false
 		}
-
-		$games = [...$games, ...response]
 	}
 </script>
 
@@ -83,14 +83,13 @@
 			class:button--primary={!loading}
 			data-sveltekit-preload-data="off"
 			onclick={getNextPage}
-			disabled={loading || null}
 			aria-busy={loading}>
 			{loading ? "Loading..." : "Load more"}
 	</a>
 	</div>
 {/if}
 
-<div class="page-background" />
+<div class="page-background"></div>
 
 <style lang="scss">
 	center {

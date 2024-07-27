@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
 	import { user } from "$lib/stores/session"
 
 	import Category from "$lib/components/Category.svelte"
@@ -6,17 +6,19 @@
 	import Background from "$lib/components/Background.svelte"
 	import Tentative from "$lib/components/Tentative.svelte"
 	import Image from "$lib/components/Image.svelte"
+  import type { Game } from "$lib/types/Game"
 
-	/** @type {{data: any}} */
-	const { data } = $props()
+	interface Props { data: { game: Game } }
+
+	const { data } : Props = $props()
 
 	const defaultMetaDescription = "This page details the monetisation practices in this game and rates it in comparison to other games."
 
 	let { game } = $derived(data)
 	let [_, key] = $derived(game.image_url.split("games/"))
-	let description = $derived(parseDescription(game.description))
+	let description = $derived(parseDescription(game.description || ""))
 
-	function parseDescription(description) {
+	function parseDescription(description: string): string {
 		if (!description) return ""
 
     const paragraphs = description.split(/\n\s*\n/)
