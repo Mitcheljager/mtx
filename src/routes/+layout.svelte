@@ -13,9 +13,11 @@
 	const { children } = $props()
 
 	onNavigate((navigation) => {
+		// @ts-ignore
 		if (!document.startViewTransition) return
 
 		return new Promise((resolve) => {
+			// @ts-ignore
 			document.startViewTransition(async () => {
 				resolve()
 				await navigation.complete
@@ -25,12 +27,12 @@
 
 	onMount(async () => {
 		const { data: { session } } = await supabase.auth.getSession()
-		$user = session?.user
+		$user = session?.user || null
 		$userLoaded = true
 	})
 
 	supabase.auth.onAuthStateChange((_, session) => {
-		$user = session?.user
+		$user = session?.user || null
 		$userLoaded = true
 	})
 </script>
