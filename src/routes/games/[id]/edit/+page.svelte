@@ -5,9 +5,9 @@
 	import { browser } from "$app/environment"
 
 	/** @type {{data: any}} */
-	let { data } = $props()
+	const { data } = $props()
 
-	let { game } = $derived(data)
+	const { game } = $derived(data)
 
 	$effect.pre(() => {
 		if (browser && $userLoaded && !$user) goto("/login")

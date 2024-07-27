@@ -6,7 +6,7 @@
 	import Image from "$lib/components/Image.svelte"
 
 	/** @type {{game: object}} */
-	let { game } = $props()
+	const { game } = $props()
 
 	const maxCategories = 10
 	const publisherQuery = game.publisher?.replace(/[.,]/g, " ")

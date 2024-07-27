@@ -8,7 +8,7 @@
 	import Image from "$lib/components/Image.svelte"
 
 	/** @type {{data: any}} */
-	let { data } = $props()
+	const { data } = $props()
 
 	const defaultMetaDescription = "This page details the monetisation practices in this game and rates it in comparison to other games."
 

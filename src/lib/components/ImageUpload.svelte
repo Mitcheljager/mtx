@@ -2,7 +2,7 @@
 	import { uploadImage } from "$lib/db"
 
 	/** @type {{height?: number, width?: number, src?: string, onComplete?: function}} */
-	let { height = 213, width = 160, src = $bindable(""), onComplete = (image) => image } = $props()
+	const { height = 213, width = 160, src = $bindable(""), onComplete = (image) => image } = $props()
 
 	let file
 

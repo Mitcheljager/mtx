@@ -3,7 +3,7 @@
 	import { Grade } from "$lib/enums"
 
 	/** @type {{categories: array, size?: string}} */
-	let { categories, size = "small" } = $props()
+	const { categories, size = "small" } = $props()
 
 	let gradeElement = $state(null)
 	let showTooltip = $state(false)
