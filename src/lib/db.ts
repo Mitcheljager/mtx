@@ -3,7 +3,6 @@ import type { GameForm } from "$lib/types/Game"
 import type { CreateCategory } from "$lib/types/Category"
 
 export const supabase = createClient(
-	// @ts-ignore
 	import.meta.env.VITE_SUPABASE_URL,
 	import.meta.env.VITE_SUPABASE_ANON_KEY
 )
