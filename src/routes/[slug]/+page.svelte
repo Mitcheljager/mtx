@@ -18,7 +18,7 @@
 	let [_, key] = $derived(game.image_url.split("games/"))
 	let description = $derived(parseDescription(game.description || ""))
 
-	function parseDescription(description: string): string {
+	function parseDescription(description: string) : string {
 		if (!description) return ""
 
     const paragraphs = description.split(/\n\s*\n/)

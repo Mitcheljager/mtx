@@ -13,7 +13,7 @@ export const gamesSelect = `
   id, title, publisher, year_of_release, image_url, slug, tentative,
   categories (id, title, type)`
 
-export async function getSitemapData(): Promise<{ slug: string }[]> {
+export async function getSitemapData() : Promise<{ slug: string }[]> {
 	const { data, error } = await supabase
 		.from(gamesTable)
 		.select("slug")

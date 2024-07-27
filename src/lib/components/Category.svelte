@@ -5,7 +5,7 @@
 
 	const { category } : Props = $props()
 
-	function categoryTypeIcon(type: string): string {
+	function categoryTypeIcon(type: string) : string {
 		if (type == "positive") return "👍"
 		if (type == "negative") return "👎"
 		if (type == "neutral") return "➖"

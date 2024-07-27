@@ -6,14 +6,14 @@
 
 	interface Props { categories: Array<Category>, size?: string }
 
-	const { categories, size = "small" }: Props = $props()
+	const { categories, size = "small" } : Props = $props()
 
 	let gradeElement: HTMLElement | null = $state(null)
 	let showTooltip = $state(false)
 
 	const grade: GradeType = categoriesToScore()
 
-	function categoriesToScore(): GradeType {
+	function categoriesToScore() : GradeType {
 		let score = 10
 
 		const negativeCategories = categories?.filter((c) => c.type === "negative").length
