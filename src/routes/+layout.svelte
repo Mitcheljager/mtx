@@ -7,6 +7,10 @@
 	import Footer from "$lib/components/Footer.svelte"
 
 	import "$lib/scss/app.scss"
+  import { onMount } from "svelte"
+
+	/** @type {{children?: import('svelte').Snippet}} */
+	const { children } = $props()
 
 	onNavigate((navigation) => {
 		if (!document.startViewTransition) return
@@ -19,11 +23,11 @@
 		})
 	})
 
-	$: async () => {
-		session = { data: { session } } = await supabase.auth.getSession()
+	onMount(async () => {
+		const { data: { session } } = await supabase.auth.getSession()
 		$user = session?.user
 		$userLoaded = true
-	}
+	})
 
 	supabase.auth.onAuthStateChange((_, session) => {
 		$user = session?.user
@@ -34,7 +38,7 @@
 <Header />
 
 <main>
-	<slot />
+	{@render children?.()}
 </main>
 
 <Footer />

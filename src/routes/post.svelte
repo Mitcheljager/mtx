@@ -1,6 +1,6 @@
 <script>
-  export let title = ""
-  export let description = ""
+  /** @type {{title?: string, description?: string, children?: import('svelte').Snippet}} */
+  const { title = "", description = "", children } = $props();
 </script>
 
 <svelte:head>
@@ -11,7 +11,7 @@
 <article class="wrapper">
   <h1>{title}</h1>
 
-  <slot />
+  {@render children?.()}
 </article>
 
 <style lang="scss">

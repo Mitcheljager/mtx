@@ -1,26 +1,28 @@
-<script>
-	import {
-		games,
-		currentPage,
-		reachedEnd,
-		itemsPerPage
-	} from "$lib/stores/games"
+<script lang="ts">
+	import { games, currentPage, reachedEnd, itemsPerPage } from "$lib/stores/games"
 	import { api } from "$lib/api"
 	import { page } from "$app/stores"
 
 	import Game from "$lib/components/Game.svelte"
 	import Search from "$lib/components/Search.svelte"
 
-	export let data
+	interface Props { data: any }
 
-	let loading = false
+	const { data } : Props = $props()
 
-	$: $games = data.games
-	$: $currentPage = data.page || 1
-	$: $reachedEnd = data.reachedEnd || data.games.length < itemsPerPage
-	$: nextPageHref = `${$page.url.origin}/?page=${$currentPage + 1}`
+	let loading = $state(false)
 
-	async function getNextPage() {
+	$effect(() => {
+		$games = data.games
+		$currentPage = data.page || 1
+		$reachedEnd = data.reachedEnd || data.games.length < itemsPerPage
+	})
+
+	let nextPageHref = $derived(`${$page.url.origin}/?page=${$currentPage + 1}`);
+
+	async function getNextPage(event) {
+		event.preventDefault()
+
 		let response
 
 		loading = true
@@ -30,8 +32,8 @@
 
 			$currentPage += 1
 			$reachedEnd = response.length < itemsPerPage
-		} catch (error) {
-			throw new Error(error.message)
+		} catch (error: any) {
+			throw new Error(error?.message)
 		} finally {
 			loading = false
 		}
@@ -80,10 +82,9 @@
 			class="button button--large"
 			class:button--primary={!loading}
 			data-sveltekit-preload-data="off"
-			on:click|preventDefault={getNextPage}
+			onclick={getNextPage}
 			disabled={loading || null}
-			aria-busy={loading}
-		>
+			aria-busy={loading}>
 			{loading ? "Loading..." : "Load more"}
 	</a>
 	</div>
