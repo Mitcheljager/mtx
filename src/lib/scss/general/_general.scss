@@ -24,6 +24,7 @@ body {
 	font-size: 16px;
 	font-family: var(--font-family);
 	overflow-x: hidden;
+	overflow-y: scroll;
 
 	@include safari() {
 		display: block;
