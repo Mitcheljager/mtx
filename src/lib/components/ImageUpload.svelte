@@ -1,24 +1,23 @@
-<script>
+<script lang="ts">
 	import { uploadImage } from "$lib/db"
 
-	/** @type {{height?: number, width?: number, src?: string, onComplete?: function}} */
-	const { height = 213, width = 160, src = $bindable(""), onComplete = (image) => image } = $props()
+	interface Props { height?: number, width?: number, src?: string, onComplete: Function }
 
-	let file
+	let { height = 213, width = 160, src = $bindable(""), onComplete = (image: any) => image }: Props = $props()
 
-	function input(event) {
-		file = event.target.files[0]
+	function input(event: Event) {
+		const target = event.target as HTMLInputElement
+		const file: File | null = target.files?.[0] || null
 
-		if (isFileImage()) drawImageOnCanvas()
+		if (file && isFileImage(file)) drawImageOnCanvas(file)
 	}
 
-	function isFileImage() {
-		if (file.type == "image/png" || file.type == "image/jpg" || file.type == "image/jpeg")
-			return true
+	function isFileImage(file: File) {
+		if (file.type == "image/png" || file.type == "image/jpg" || file.type == "image/jpeg") return true
 		return false
 	}
 
-	function drawImageOnCanvas() {
+	function drawImageOnCanvas(file: File) {
 		const reader = new FileReader()
 		reader.readAsDataURL(file)
 
@@ -29,6 +28,8 @@
 			image.onload = () => {
 				const canvas = document.createElement("canvas")
 				const ctx = canvas.getContext("2d")
+
+				if (!ctx) return
 
 				canvas.width = width
 				canvas.height = height
@@ -51,7 +52,7 @@
 				ctx.canvas.toBlob(
 					(blob) => {
 						const filename = Math.random().toString(36).substring(2, 15) + ".jpeg"
-						const renderedImage = new File([blob], filename, {
+						const renderedImage = new File([blob as BlobPart], filename, {
 							type: "image/jpeg",
 							lastModified: Date.now()
 						})
@@ -68,10 +69,10 @@
 	}
 
 	function resizeToFill(
-		contentWidth,
-		contentHeight,
-		containerWidth,
-		containerHeight,
+		contentWidth = 0,
+		contentHeight = 0,
+		containerWidth = 0,
+		containerHeight = 0,
 		offsetLeft = 0.5,
 		offsetTop = 0.5
 	) {
@@ -96,13 +97,13 @@
 		}
 	}
 
-	async function upload(blob, filename) {
+	async function upload(blob: BlobPart, filename: string) {
 		try {
 			const image = await uploadImage(blob, filename)
 			onComplete(image)
-		} catch (error) {
+		} catch (error: any) {
 			console.log(error)
-			alert(error.message)
+			alert(error?.message)
 		}
 	}
 </script>

@@ -1,10 +1,10 @@
-<script>
+<script lang="ts">
 	import { fade } from "svelte/transition"
 	import { page } from "$app/stores"
 	import { goto, afterNavigate, invalidate } from "$app/navigation"
 	import { currentPage, games } from "$lib/stores/games"
 
-	let debounce = null
+	let debounce: ReturnType<typeof setTimeout> | null = null
 	let loading = $state(false)
 	let value = $state($page.url.searchParams.get("search"))
 
@@ -18,7 +18,7 @@
 		$games = []
 		$currentPage = 1
 
-		clearTimeout(debounce)
+		if (debounce) clearTimeout(debounce)
 
 		try {
 			debounce = setTimeout(async () => {

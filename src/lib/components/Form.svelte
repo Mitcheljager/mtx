@@ -1,17 +1,19 @@
-<script>
+<script lang="ts">
 	import { onMount } from "svelte"
 	import { createGame, updateGame } from "$lib/db"
 
 	import ImageUpload from "$lib/components/ImageUpload.svelte"
+  import type { Game } from "$lib/types/Game.d.ts"
 
-	/** @type {{game: object}} */
-	const { game } = $props()
+	interface Props { game: Game }
+
+	const { game } : Props = $props()
 
 	let submit = $state(false)
 	let title = $state("")
 	let description = $state("")
 	let publisher = $state("")
-	let year_of_release = $state("")
+	let year_of_release = $state(0)
 	let image_url = $state("")
 	let slug = $state("")
 	let tentative = $state(false)
@@ -22,12 +24,12 @@
 
 	function setData() {
 		title = game.title
-		description = game.description
+		description = game.description || ""
 		publisher = game.publisher
 		year_of_release = game.year_of_release
 		image_url = game.image_url
 		slug = game.slug
-		tentative = game.tentative
+		tentative = game.tentative || false
 	}
 
 	async function submitForm() {
@@ -56,13 +58,13 @@
 					tentative
 				})
 			}
-		} catch (error) {
-			throw new Error(error.message)
+		} catch (error: any) {
+			throw new Error(error?.message)
 		}
 
 		title = ""
 		publisher = ""
-		year_of_release = ""
+		year_of_release = 0
 		image_url = ""
 		slug = ""
 		tentative = false
@@ -96,7 +98,7 @@
 		<input class="form-checkbox" type="checkbox" name="tentative" bind:checked={tentative} />
 
 		<label class="form-label" for="description">Description</label>
-		<textarea class="form-input" type="text" name="description" rows="5" bind:value={description}></textarea>
+		<textarea class="form-input" name="description" rows="5" bind:value={description}></textarea>
 		<p class="help">
 			Short description of how microtransactions affect this game. Supports HTML, newlines are
 			automatically inserted.
@@ -122,7 +124,7 @@
 		/>
 		<p class="help">The year the game initially released.</p>
 
-		<ImageUpload onComplete={(image) => (image_url = image.fullPath)} />
+		<ImageUpload onComplete={({ fullPath }: { fullPath: string }) => (image_url = fullPath)} />
 
 		<input
 			class="button button--primary button--block button--large mt-1/2"

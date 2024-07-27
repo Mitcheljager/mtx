@@ -1,6 +1,12 @@
-<script>
-	/** @type {{Record<string, any>}} */
-	const { from, key, ...rest } = $props()
+<script lang="ts">
+	import type { HTMLImgAttributes } from "svelte/elements"
+
+	type Props = {
+    from: string,
+		key: string,
+  } & HTMLImgAttributes
+
+	const { from, key, ...rest } : Props = $props()
 </script>
 
 <!-- svelte-ignore a11y_missing_attribute -->

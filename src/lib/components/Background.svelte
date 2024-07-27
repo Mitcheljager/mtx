@@ -1,14 +1,13 @@
-<script>
+<script lang="ts">
   import Image from "$lib/components/Image.svelte"
 
-	/** @type {{key: string}} */
-	const { key } = $props()
+	const { key = "" } = $props()
 </script>
 
 <div class="background">
 	<Image
-		from="games"
 		{key}
+		from="games"
 		width={80}
 		height={106}
 		alt="" />

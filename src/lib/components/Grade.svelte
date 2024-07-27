@@ -1,27 +1,31 @@
-<script>
+<script lang="ts">
 	import { fade } from "svelte/transition"
 	import { Grade } from "$lib/enums"
+  import type { Category } from "$lib/types/Category"
+  import type { Grade as GradeType } from "$lib/types/Grade"
 
-	/** @type {{categories: array, size?: string}} */
-	const { categories, size = "small" } = $props()
+	interface Props { categories: Array<Category>, size?: string }
 
-	let gradeElement = $state(null)
+	const { categories, size = "small" }: Props = $props()
+
+	let gradeElement: HTMLElement | null = $state(null)
 	let showTooltip = $state(false)
 
-	const grade = categoriesToScore()
+	const grade: GradeType = categoriesToScore()
 
-	function categoriesToScore() {
+	function categoriesToScore(): GradeType {
 		let score = 10
 
-		const negativeCategories = categories?.filter((c) => c.type == "negative").length
+		const negativeCategories = categories?.filter((c) => c.type === "negative").length
 
 		score -= negativeCategories
 
 		return Object.values(Grade).filter((g) => Math.max(score, 0) >= g.min_score)[0]
 	}
 
-	function outsideClick(event) {
-		if (event.target == gradeElement || event.target.closest(".grade") == gradeElement) return
+	function outsideClick(event: MouseEvent) {
+		const target = event.target as HTMLElement
+		if (target === gradeElement || target.closest(".grade") === gradeElement) return
 
 		showTooltip = false
 	}
@@ -35,8 +39,7 @@
 	bind:this={gradeElement}
 	onmouseenter={() => (showTooltip = true)}
 	onmouseleave={() => (showTooltip = false)}
-	onclick={() => (showTooltip = !showTooltip)}
->
+	onclick={() => (showTooltip = !showTooltip)}>
 	{#if size == "large"}
 		<small>Grade</small>
 	{/if}

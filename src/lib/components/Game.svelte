@@ -1,12 +1,14 @@
-<script>
+<script lang="ts">
 	import Category from "$lib/components/Category.svelte"
 	import Background from "$lib/components/Background.svelte"
 	import Grade from "$lib/components/Grade.svelte"
 	import Tentative from "$lib/components/Tentative.svelte"
 	import Image from "$lib/components/Image.svelte"
+  import type { Game } from "$lib/types/Game"
 
-	/** @type {{game: object}} */
-	const { game } = $props()
+	interface Props { game: Game }
+
+	const { game } : Props = $props()
 
 	const maxCategories = 10
 	const publisherQuery = game.publisher?.replace(/[.,]/g, " ")

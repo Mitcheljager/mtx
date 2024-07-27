@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
 	import { page } from "$app/stores"
 
 	import github from "$lib/images/github.svg"
@@ -12,10 +12,10 @@
 	<nav class="nav">
 		<a
 			class="nav__item"
-			class:nav__item--active={$page.path === "/"}
+			class:nav__item--active={$page.url.pathname === "/"}
 			data-sveltekit-reload
 			href="/">Home</a>
-		<a class="nav__item" class:nav__item--active={$page.path === "/about"} href="/about">About</a>
+		<a class="nav__item" class:nav__item--active={$page.url.pathname === "/about"} href="/about">About</a>
 	</nav>
 
 	<div class="socials">

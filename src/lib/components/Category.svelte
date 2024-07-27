@@ -1,11 +1,15 @@
-<script>
-	/** @type {{key: object}} */
-	const { category } = $props()
+<script lang="ts">
+  import type { Category } from "$lib/types/Category"
 
-	function categoryTypeIcon(type) {
+	interface Props { category: Category }
+
+	const { category } : Props = $props()
+
+	function categoryTypeIcon(type: string): string {
 		if (type == "positive") return "👍"
 		if (type == "negative") return "👎"
 		if (type == "neutral") return "➖"
+		return ""
 	}
 </script>
 
