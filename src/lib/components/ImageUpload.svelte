@@ -97,7 +97,7 @@
 		}
 	}
 
-	async function upload(blob: BlobPart, filename: string) {
+	async function upload(blob: File, filename: string) {
 		try {
 			const image = await uploadImage(blob, filename)
 			onComplete(image)

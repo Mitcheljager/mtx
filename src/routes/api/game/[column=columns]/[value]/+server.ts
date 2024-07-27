@@ -1,8 +1,9 @@
 import { supabase } from "$lib/db"
 import { gamesTable } from "$lib/stores/games"
 import { sortedCategories } from "$lib/utils/categories"
+import type { RequestEvent } from "./$types"
 
-export async function GET({ params }) {
+export async function GET({ params } : RequestEvent) {
 	const { column, value } = params
 
   const { data, error } = await supabase

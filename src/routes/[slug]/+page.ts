@@ -1,8 +1,8 @@
 import { error } from "@sveltejs/kit"
 import { api } from "$lib/api"
+import type { PageLoad } from './$types'
 
-/** @type {import('./$types').PageLoad} */
-export async function load({ params, fetch }) {
+export const load : PageLoad = async ({ params, fetch }) => {
 	let game
 
 	try {

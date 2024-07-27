@@ -1,5 +1,6 @@
 import { createClient } from "@supabase/supabase-js"
-import type { Game } from "$lib/types/Game"
+import type { GameForm } from "$lib/types/Game"
+import type { CreateCategory } from "$lib/types/Category"
 
 export const supabase = createClient(
 	// @ts-ignore
@@ -7,7 +8,7 @@ export const supabase = createClient(
 	import.meta.env.VITE_SUPABASE_ANON_KEY
 )
 
-export async function createGame(properties: Game) {
+export async function createGame(properties: GameForm) {
 	const { data, error } = await supabase.from("games").insert([properties]).select()
 
 	if (error) throw new Error(error.message)
@@ -15,7 +16,7 @@ export async function createGame(properties: Game) {
 	return data
 }
 
-export async function updateGame(properties: Game) {
+export async function updateGame(properties: GameForm) {
 	const { data, error } = await supabase.from("games").update(properties).eq("id", properties.id).select()
 
 	if (error) throw new Error(error.message)
@@ -23,7 +24,7 @@ export async function updateGame(properties: Game) {
 	return data
 }
 
-export async function createCategory(properties: Game) {
+export async function createCategory(properties: CreateCategory) {
 	const { data, error } = await supabase.from("categories").insert([properties]).select()
 
 	if (error) throw new Error(error.message)

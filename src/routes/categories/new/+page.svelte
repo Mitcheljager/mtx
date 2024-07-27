@@ -2,8 +2,8 @@
   import { createCategory } from "$lib/db"
 
   let submit = $state(false)
-  let title = $state()
-  let type = $state()
+  let title = $state("")
+  let type = $state("")
 
   async function submitForm() {
     let data

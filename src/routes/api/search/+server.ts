@@ -1,8 +1,9 @@
 import { supabase } from "$lib/db"
 import { gamesSelect, gamesTable } from "$lib/stores/games"
 import { sortedCategories } from "$lib/utils/categories"
+import type { RequestEvent } from "./$types"
 
-export async function GET({ url }) {
+export async function GET({ url } : RequestEvent) {
   const headers = { "cache-control": `max-age=3600` }
 
 	const query = url.searchParams.get("query")

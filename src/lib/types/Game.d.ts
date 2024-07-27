@@ -6,8 +6,10 @@ export interface Game {
   slug: string,
   publisher: string,
   image_url: string,
-  categories: Category[],
   tentative: boolean | null,
   year_of_release: number,
+  categories: Category[],
   description?: string,
 }
+
+export type GameForm = Omit<Game, "id" | "categories"> & Partial<Pick<Game, "id">>

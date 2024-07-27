@@ -3,3 +3,5 @@ export interface Category {
   title: string,
   type: string,
 }
+
+export type CreateCategory = Omit<Category, "id">

@@ -2,9 +2,9 @@ import { browser } from "$app/environment"
 import { api } from "$lib/api"
 import { get } from "svelte/store"
 import { games, currentPage, reachedEnd } from "$lib/stores/games"
+import type { PageLoad } from './$types'
 
-/** @type {import('./$types').PageLoad} */
-export async function load({ fetch, url, depends }) {
+export const load : PageLoad = async ({ fetch, url, depends }) => {
 	depends("games:index")
 
 	const query = url.searchParams.get("search")

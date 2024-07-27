@@ -3,9 +3,9 @@
 	import { createGame, updateGame } from "$lib/db"
 
 	import ImageUpload from "$lib/components/ImageUpload.svelte"
-  import type { Game } from "$lib/types/Game.d.ts"
+  import type { GameForm } from "$lib/types/Game.d.ts"
 
-	interface Props { game: Game }
+	interface Props { game: GameForm }
 
 	const { game } : Props = $props()
 
@@ -44,7 +44,7 @@
 					year_of_release,
 					image_url,
 					slug,
-					tentative
+					tentative,
 				})
 			} else {
 				data = await updateGame({

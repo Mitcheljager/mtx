@@ -1,10 +1,10 @@
 import { supabase } from "$lib/db"
+import type { RequestEvent } from "./$types"
 
-export async function GET({ params }) {
-  const { data, error } = await supabase.storage.from(params.from).getPublicUrl(params.key)
-  if (error) return new Response(error.message, { status: 500 })
+export async function GET({ params } : RequestEvent) {
+  const { data } = await supabase.storage.from(params.from).getPublicUrl(params.key)
 
-  if (!data.publicUrl) return new Response("Public URL not found", { status: 404 })
+  if (!data?.publicUrl) return new Response("Public URL not found", { status: 404 })
 
   const response = await fetch(data.publicUrl)
   if (!response.ok) return new Response("Error fetching image", { status: response.status })
@@ -15,7 +15,7 @@ export async function GET({ params }) {
   return new Response(imageBuffer, {
     headers: {
       "Content-Type": contentType,
-      "cache-control": 604800
+      "cache-control": "604800"
     }
   })
 }

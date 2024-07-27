@@ -1,7 +1,8 @@
 import { supabase } from "$lib/db"
 import { gamesTable } from "$lib/stores/games"
+import type { RequestEvent } from "./$types"
 
-export async function GET() {
+export async function GET({} : RequestEvent) {
   const headers = { "cache-control": `max-age=3600` }
 
 	const { data, error } = await supabase
