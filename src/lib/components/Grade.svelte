@@ -4,7 +4,7 @@
   import type { Category } from "$lib/types/Category"
   import type { Grade as GradeType } from "$lib/types/Grade"
 
-	interface Props { categories: Array<Category>, size?: string }
+	interface Props { categories: Category[], size?: string }
 
 	const { categories, size = "small" } : Props = $props()
 

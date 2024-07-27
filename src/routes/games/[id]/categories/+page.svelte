@@ -11,8 +11,8 @@
 
 	const { id } = $page.params
 
-	let categories: Array<CategoryType> = $state([])
-	let allCategories: Array<CategoryType> = $state([])
+	let categories: CategoryType[] = $state([])
+	let allCategories: CategoryType[] = $state([])
 
 	let availableCategories = $derived(allCategories.filter((c) => !categories.some((i) => i.id == c.id)))
 

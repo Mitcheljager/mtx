@@ -6,7 +6,7 @@ export interface Game {
   slug: string,
   publisher: string,
   image_url: string,
-  categories: Array<Category>,
+  categories: Category[],
   tentative: boolean | null,
   year_of_release: number,
   description?: string,
