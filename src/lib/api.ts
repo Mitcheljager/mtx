@@ -1,6 +1,6 @@
 import { cache } from "$lib/stores/cache"
 
-export async function api(path, serverFetch = null) {
+export async function api(path: string, serverFetch = null) : Promise<JSON | null> {
   try {
     const cachedInStore = cache.check(path)
     if (cachedInStore) return cachedInStore
