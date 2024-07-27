@@ -8,7 +8,7 @@ export async function load({ fetch, url, depends }) {
 	depends("games:index")
 
 	const query = url.searchParams.get("search")
-	const page = browser && get(currentPage) ? get(currentPage) : parseInt(url.searchParams.get("page") || 1)
+	const page = browser && get(currentPage) ? get(currentPage) : parseInt(url.searchParams.get("page") || "1")
 
 	const path = query ? `search?query=${query}` : `games?page=${page}`
 	const data = browser && get(games)?.length ? get(games) : await api(path, fetch)

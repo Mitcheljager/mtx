@@ -10,15 +10,12 @@
 
 	const { data } : Props = $props()
 
+	setStoresFromData()
+
+	$effect(setStoresFromData)
+
 	let loading = $state(false)
-
-	$effect(() => {
-		$games = data.games
-		$currentPage = data.page || 1
-		$reachedEnd = data.reachedEnd || data.games.length < itemsPerPage
-	})
-
-	let nextPageHref = $derived(`${$page.url.origin}/?page=${$currentPage + 1}`);
+	let nextPageHref = $derived(`${$page.url.origin}/?page=${$currentPage + 1}`)
 
 	async function getNextPage(event: Event) {
 		event.preventDefault()
@@ -39,6 +36,12 @@
 		} finally {
 			loading = false
 		}
+	}
+
+	function setStoresFromData() {
+		$games = data.games
+		$currentPage = data.page || 1
+		$reachedEnd = data.reachedEnd.length < itemsPerPage
 	}
 </script>
 
