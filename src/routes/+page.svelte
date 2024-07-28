@@ -3,6 +3,7 @@
 	import { api } from "$lib/api"
 	import { page } from "$app/stores"
 
+	import type { Game as GameType } from "$lib/types/Game"
 	import Game from "$lib/components/Game.svelte"
 	import Search from "$lib/components/Search.svelte"
 
@@ -25,7 +26,7 @@
 		loading = true
 
 		try {
-			const response = await api(`games?page=${$currentPage + 1}`)
+			const response = await api<GameType[]>(`games?page=${$currentPage + 1}`)
 
 			$currentPage += 1
 			$reachedEnd = response.length < itemsPerPage

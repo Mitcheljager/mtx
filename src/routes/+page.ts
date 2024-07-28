@@ -3,6 +3,7 @@ import { api } from "$lib/api"
 import { get } from "svelte/store"
 import { games, currentPage, reachedEnd } from "$lib/stores/games"
 import type { PageLoad } from './$types'
+import type { Game } from "$lib/types/Game"
 
 export const load : PageLoad = async ({ fetch, url, depends }) => {
 	depends("games:index")
@@ -11,7 +12,7 @@ export const load : PageLoad = async ({ fetch, url, depends }) => {
 	const page = browser && get(currentPage) ? get(currentPage) : parseInt(url.searchParams.get("page") || "1")
 
 	const path = query ? `search?query=${query}` : `games?page=${page}`
-	const data = browser && get(games)?.length ? get(games) : await api(path, fetch)
+	const data = browser && get(games)?.length ? get(games) : await api<Game[]>(path, fetch)
 
 	return {
 		games: data || [],
