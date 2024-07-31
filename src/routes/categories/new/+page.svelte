@@ -14,9 +14,6 @@
       throw new Error(error?.message)
     }
 
-    title = ""
-    type = ""
-
     return data
   }
 </script>
