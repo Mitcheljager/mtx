@@ -26,6 +26,8 @@ export async function updateGame(properties: GameForm) {
 }
 
 export async function createCategory(properties: CreateCategory) {
+	if (!properties.title) throw new Error("No title was given")
+
 	const { data, error } = await supabase.from("categories").insert([properties]).select()
 
 	if (error) throw new Error(error.message)
