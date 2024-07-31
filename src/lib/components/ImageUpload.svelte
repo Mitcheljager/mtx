@@ -117,7 +117,7 @@
 <label class="button {src ? 'mt-1/4' : 'mt-1/2'}">
 	{src ? "Change" : "Upload"} image
 
-	<input type="file" onchange={input} />
+	<input type="file" onchange={input} accept="image/png, image/jpeg, image/jpg" />
 </label>
 
 <style lang="scss">
