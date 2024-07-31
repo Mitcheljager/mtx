@@ -16,6 +16,8 @@ export async function createGame(properties: GameForm) {
 }
 
 export async function updateGame(properties: GameForm) {
+	if (!properties.slug) throw new Error("No slug was given")
+
 	const { data, error } = await supabase.from("games").update(properties).eq("id", properties.id).select()
 
 	if (error) throw new Error(error.message)

@@ -62,13 +62,6 @@
 			throw new Error(error?.message)
 		}
 
-		title = ""
-		publisher = ""
-		year_of_release = 0
-		image_url = ""
-		slug = ""
-		tentative = false
-
 		return data
 	}
 </script>
