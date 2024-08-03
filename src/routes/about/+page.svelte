@@ -114,11 +114,11 @@
 	</p>
 
 	<p>
-		The goal is not to stop you from purchasing anything in games. By all means, if you think a purchase makes you happy and you have the funds for it, please make that purchase! But please evaluate if it truly is that thing you're after, or if you're trying to spend for other reasons. Ask yourself if these practices are truly okay for you. And if they are, that's okay too. You shouldn't feel bad about wanting to purchase anything in games. We all have different views and needs, and sometimes all you want to do is sit down and enjoy the video games, and that's valid.
+		The goal is not to stop you from purchasing anything in games. By all means, if you think a purchase makes you happy and you have the funds for it, make that purchase! But please evaluate if it truly is that thing you're after, or if you're trying to spend for other reasons. Ask yourself if these practices are truly acceptable to you. And if they are, that's okay too. You shouldn't feel bad about wanting to purchase anything in games. We all have different views and needs, and sometimes all you want to do is sit down and enjoy the video games, and that's valid.
 	</p>
 
 	<p>
-		All of this is not to say that games are bad and we're on a downward spiral towards certain doom. Not at all, there are many wonderful experiences out there, but more often than not they come from studios that haven't (yet) given in to their investors. Studios that are, of course, also in it for profit, and would like as much money as possible, and yet they do not sacrifice their product in every way possible. Games are great, greed is not.
+		All of this is not to say that games are bad and we're on a downward spiral towards certain doom. Not at all, there are many wonderful experiences out there, but more often than not they come from studios that haven't (yet) given in to their investors. Studios that are, of course, also in it for profit, and they would like to earn as much money as they can, yet they do not sacrifice their product in every way possible. Games are great, greed is not.
 	</p>
 
 	<hr />
