@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { page } from "$app/stores"
 	import Category from "$lib/components/Category.svelte"
 	import Background from "$lib/components/Background.svelte"
 	import Grade from "$lib/components/Grade.svelte"
@@ -12,6 +13,15 @@
 
 	const maxCategories = 10
 	const publisherQuery = game.publisher?.replace(/[.,]/g, " ")
+
+	const query = $derived($page.url.searchParams.get("search"))
+	const title = $derived(query ? highlightQueryInString(query, game.title) : game.title)
+	const publisher = $derived(query ? highlightQueryInString(query, game.publisher) : game.publisher)
+
+	function highlightQueryInString(query: string, string: string) {
+    const regex = new RegExp(query, 'gi')
+    return string.replace(regex, (match: string) => `<em>${match}</em>`)
+}
 </script>
 
 <div class="card" style="view-transition-name: card-{game.id}">
@@ -35,16 +45,16 @@
 			<div>
 				<div>
 					<a class="card__title" style="view-transition-name: title-{game.id}" href="/{game.slug}" tabindex="-1">
-						{game.title}
+						{@html title}
 					</a>
 				</div>
 
-				{#if game.publisher}
+				{#if publisher}
 					<a
 						href="/?search={publisherQuery}"
 						data-sveltekit-reload
 						class="card__name">
-						{game.publisher}
+						{@html publisher}
 					</a>
 				{/if}
 
@@ -92,6 +102,11 @@
 		background: var(--bg-dark);
 		box-shadow: var(--shadow-medium);
 		overflow: hidden;
+
+		:global(em) {
+			color: white;
+			background: var(--primary);
+		}
 	}
 
 	.card__content {
