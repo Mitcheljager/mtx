@@ -48,7 +48,7 @@
 <input
 	class="search form-input form-input--large"
 	type="text"
-	placeholder="Search..."
+	placeholder="Search by game or publisher..."
 	autocomplete="off"
 	oninput={search}
 	bind:value />
