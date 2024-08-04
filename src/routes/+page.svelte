@@ -50,17 +50,16 @@
 	<title>Macrotransactions - Highlighting monetisation in popular games</title>
 	<meta
 		name="description"
-		content="Macrotransactions highlights monetisation practices in popular games. Monetisation in games can be unethical, predatory, and exploitative. This website aims to make you aware of those practices."
-	/>
+		content="Macrotransactions highlights monetisation practices in popular games. Monetisation in games can be unethical, predatory, and exploitative. This website aims to make you aware of those practices." />
 </svelte:head>
 
 <center>
 	<h1 aria-label="Macrotransactions"><mark>Macro</mark>transactions</h1>
 
-	<big
-		>Monetisation in games can be <mark>unethical</mark>, <mark>predatory</mark>, and
-		<mark>exploitative</mark>. This website highlights monetisation practices in popular games.</big
-	>
+	<big>
+		Monetisation in games can be <mark>unethical</mark>, <mark>predatory</mark>, and
+		<mark>exploitative</mark>. This website highlights monetisation practices in popular games.
+	</big>
 </center>
 
 <Search />
