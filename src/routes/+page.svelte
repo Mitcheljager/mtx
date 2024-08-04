@@ -73,10 +73,12 @@
 </div>
 
 {#if $reachedEnd}
-	{#if $games?.length}
-		<p class="mt-1/1 mb-1/1">
-			<center>You've reached the end.</center>
-		</p>
+	{#if $games?.length && !loading}
+		<center>
+			<p class="mt-1/1 mb-1/1">
+				You've reached the end.
+			</p>
+		</center>
 	{/if}
 {:else if $games?.length}
 	<div class="tray mt-1/1">
