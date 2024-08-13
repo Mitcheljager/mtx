@@ -34,7 +34,7 @@
 </script>
 
 <svelte:head>
-	<title>Macrotransactions | {game.title}</title>
+	<title>{game.title} | Macrotransactions.org</title>
 	<meta
 		name="description"
 		content="Are there microtransactions in {game.title}? {game.description || defaultMetaDescription}" />
