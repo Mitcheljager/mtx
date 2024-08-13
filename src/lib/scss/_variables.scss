@@ -33,17 +33,23 @@ $text-color: hsl(219, 22%, 77%);
 	--text-color-dark: #{desaturate(darken($text-color, 25%), 10%)};
 	--text-color-light: #{lighten($text-color, 20%)};
 	--text-color-title: var(--primary);
-	--font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial,
-		"Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
-		"Noto Color Emoji";
+	--font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 	--font-family-titles: var(--font-family);
 
 	--max-width: 1400px;
 
-	--shadow-medium: 0 2px 1px rgba(0, 0, 0, 0.1), 0 4px 2px rgba(0, 0, 0, 0.1),
-		0 8px 4px rgba(0, 0, 0, 0.1), 0 16px 8px rgba(0, 0, 0, 0.1), 0 32px 16px rgba(0, 0, 0, 0.1);
+	--shadow-medium:
+		0 2px 1px rgba(0, 0, 0, 0.1),
+		0 4px 2px rgba(0, 0, 0, 0.1),
+		0 8px 4px rgba(0, 0, 0, 0.1),
+		0 16px 8px rgba(0, 0, 0, 0.1),
+		0 32px 16px rgba(0, 0, 0, 0.1);
 
-	--shadow-big: 0 3px 2px rgba(0, 0, 0, 0.1), 0 10px 5px rgba(0, 0, 0, 0.1),
-		0 15px 10px rgba(0, 0, 0, 0.1), 0 25px 15px rgba(0, 0, 0, 0.2), 0 40px 30px rgba(0, 0, 0, 0.2),
+	--shadow-big:
+		0 3px 2px rgba(0, 0, 0, 0.1),
+		0 10px 5px rgba(0, 0, 0, 0.1),
+		0 15px 10px rgba(0, 0, 0, 0.1),
+		0 25px 15px rgba(0, 0, 0, 0.2),
+		0 40px 30px rgba(0, 0, 0, 0.2),
 		0 100px 75px rgba(0, 0, 0, 0.3);
 }
