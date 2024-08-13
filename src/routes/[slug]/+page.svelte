@@ -232,7 +232,14 @@
 		:global(h2),
 		:global(h3),
 		:global(h4) {
-			margin: 1rem 0 0;
+			margin: 1.5rem 0 0;
+		}
+
+		:global(hr) {
+			background: darken($text-color, 50%);
+			height: 1px;
+			border: 0;
+			margin: 1.5rem 0;
 		}
 	}
 
