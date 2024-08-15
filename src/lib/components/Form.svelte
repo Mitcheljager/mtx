@@ -86,7 +86,7 @@
 		<input class="form-input" type="text" name="slug" required bind:value={slug} />
 		<p class="help">How the name will appear in the browser URL bar. Should be unique.</p>
 
-		<label class="form-label" for="title">Tentative</label>
+		<label class="form-label" for="tentative">Tentative</label>
 		<p class="help">Check if the game is not yet released and not all details are known.</p>
 		<input class="form-checkbox" type="checkbox" name="tentative" bind:checked={tentative} />
 

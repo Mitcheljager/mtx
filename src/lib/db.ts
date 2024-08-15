@@ -61,3 +61,11 @@ export async function uploadImage(file: File, filename: string) {
 
 	return data
 }
+
+export async function createRequest({ title = "", description = "" } = {}) {
+	const { data, error } = await supabase.from("requests").insert([{ title, description }])
+
+	if (error) throw new Error(error.message)
+
+	return data
+}

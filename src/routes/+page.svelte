@@ -75,9 +75,11 @@
 {#if $reachedEnd}
 	{#if $games?.length && !loading}
 		<center>
-			<p class="mt-1/1 mb-1/1">
-				You've reached the end.
+			<p class="mt-1/1">
+				You have reached the end.
 			</p>
+
+			<p class="mb-1/1 color-dark"><em>Not able to find your game?</em> <a href="/requests/new">Submit a request</a></p>
 		</center>
 	{/if}
 {:else if $games?.length}

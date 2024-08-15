@@ -54,7 +54,10 @@
 	bind:value />
 
 {#if !$games.length && !loading}
-	<center in:fade={{ duration: 150 }}><em>No results were found</em></center>
+	<center in:fade={{ duration: 150 }}>
+		<p>No results were found</p>
+		<p class="color-dark"><em>Not able to find your game?</em> <a href="/requests/new">Submit a request</a></p>
+	</center>
 {/if}
 
 {#if loading}
