@@ -1,4 +1,4 @@
-<div class="tentative">This game is not yet released and not all details are known</div>
+<div class="tentative">This game is not yet released and not all details are known.</div>
 
 <style>
 	.tentative {
