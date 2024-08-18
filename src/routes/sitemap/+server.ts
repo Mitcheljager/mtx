@@ -1,5 +1,5 @@
 import { supabase } from "$lib/db"
-import { gamesTable } from "$lib/stores/games"
+import { gamesTable, itemsPerPage } from "$lib/stores/games"
 import type { RequestEvent } from "./$types"
 
 export async function GET({ setHeaders } : RequestEvent) {
@@ -17,6 +17,8 @@ export async function GET({ setHeaders } : RequestEvent) {
 		"Content-Type": "application/xml"
 	})
 
+  console.log(Math.ceil(data.length / itemsPerPage))
+
 	const body = `<?xml version="1.0" encoding="UTF-8"?>
     <urlset
           xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
@@ -27,23 +29,25 @@ export async function GET({ setHeaders } : RequestEvent) {
       <url>
         <loc>https://${host}</loc>
         <changefreq>daily</changefreq>
-        <priority>1.00</priority>
       </url>
 
       <url>
         <loc>https://${host}/about</loc>
-        <priority>0.9</priority>
       </url>
 
       <url>
         <loc>https://${host}/privacy</loc>
-        <priority>0.9</priority>
       </url>
+
+      ${Array.from({ length: Math.ceil(data.length / itemsPerPage) }, (_, page) => `
+        <url>
+          <loc>https://${host}/?page=${page + 1}</loc>
+        </url>
+      `)}
 
       ${data.map((game) => `
         <url>
           <loc>https://${host}/${game.slug}</loc>
-          <priority>0.8</priority>
         </url>
       `).join("")}
     </urlset>
