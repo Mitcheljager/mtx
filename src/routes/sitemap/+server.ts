@@ -1,11 +1,16 @@
-import { api } from "$lib/api"
-import type { Game } from "$lib/types/Game"
+import { supabase } from "$lib/db"
+import { gamesTable } from "$lib/stores/games"
 import type { RequestEvent } from "./$types"
 
 export async function GET({ setHeaders } : RequestEvent) {
 	const host = "macrotransactions.org"
 
-	const data = await api<Game[]>("/sitemap")
+	const { data, error } = await supabase
+    .from(gamesTable)
+    .select("slug")
+    .order("created_at", { ascending: false })
+
+  if (error) throw new Error(error.message)
 
 	setHeaders({
 		"Cache-Control": "max-age=14400",
