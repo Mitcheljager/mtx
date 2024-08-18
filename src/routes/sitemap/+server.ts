@@ -43,7 +43,7 @@ export async function GET({ setHeaders } : RequestEvent) {
         <url>
           <loc>https://${host}/?page=${page + 1}</loc>
         </url>
-      `)}
+      `).join("")}
 
       ${data.map((game) => `
         <url>
