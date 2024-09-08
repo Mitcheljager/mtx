@@ -19,5 +19,5 @@ export async function GET({ url } : RequestEvent) {
 
 	data.forEach((game) => (game.categories = sortedCategories(game.categories)))
 
-  return new Response(JSON.stringify(data))
+  return new Response(JSON.stringify(data), { headers: { "Content-Type": "application/json" } })
 }

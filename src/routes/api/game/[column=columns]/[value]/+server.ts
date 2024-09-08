@@ -19,5 +19,5 @@ export async function GET({ params } : RequestEvent) {
 
   data.categories = sortedCategories(data.categories)
 
-  return new Response(JSON.stringify(data))
+  return new Response(JSON.stringify(data), { headers: { "Content-Type": "application/json" } })
 }
