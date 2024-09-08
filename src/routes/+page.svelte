@@ -31,7 +31,10 @@
 			$currentPage += 1
 			$reachedEnd = response.length < itemsPerPage
 
-			$games = [...$games, ...response]
+			// Filter out potential duplicates in case of caching
+			const filteredResponse = response.filter(r => !$games.find(g => g.id === r.id))
+
+			$games = [...$games, ...filteredResponse]
 		} catch (error: any) {
 			throw new Error(error?.message)
 		} finally {
