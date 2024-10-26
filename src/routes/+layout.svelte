@@ -1,25 +1,29 @@
-<script>
+<script lang="ts">
 	import { user, userLoaded } from "$lib/stores/session"
 	import { supabase } from "$lib/db"
 	import { onNavigate } from "$app/navigation"
+	import type { Snippet } from "svelte"
+  import { onMount } from "svelte"
+  import type { NavigationType } from "@sveltejs/kit"
 
 	import Header from "$lib/components/Header.svelte"
 	import Footer from "$lib/components/Footer.svelte"
 
 	import "$lib/scss/app.scss"
-  import { onMount } from "svelte"
 
-	/** @type {{children?: import('svelte').Snippet}} */
-	const { children } = $props()
+	interface Props { children?: Snippet }
 
-	onNavigate((navigation) => {
+	const { children } : Props = $props()
+
+	// @ts-ignore
+	onNavigate((navigation: Exclude<NavigationType, 'enter' | 'leave'>) => {
 		// @ts-ignore
 		if (!document.startViewTransition) return
 
-		return new Promise((resolve) => {
-			// @ts-ignore
+		return new Promise<void>((resolve) => {
 			document.startViewTransition(async () => {
 				resolve()
+			// @ts-ignore
 				await navigation.complete
 			})
 		})
