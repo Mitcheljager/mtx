@@ -10,8 +10,9 @@ export default defineConfig({
 		preprocessorOptions: {
 			scss: {
 				appendData: `
-					@import "src/lib/scss/_variables.scss";
-					@import "src/lib/scss/_mixins.scss";
+					@use "src/lib/scss/_functions.scss" as *;
+					@use "src/lib/scss/_variables.scss" as *;
+					@use "src/lib/scss/_mixins.scss" as *;
 				`
 			}
 		}

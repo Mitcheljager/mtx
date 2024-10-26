@@ -1,3 +1,5 @@
+@use "../mixins";
+
 * {
 	box-sizing: border-box;
 
@@ -26,7 +28,7 @@ body {
 	overflow-x: hidden;
 	overflow-y: scroll;
 
-	@include safari() {
+	@include mixins.safari() {
 		display: block;
 	}
 }

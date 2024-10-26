@@ -1,3 +1,4 @@
+@use "sass:color";
 $margin: 3rem;
 
 $media-min-widths: (
@@ -22,16 +23,16 @@ $text-color: hsl(219, 22%, 77%);
 	--blue: #2863cf;
 	--green: #26aa5d;
 
-	--body-bg: #{darken($base-bg, 10%)};
-	--content-bg: #{lighten($base-bg, 5%)};
-	--content-bg-light: #{lighten($base-bg, 10%)};
-	--bg-dark: #{darken($base-bg, 5%)};
-	--border-color: #{lighten($base-bg, 15%)};
+	--body-bg: #{color.adjust($base-bg, $lightness: -10%)};
+	--content-bg: #{color.adjust($base-bg, $lightness: 5%)};
+	--content-bg-light: #{color.adjust($base-bg, $lightness: 10%)};
+	--bg-dark: #{color.adjust($base-bg, $lightness: -5%)};
+	--border-color: #{color.adjust($base-bg, $lightness: 15%)};
 
 	--text-color: #{$text-color};
-	--text-color-medium: #{desaturate(darken($text-color, 10%), 5%)};
-	--text-color-dark: #{desaturate(darken($text-color, 25%), 10%)};
-	--text-color-light: #{lighten($text-color, 20%)};
+	--text-color-medium: #{color.adjust(color.adjust($text-color, $lightness: -10%), $saturation: -5%)};
+	--text-color-dark: #{color.adjust(color.adjust($text-color, $lightness: -25%), $saturation: -10%)};
+	--text-color-light: #{color.adjust($text-color, $lightness: 20%)};
 	--text-color-title: var(--primary);
 	--font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 	--font-family-titles: var(--font-family);

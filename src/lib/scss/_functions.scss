@@ -1,0 +1,13 @@
+@use "sass:color";
+
+@function lighten($color, $adjust) {
+  @return color.adjust($color, $lightness: $adjust);
+}
+
+@function darken($color, $adjust) {
+  @return color.adjust($color, $lightness: -$adjust);
+}
+
+@function desaturate($color, $adjust) {
+  @return color.adjust($color, $saturation: -$adjust);
+}

@@ -1,2 +1,11 @@
-@import "./variables", "./mixins", "./general/general", "./general/form", "./general/titles",
-	"./general/button", "./general/alert", "./general/position", "./general/display", "./general/text";
+@use "functions" as *;
+@use "variables" as *;
+@use "mixins" as *;
+@use "general/general";
+@use "general/form";
+@use "general/titles";
+@use "general/button";
+@use "general/alert";
+@use "general/position";
+@use "general/display";
+@use "general/text";
