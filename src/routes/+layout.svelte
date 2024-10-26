@@ -17,7 +17,6 @@
 
 	// @ts-ignore
 	onNavigate((navigation: Exclude<NavigationType, 'enter' | 'leave'>) => {
-		// @ts-ignore
 		if (!document.startViewTransition) return
 
 		return new Promise<void>((resolve) => {
