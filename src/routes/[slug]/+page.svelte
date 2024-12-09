@@ -85,7 +85,7 @@
 				<Tentative />
 			{/if}
 
-			<h3>Microtransactions in <em>{game.title}</em> are summarized as...</h3>
+			<h2>Microtransactions in <em>{game.title}</em> are summarized as...</h2>
 
 			{#if game.description}
 				<div class="description">
@@ -127,7 +127,7 @@
 		text-align: center;
 	}
 
-	h3 {
+	h2 {
 		margin: 0 0 1rem;
 		font-size: 1rem;
 		color: var(--text-color);
