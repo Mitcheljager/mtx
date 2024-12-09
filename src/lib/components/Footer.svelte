@@ -22,7 +22,6 @@
 
 	a {
 		color: var(--text-color);
-		text-decoration: none;
 
 		&:hover {
 			color: white;
