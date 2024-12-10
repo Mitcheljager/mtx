@@ -12,6 +12,8 @@
 
 			if (error) throw error
 
+			document.cookie = "mtx_attempt_login=true; expires=Thu, 1 Jan 2099 12:00:00 UTC"
+
 			alert("Check your email for the login link!")
 		} catch (error: any) {
 			alert(error.error_description || error.message)

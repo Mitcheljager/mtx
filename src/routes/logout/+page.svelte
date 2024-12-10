@@ -4,6 +4,8 @@
 	async function logout() {
 		const { error } = await supabase.auth.signOut()
 
+		document.cookie = ""
+
 		if (error) throw new Error(error.message)
 	}
 </script>

@@ -1,6 +1,5 @@
 <script lang="ts">
 	import { user, userLoaded } from "$lib/stores/session"
-	import { supabase } from "$lib/db"
 	import { onNavigate } from "$app/navigation"
 	import type { Snippet } from "svelte"
   import { onMount } from "svelte"
@@ -29,14 +28,19 @@
 	})
 
 	onMount(async () => {
-		const { data: { session } } = await supabase.auth.getSession()
-		$user = session?.user || null
-		$userLoaded = true
-	})
+		// Load supabase only when cookie is set. Log in is still entirely based on supabase itself,
+		// this cookie only determines if supabase will load or not
+		if (!document.cookie.includes('mtx_attempt_login=true')) return
 
-	supabase.auth.onAuthStateChange((_, session) => {
-		$user = session?.user || null
-		$userLoaded = true
+		try {
+			const { supabase } = await import("$lib/db")
+
+			const { data: { session } } = await supabase.auth.getSession()
+			$user = session?.user || null
+			$userLoaded = true
+		} catch (error) {
+			console.error("Could not log you in", error)
+		}
 	})
 </script>
 
