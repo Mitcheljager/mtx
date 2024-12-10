@@ -1,8 +1,8 @@
-<script>
+<script lang="ts">
 	import { supabase } from "$lib/db"
 
 	let loading = false
-	let email = null
+	let email = ""
 
 	const handleLogin = async () => {
 		try {
@@ -13,7 +13,7 @@
 			if (error) throw error
 
 			alert("Check your email for the login link!")
-		} catch (error) {
+		} catch (error: any) {
 			alert(error.error_description || error.message)
 		} finally {
 			loading = false
