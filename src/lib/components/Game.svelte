@@ -103,6 +103,10 @@
 		box-shadow: var(--shadow-medium);
 		overflow: hidden;
 
+		@include high-contrast() {
+			border: 2px solid currentColor;
+		}
+
 		:global(em) {
 			color: white;
 			background: var(--primary);

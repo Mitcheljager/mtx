@@ -72,8 +72,17 @@
 		font-weight: bold;
 		cursor: pointer;
 
+		@include high-contrast() {
+			border: 2px solid currentColor;
+			border-radius: 0.5rem;
+		}
+
 		&:hover {
 			filter: brightness(1.1);
+
+			@include high-contrast() {
+				filter: none;
+			}
 		}
 
 		&:focus-visible {
@@ -124,6 +133,11 @@
 		font-style: italic;
 		line-height: 1.15rem;
 		box-shadow: var(--shadow-medium);
+
+		@include high-contrast() {
+			border: 2px solid currentColor;
+			color: currentColor;
+		}
 
 		.grade:not(.grade--large) & {
 			left: 50%;

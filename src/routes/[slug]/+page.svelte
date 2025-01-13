@@ -125,6 +125,11 @@
 		-webkit-background-clip: text;
 		color: transparent;
 		text-align: center;
+
+		@include high-contrast() {
+			background: transparent;
+			color: currentColor;
+		}
 	}
 
 	h2 {

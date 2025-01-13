@@ -38,8 +38,14 @@ a {
 
 	&:hover,
 	&:active,
-	&:focus {
+	&:focus,
+	&:focus-visible {
 		color: var(--secondary);
+
+		@include mixins.high-contrast() {
+			outline: 2px solid currentColor;
+			outline-offset: 2px;
+		}
 	}
 
 	&:focus {
@@ -58,6 +64,11 @@ mark {
 	color: transparent;
 	font-weight: bold;
 	text-shadow: var(--shadow-big);
+
+	@include mixins.high-contrast() {
+		color: black;
+		background: red;
+	}
 }
 
 blockquote {
@@ -86,6 +97,10 @@ img {
 	border-radius: 1rem;
 	background: var(--bg-dark);
 	box-shadow: var(--shadow-big);
+
+	@include mixins.high-contrast() {
+		border: 2px solid currentColor;
+	}
 }
 
 [style*="--view-transition-name"] {

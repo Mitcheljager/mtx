@@ -30,6 +30,10 @@
 		line-height: 1.5rem;
 		color: hsla(0, 0%, 100%, 0.95);
 
+		@include high-contrast() {
+			padding: 0;
+		}
+
 		&--neutral {
 			background: linear-gradient(to right, var(--border-color), transparent);
 		}
