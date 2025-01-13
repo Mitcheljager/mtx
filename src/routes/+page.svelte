@@ -86,14 +86,13 @@
 		</center>
 	{/if}
 {:else if $games?.length}
-	<div class="tray mt-1/1">
+	<div class="tray mt-1/1" role="status" aria-live="polite">
 		<a
 			href={nextPageHref}
 			class="button button--large"
 			class:button--primary={!loading}
 			data-sveltekit-preload-data="off"
-			onclick={getNextPage}
-			aria-busy={loading}>
+			onclick={getNextPage}>
 			{loading ? "Loading..." : "Load more"}
 	</a>
 	</div>
