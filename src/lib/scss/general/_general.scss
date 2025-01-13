@@ -104,5 +104,20 @@ img {
 }
 
 [style*="--view-transition-name"] {
-	view-transition-name: var(--view-transition-name);
+	@include mixins.motion() {
+		view-transition-name: var(--view-transition-name);
+	}
+}
+
+[style*="view-transition-name"] {
+	@include mixins.no-motion() {
+    view-transition-name: unset !important;
+  }
+}
+
+::view-transition-old(root),
+::view-transition-new(root) {
+	@include mixins.no-motion() {
+  	animation: none !important;
+	}
 }
