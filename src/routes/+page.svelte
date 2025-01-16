@@ -91,6 +91,7 @@
 			href={nextPageHref}
 			class="button button--large"
 			class:button--primary={!loading}
+			aria-label="Load more games"
 			data-sveltekit-preload-data="off"
 			onclick={getNextPage}>
 			{loading ? "Loading..." : "Load more"}

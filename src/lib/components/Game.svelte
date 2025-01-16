@@ -82,7 +82,7 @@
 			</a>
 		{/if}
 
-		<a class="card__continue button" href="/{game.slug}" tabindex="-1">
+		<a class="card__continue button" href="/{game.slug}" aria-label="Read more about {game.title}">
 			Read more
 		</a>
 	</div>
