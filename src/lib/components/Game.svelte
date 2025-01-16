@@ -44,7 +44,7 @@
 
 			<div>
 				<div>
-					<a class="card__title" style="view-transition-name: title-{game.id}" href="/{game.slug}" tabindex="-1">
+					<a class="card__title" style="view-transition-name: title-{game.id}" href="/{game.slug}">
 						{@html title}
 					</a>
 				</div>
