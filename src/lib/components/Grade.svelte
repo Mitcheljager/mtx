@@ -86,8 +86,8 @@
 		}
 
 		&:focus-visible {
-			border: 2px solid white;
-			outline: none;
+			outline: 2px solid white;
+			outline-offset: 2px;
 		}
 
 		&--large {

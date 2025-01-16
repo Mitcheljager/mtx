@@ -155,6 +155,10 @@
 			color: var(--text-color-title);
 			box-shadow: 0 2px 0 currentColor;
 		}
+
+		&:focus-visible {
+			box-shadow: none;
+		}
 	}
 
 	.card__date {

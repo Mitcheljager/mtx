@@ -63,6 +63,10 @@
 			box-shadow: 0 2px 0 currentColor;
 		}
 
+		&:focus-visible {
+			box-shadow: none;
+		}
+
 		&--active {
 			color: white;
 		}
@@ -93,6 +97,9 @@
 		}
 
 		a {
+			color: white;
+			border-radius: 50%;
+
 			&:hover,
 			&:active,
 			&:focus {
