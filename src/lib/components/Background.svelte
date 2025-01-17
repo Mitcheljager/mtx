@@ -4,7 +4,7 @@
 	const { key = "" } = $props()
 </script>
 
-<div class="background">
+<div class="background" role="presentation">
 	<Image
 		{key}
 		from="games"
