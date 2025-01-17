@@ -3,7 +3,7 @@
 
 	<div>
 		<a href="/privacy">Privacy</a> | Contribute on
-		<a href="https://github.com/Mitcheljager/mtx/" target="_blank" rel="noreferrer noopener">GitHub</a>
+		<a href="https://github.com/Mitcheljager/mtx/" target="_blank" rel="noreferrer noopener" aria-label="Github (opens in new tab)">GitHub</a>
 	</div>
 </footer>
 
