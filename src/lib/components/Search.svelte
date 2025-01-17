@@ -47,7 +47,7 @@
 
 <input
 	class="search form-input form-input--large"
-	type="text"
+	type="search"
 	placeholder="Search by game or publisher..."
 	autocomplete="off"
 	oninput={search}
