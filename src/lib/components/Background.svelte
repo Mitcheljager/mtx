@@ -4,12 +4,13 @@
 	const { key = "" } = $props()
 </script>
 
-<div class="background" role="presentation">
+<div class="background">
 	<Image
 		{key}
 		from="games"
 		width={80}
 		height={106}
+		role="presentation"
 		alt="" />
 </div>
 
