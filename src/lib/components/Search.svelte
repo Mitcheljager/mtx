@@ -45,10 +45,15 @@
 	}
 </script>
 
+<label for="search">Search</label>
+<span id="search-hint">Search by game or publisher...</span>
+
 <input
 	class="search form-input form-input--large"
 	type="search"
+	id="search"
 	placeholder="Search by game or publisher..."
+	aria-describedby="search-hint"
 	autocomplete="off"
 	oninput={search}
 	bind:value />
@@ -67,6 +72,15 @@
 {/if}
 
 <style lang="scss">
+	label,
+	span {
+		position: absolute;
+		left: -999px;
+		height: 1px;
+		width: 1px;
+		overflow: hidden;
+	}
+
 	input {
 		display: block;
 		position: relative;
