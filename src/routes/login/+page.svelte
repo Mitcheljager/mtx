@@ -12,7 +12,8 @@
 
 			if (error) throw error
 
-			document.cookie = "mtx_attempt_login=true; expires=Thu, 1 Jan 2099 12:00:00 UTC"
+			const maxAge = 365 * 24 * 60 * 60 // 1 year
+			document.cookie = "mtx_attempt_login=true; max-age=" + (maxAge) + "; path=/"
 
 			alert("Check your email for the login link!")
 		} catch (error: any) {
