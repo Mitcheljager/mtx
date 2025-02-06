@@ -49,6 +49,10 @@
 					</a>
 				</div>
 
+				{#if game.year_of_release}
+					<div class="card__date">{game.year_of_release}</div>
+				{/if}
+
 				{#if publisher}
 					<a
 						href="/?search={publisherQuery}"
@@ -56,10 +60,6 @@
 						class="card__name">
 						{@html publisher}
 					</a>
-				{/if}
-
-				{#if game.year_of_release}
-					<div class="card__date">{game.year_of_release}</div>
 				{/if}
 
 				<div class="card__grade">
