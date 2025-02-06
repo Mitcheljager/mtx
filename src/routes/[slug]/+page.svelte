@@ -71,9 +71,7 @@
 
 				{#if $user}
 					<div class="mt-1/2">
-						<a class="button button--block button--small mb-1/8" href="/games/{game.id}/categories"
-							>Edit categories</a
-						> <br />
+						<a class="button button--block button--small mb-1/8" href="/games/{game.id}/categories">Edit categories</a><br />
 						<a class="button button--block button--small" href="/games/{game.id}/edit">Edit game</a>
 					</div>
 				{/if}
