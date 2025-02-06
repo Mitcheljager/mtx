@@ -166,6 +166,8 @@
 	}
 
 	.card__name {
+		padding: 0.35rem 0;
+		margin: -0.35rem 0;
 		color: var(--text-color-medium);
 		text-decoration: none;
 

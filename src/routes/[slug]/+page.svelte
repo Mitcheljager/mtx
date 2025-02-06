@@ -174,6 +174,8 @@
 	}
 
 	.name {
+		padding: 0.5rem 0;
+		margin: -0.5rem 0;
 		color: var(--text-color-medium);
 		text-decoration: none;
 
