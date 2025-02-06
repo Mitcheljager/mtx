@@ -142,7 +142,8 @@
 	}
 
 	.card__title {
-		margin: 0;
+		padding: 0.25rem 0;
+		margin: -0.25rem 0;
 		width: 100%;
 		color: var(--text-color-title);
 		font-size: 1.3rem;
