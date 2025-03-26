@@ -154,7 +154,8 @@
 		&:focus,
 		&:active {
 			color: var(--text-color-title);
-			box-shadow: 0 2px 0 currentColor;
+			text-decoration: underline;
+			text-decoration-thickness: 2px;
 		}
 
 		&:focus-visible {
