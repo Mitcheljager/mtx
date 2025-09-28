@@ -20,7 +20,7 @@
 	  if (!$user) goto("/login");
 	});
 
-	async function getCategories() {
+	async function getCategories(): Promise<void> {
 	  const { data, error } = await supabase
 	    .from("game_category")
 	    .select(`
@@ -34,7 +34,7 @@
 	  categories = data.map((d) => d.categories).flat();
 	}
 
-	async function getAllCategories() {
+	async function getAllCategories(): Promise<void> {
 	  const { data, error } = await supabase
 	    .from("categories")
 	    .select("id, title, type")
@@ -45,7 +45,7 @@
 	  allCategories = data;
 	}
 
-	async function addCategory(category: CategoryType) {
+	async function addCategory(category: CategoryType): Promise<void> {
 	  try {
 	    categories = [...categories, category];
 	    await createGameCategory(category.id, id);
@@ -54,7 +54,7 @@
 	  }
 	}
 
-	async function removeCategory(category: CategoryType) {
+	async function removeCategory(category: CategoryType): Promise<void> {
 	  try {
 	    categories = categories.filter((c) => c.id != category.id);
 	    await destroyGameCategory(category.id, id);

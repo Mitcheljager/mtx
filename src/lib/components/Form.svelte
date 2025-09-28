@@ -3,7 +3,7 @@
 	import { createGame, updateGame } from "$lib/db";
 
 	import ImageUpload from "$lib/components/ImageUpload.svelte";
-  import type { GameForm } from "$lib/types/Game.d.ts";
+  import type { Game, GameForm } from "$lib/types/Game.d.ts";
 
 	interface Props { game: GameForm }
 
@@ -22,7 +22,7 @@
 	  if (game) setData();
 	});
 
-	function setData() {
+	function setData(): void {
 	  title = game.title;
 	  description = game.description || "";
 	  publisher = game.publisher;
@@ -32,7 +32,7 @@
 	  tentative = game.tentative || false;
 	}
 
-	async function submitForm() {
+	async function submitForm(): Promise<Game> {
 	  let data;
 
 	  try {
@@ -132,7 +132,7 @@
 				Success. Your request will be reviewed. <strong>Thank you!</strong>
 			</div>
 
-			<a class="button mt-1/2" href="/games/{data[0].id}/categories">Set categories</a>
+			<a class="button mt-1/2" href="/games/{data.id}/categories">Set categories</a>
 		{:catch error}
 			<div class="alert alert--error">
 				Something went wrong while sending the data: <pre>{error}</pre>

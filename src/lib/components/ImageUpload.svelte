@@ -5,19 +5,19 @@
 
 	let { height = 213, width = 160, src = $bindable(""), onComplete = (image: any) => image }: Props = $props();
 
-	function input(event: Event) {
+	function input(event: Event): void {
 	  const target = event.target as HTMLInputElement;
 	  const file: File | null = target.files?.[0] || null;
 
 	  if (file && isFileImage(file)) drawImageOnCanvas(file);
 	}
 
-	function isFileImage(file: File) {
+	function isFileImage(file: File): boolean {
 	  if (file.type == "image/png" || file.type == "image/jpg" || file.type == "image/jpeg") return true;
 	  return false;
 	}
 
-	function drawImageOnCanvas(file: File) {
+	function drawImageOnCanvas(file: File): void {
 	  const reader = new FileReader();
 	  reader.readAsDataURL(file);
 
@@ -75,7 +75,7 @@
 	  containerHeight = 0,
 	  offsetLeft = 0.5,
 	  offsetTop = 0.5
-	) {
+	): { width: number, height: number, offsetLeft: number, offsetTop: number } {
 	  const contentRatio = contentWidth / contentHeight;
 	  const containerRatio = containerWidth / containerHeight;
 	  let resultHeight;
@@ -97,7 +97,7 @@
 	  };
 	}
 
-	async function upload(blob: File, filename: string) {
+	async function upload(blob: File, filename: string): Promise<void> {
 	  try {
 	    const image = await uploadImage(blob, filename);
 	    onComplete(image);

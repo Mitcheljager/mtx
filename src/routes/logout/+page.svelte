@@ -1,7 +1,7 @@
-<script>
+<script lang="ts">
 	import { supabase } from "$lib/db";
 
-	async function logout() {
+	async function logout(): Promise<void> {
 	  const { error } = await supabase.auth.signOut();
 
 	  document.cookie = "";

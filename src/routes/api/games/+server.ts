@@ -3,7 +3,7 @@ import { gamesSelect, gamesTable, itemsPerPage } from "$lib/stores/games";
 import { sortedCategories } from "$lib/utils/categories";
 import type { RequestEvent } from "./$types";
 
-export async function GET({ url } : RequestEvent) {
+export async function GET({ url } : RequestEvent): Promise<Response> {
   const page = parseInt(url.searchParams.get("page") || "1");
 
   const startOfRange = (page - 1) * itemsPerPage;

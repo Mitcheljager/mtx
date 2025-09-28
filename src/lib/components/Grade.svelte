@@ -6,14 +6,14 @@
 
 	interface Props { categories: Category[], size?: string }
 
-	const { categories, size = "small" } : Props = $props();
+	const { categories, size = "small" }: Props = $props();
 
 	let gradeElement: HTMLElement | null = $state(null);
 	let showTooltip = $state(false);
 
 	const grade: GradeType = categoriesToScore();
 
-	function categoriesToScore() : GradeType {
+	function categoriesToScore(): GradeType {
 	  let score = 10;
 
 	  const negativeCategories = categories?.filter((c) => c.type === "negative").length;
@@ -23,7 +23,7 @@
 	  return Object.values(Grade).filter((g) => Math.max(score, 0) >= g.min_score)[0];
 	}
 
-	function outsideClick(event: MouseEvent) {
+	function outsideClick(event: MouseEvent): void {
 	  const target = event.target as HTMLElement;
 	  if (target === gradeElement || target.closest(".grade") === gradeElement) return;
 

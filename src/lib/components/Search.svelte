@@ -12,7 +12,7 @@
 	  value = $page.url.searchParams.get("search");
 	});
 
-	function search() {
+	function search(): void {
 	  loading = true;
 
 	  $games = [];
@@ -32,7 +32,7 @@
 	  }
 	}
 
-	async function navigate() {
+	async function navigate(): Promise<void> {
 	  if (!value) {
 	    $page.url.searchParams.delete("search");
 	    await goto("/", { replaceState: true, keepFocus: true });

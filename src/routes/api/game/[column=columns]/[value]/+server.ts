@@ -3,7 +3,7 @@ import { gamesTable } from "$lib/stores/games";
 import { sortedCategories } from "$lib/utils/categories";
 import type { RequestEvent } from "./$types";
 
-export async function GET({ params } : RequestEvent) {
+export async function GET({ params } : RequestEvent): Promise<Response> {
   const { column, value } = params;
 
   const { data, error } = await supabase

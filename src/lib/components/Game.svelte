@@ -18,7 +18,7 @@
 	const title = $derived(query ? highlightQueryInString(query, game.title) : game.title);
 	const publisher = $derived(query ? highlightQueryInString(query, game.publisher) : game.publisher);
 
-	function highlightQueryInString(query: string, string: string) {
+	function highlightQueryInString(query: string, string: string): string {
 	  const regex = new RegExp(query, "gi");
 	  return string.replace(regex, (match: string) => `<em>${match}</em>`);
 	}

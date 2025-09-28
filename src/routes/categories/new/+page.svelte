@@ -1,11 +1,12 @@
 <script lang="ts">
   import { createCategory } from "$lib/db";
+  import type { Category } from "$lib/types/Category";
 
   let submit = $state(false);
   let title = $state("");
   let type = $state("");
 
-  async function submitForm() {
+  async function submitForm(): Promise<Category> {
     let data;
 
     try {

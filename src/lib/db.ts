@@ -1,69 +1,58 @@
 import { createClient } from "@supabase/supabase-js";
-import type { GameForm } from "$lib/types/Game";
-import type { CreateCategory } from "$lib/types/Category";
+import type { Game, GameForm } from "$lib/types/Game";
+import type { Category, CreateCategory } from "$lib/types/Category";
+import type { Image } from "./types/Image";
 
 export const supabase = createClient(
   import.meta.env.VITE_SUPABASE_URL,
   import.meta.env.VITE_SUPABASE_ANON_KEY
 );
 
-export async function createGame(properties: GameForm) {
+export async function createGame(properties: GameForm): Promise<Game> {
   const { data, error } = await supabase.from("games").insert([properties]).select();
 
   if (error) throw new Error(error.message);
 
-  return data;
+  return data[0];
 }
 
-export async function updateGame(properties: GameForm) {
+export async function updateGame(properties: GameForm): Promise<Game> {
   if (!properties.slug) throw new Error("No slug was given");
 
   const { data, error } = await supabase.from("games").update(properties).eq("id", properties.id).select();
 
   if (error) throw new Error(error.message);
 
-  return data;
+  return data[0];
 }
 
-export async function createCategory(properties: CreateCategory) {
+export async function createCategory(properties: CreateCategory): Promise<Category> {
   if (!properties.title) throw new Error("No title was given");
 
   const { data, error } = await supabase.from("categories").insert([properties]).select();
 
   if (error) throw new Error(error.message);
 
-  return data;
+  return data[0];
 }
 
-export async function createGameCategory(category_id: string, game_id: string) {
-  const { data, error } = await supabase.from("game_category").insert([{ category_id, game_id }]);
+export async function createGameCategory(category_id: string, game_id: string): Promise<void> {
+  const { error } = await supabase.from("game_category").insert([{ category_id, game_id }]);
 
   if (error) throw new Error(error.message);
-
-  return data;
 }
 
-export async function destroyGameCategory(category_id: string, game_id: string) {
-  const { data, error } = await supabase
+export async function destroyGameCategory(category_id: string, game_id: string): Promise<void> {
+  const { error } = await supabase
     .from("game_category")
     .delete()
     .match({ category_id, game_id });
 
   if (error) throw new Error(error.message);
-
-  return data;
 }
 
-export async function uploadImage(file: File, filename: string) {
+export async function uploadImage(file: File, filename: string): Promise<Image> {
   const { data, error } = await supabase.storage.from("games").upload(filename, file);
-
-  if (error) throw new Error(error.message);
-
-  return data;
-}
-
-export async function createRequest({ title = "", description = "" } = {}) {
-  const { data, error } = await supabase.from("requests").insert([{ title, description }]);
 
   if (error) throw new Error(error.message);
 

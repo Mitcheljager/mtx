@@ -2,7 +2,7 @@ import { supabase } from "$lib/db";
 import { gamesTable, itemsPerPage } from "$lib/stores/games";
 import type { RequestEvent } from "./$types";
 
-export async function GET({ setHeaders } : RequestEvent) {
+export async function GET({ setHeaders } : RequestEvent): Promise<Response> {
   const host = "macrotransactions.org";
 
   const { data, error } = await supabase

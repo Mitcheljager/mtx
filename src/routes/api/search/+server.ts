@@ -3,7 +3,7 @@ import { gamesSelect, gamesTable } from "$lib/stores/games";
 import { sortedCategories } from "$lib/utils/categories";
 import type { RequestEvent } from "./$types";
 
-export async function GET({ url } : RequestEvent) {
+export async function GET({ url } : RequestEvent): Promise<Response> {
   const headers = { "cache-control": "max-age=3600", "Content-Type": "application/json" };
 
   const query = url.searchParams.get("query");

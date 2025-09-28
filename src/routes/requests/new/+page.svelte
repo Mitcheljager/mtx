@@ -5,7 +5,7 @@
   let submitting = $state(false);
   let success = $state(false);
 
-  async function submit(event: SubmitEvent) {
+  async function submit(event: SubmitEvent): Promise<void> {
     event.preventDefault();
 
     if (submitting) return;
@@ -34,7 +34,7 @@
     }
   }
 
-  function reset() {
+  function reset(): void {
     title = "";
     description = "";
     errorMessage = "";

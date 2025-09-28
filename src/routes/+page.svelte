@@ -18,7 +18,7 @@
 	let loading = $state(false);
 	const nextPageHref = $derived(`${$page.url.origin}/?page=${$currentPage + 1}`);
 
-	async function getNextPage(event: Event) {
+	async function getNextPage(event: Event): Promise<void> {
 	  event.preventDefault();
 
 	  if (loading) return;
@@ -42,7 +42,7 @@
 	  }
 	}
 
-	function setStoresFromData() {
+	function setStoresFromData(): void {
 	  $games = data.games;
 	  $currentPage = data.page || 1;
 	  $reachedEnd = data.games.length < itemsPerPage;

@@ -1,7 +1,7 @@
 import { supabase } from "$lib/db";
 import type { RequestEvent } from "./$types";
 
-export async function GET({ params } : RequestEvent) {
+export async function GET({ params }: RequestEvent): Promise<Response> {
   const { data } = await supabase.storage.from(params.from).getPublicUrl(params.key);
 
   if (!data?.publicUrl) return new Response("Public URL not found", { status: 404 });

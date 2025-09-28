@@ -30,6 +30,13 @@ export default ts.config(
       "no-trailing-spaces": ["error"],
       "@typescript-eslint/no-explicit-any": "off",
       "@typescript-eslint/no-unsafe-function-type": "off",
+      "@typescript-eslint/explicit-function-return-type": ["error", {
+        allowExpressions: true,
+        allowTypedFunctionExpressions: true,
+        allowHigherOrderFunctions: true,
+        allowDirectConstAssertionInArrowFunctions: true,
+        allowConciseArrowFunctionExpressionsStartingWithVoid: true
+      }],
       "prefer-const": [
         "error",
         {

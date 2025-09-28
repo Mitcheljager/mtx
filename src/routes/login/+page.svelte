@@ -4,7 +4,7 @@
 	let loading = false;
 	let email = "";
 
-	const handleLogin = async () => {
+	async function login(): Promise<void> {
 	  try {
 	    loading = true;
 
@@ -24,7 +24,7 @@
 	};
 </script>
 
-<form class="" on:submit|preventDefault={handleLogin}>
+<form class="" on:submit|preventDefault={login}>
 	<h1>Login</h1>
 	<p>
 		Sign in via magic link with your email below. <br />
