@@ -15,8 +15,6 @@ export const load : PageLoad = async ({ params, fetch }) => {
     if (!category) throw new Error;
 
     games = await api<Game[]>(`games/category/${id}`, fetch);
-
-    console.log({ games })
   } catch {
     throw error(404, { message: "Not found" });
   }
