@@ -7,6 +7,10 @@
   const { category, games } = $derived(data);
 </script>
 
+<svelte:head>
+	<title>"{category.title}" | Macrotransactions.org</title>
+</svelte:head>
+
 <h1>All games with category</h1>
 
 <div class="wrapper">

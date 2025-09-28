@@ -6,6 +6,10 @@
   const { categories } = $derived(data);
 </script>
 
+<svelte:head>
+	<title>All categories | Macrotransactions.org</title>
+</svelte:head>
+
 <article class="wrapper">
   <h1>All categories</h1>
 
