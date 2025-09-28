@@ -28,6 +28,7 @@ export default ts.config(
       "comma-spacing": ["error"],
       indent: ["error", 2],
       "no-trailing-spaces": ["error"],
+      "@typescript-eslint/no-explicit-any": "off",
       "prefer-const": [
         "error",
         {
