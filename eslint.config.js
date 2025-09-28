@@ -29,6 +29,7 @@ export default ts.config(
       indent: ["error", 2],
       "no-trailing-spaces": ["error"],
       "@typescript-eslint/no-explicit-any": "off",
+      "@typescript-eslint/no-unsafe-function-type": "off",
       "prefer-const": [
         "error",
         {
