@@ -18,13 +18,8 @@
 
       const response = await fetch("/api/requests/new", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-          title,
-          description
-        })
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ title, description })
       });
 
       const text = await response.text();
