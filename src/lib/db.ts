@@ -58,3 +58,9 @@ export async function uploadImage(file: File, filename: string): Promise<Image> 
 
   return data;
 }
+
+export async function createRequest({ title = "", description = "" } = {}): Promise<void> {
+  const { error } = await supabase.from("requests").insert([{ title, description }]);
+
+  if (error) throw new Error(error.message);
+}
