@@ -27,7 +27,7 @@
 
 	      loading = false;
 	    }, 500);
-	  } catch (error) {
+	  } catch {
 	    alert("Something went wrong!");
 	  }
 	}

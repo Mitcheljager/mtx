@@ -1,6 +1,4 @@
 <script lang="ts">
-  import { tick } from "svelte";
-
   let title = $state("");
   let description = $state("");
   let errorMessage = $state("");

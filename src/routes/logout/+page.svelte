@@ -12,7 +12,7 @@
 
 {#await logout()}
 	Logging you out...
-{:then data}
+{:then}
 	Logged out
 {:catch error}
 	<p>Something went wrong while logging you out:</p>

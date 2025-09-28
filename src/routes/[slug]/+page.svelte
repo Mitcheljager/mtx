@@ -88,6 +88,7 @@
 
 			{#if parsedDescription}
 				<div class="description">
+					<!-- eslint-disable-next-line svelte/no-at-html-tags -->
 					{@html parsedDescription}
 				</div>
 			{/if}

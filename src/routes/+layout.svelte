@@ -14,14 +14,14 @@
 
 	const { children } : Props = $props();
 
-	// @ts-ignore
+	// @ts-expect-error View transitions are iffy
 	onNavigate((navigation: Exclude<NavigationType, "enter" | "leave">) => {
 	  if (!document.startViewTransition) return;
 
 	  return new Promise<void>((resolve) => {
 	    document.startViewTransition(async () => {
 	      resolve();
-	      // @ts-ignore
+	      // @ts-expect-error It's fine if it doesn't work in unsupported browsers
 	      await navigation.complete;
 	    });
 	  });

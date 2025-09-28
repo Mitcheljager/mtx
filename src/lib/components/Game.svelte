@@ -45,6 +45,7 @@
 			<div>
 				<div>
 					<a class="card__title" style="view-transition-name: title-{game.id}" href="/{game.slug}">
+						<!-- eslint-disable-next-line svelte/no-at-html-tags -->
 						{@html title}
 					</a>
 				</div>
@@ -58,6 +59,7 @@
 						href="/?search={publisherQuery}"
 						data-sveltekit-reload
 						class="card__name">
+						<!-- eslint-disable-next-line svelte/no-at-html-tags -->
 						{@html publisher}
 					</a>
 				{/if}
@@ -72,7 +74,7 @@
 			<Tentative />
 		{/if}
 
-		{#each game.categories.filter((c, i) => i < maxCategories) as category}
+		{#each game.categories.filter((c, i) => i < maxCategories) as category (category.title)}
 			<Category {category} />
 		{/each}
 
