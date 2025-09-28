@@ -39,7 +39,8 @@ export default ts.config(
       "@typescript-eslint/no-unused-vars": [
         "error",
         { argsIgnorePattern: "^_", varsIgnorePattern: "^_" }
-      ]
+      ],
+      "svelte/no-navigation-without-resolve": "off"
     }
   },
   {
