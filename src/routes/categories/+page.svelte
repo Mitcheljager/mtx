@@ -14,7 +14,7 @@
   <h1>All categories</h1>
 
   {#each categories as category (category.title)}
-    <a href="/"><Category {category} /></a>
+    <a href="/categories/{category.id}"><Category {category} /></a>
   {/each}
 </article>
 
