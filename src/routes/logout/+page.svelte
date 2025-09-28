@@ -1,12 +1,12 @@
 <script>
-	import { supabase } from "$lib/db"
+	import { supabase } from "$lib/db";
 
 	async function logout() {
-		const { error } = await supabase.auth.signOut()
+	  const { error } = await supabase.auth.signOut();
 
-		document.cookie = ""
+	  document.cookie = "";
 
-		if (error) throw new Error(error.message)
+	  if (error) throw new Error(error.message);
 	}
 </script>
 

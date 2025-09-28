@@ -1,7 +1,7 @@
 <script lang="ts">
-	import { page } from "$app/stores"
+	import { page } from "$app/stores";
 
-	import github from "$lib/images/github.svg"
+	import github from "$lib/images/github.svg";
 </script>
 
 <header class="header">

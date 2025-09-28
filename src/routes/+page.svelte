@@ -1,51 +1,51 @@
 <script lang="ts">
-	import { games, currentPage, reachedEnd, itemsPerPage } from "$lib/stores/games"
-	import { api } from "$lib/api"
-	import { page } from "$app/stores"
+	import { games, currentPage, reachedEnd, itemsPerPage } from "$lib/stores/games";
+	import { api } from "$lib/api";
+	import { page } from "$app/stores";
 
-	import type { Game as GameType } from "$lib/types/Game"
-	import Game from "$lib/components/Game.svelte"
-	import Search from "$lib/components/Search.svelte"
+	import type { Game as GameType } from "$lib/types/Game";
+	import Game from "$lib/components/Game.svelte";
+	import Search from "$lib/components/Search.svelte";
 
 	interface Props { data: any }
 
-	const { data } : Props = $props()
+	const { data } : Props = $props();
 
-	setStoresFromData()
+	setStoresFromData();
 
-	$effect(setStoresFromData)
+	$effect(setStoresFromData);
 
-	let loading = $state(false)
-	let nextPageHref = $derived(`${$page.url.origin}/?page=${$currentPage + 1}`)
+	let loading = $state(false);
+	const nextPageHref = $derived(`${$page.url.origin}/?page=${$currentPage + 1}`);
 
 	async function getNextPage(event: Event) {
-		event.preventDefault()
+	  event.preventDefault();
 
-		if (loading) return
+	  if (loading) return;
 
-		loading = true
+	  loading = true;
 
-		try {
-			const response = await api<GameType[]>(`games?page=${$currentPage + 1}`)
+	  try {
+	    const response = await api<GameType[]>(`games?page=${$currentPage + 1}`);
 
-			$currentPage += 1
-			$reachedEnd = response.length < itemsPerPage
+	    $currentPage += 1;
+	    $reachedEnd = response.length < itemsPerPage;
 
-			// Filter out potential duplicates in case of caching
-			const filteredResponse = response.filter(r => !$games.find(g => g.id === r.id))
+	    // Filter out potential duplicates in case of caching
+	    const filteredResponse = response.filter(r => !$games.find(g => g.id === r.id));
 
-			$games = [...$games, ...filteredResponse]
-		} catch (error: any) {
-			throw new Error(error?.message)
-		} finally {
-			loading = false
-		}
+	    $games = [...$games, ...filteredResponse];
+	  } catch (error: any) {
+	    throw new Error(error?.message);
+	  } finally {
+	    loading = false;
+	  }
 	}
 
 	function setStoresFromData() {
-		$games = data.games
-		$currentPage = data.page || 1
-		$reachedEnd = data.games.length < itemsPerPage
+	  $games = data.games;
+	  $currentPage = data.page || 1;
+	  $reachedEnd = data.games.length < itemsPerPage;
 	}
 </script>
 

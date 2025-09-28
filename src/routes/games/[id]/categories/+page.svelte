@@ -1,66 +1,66 @@
 <script lang="ts">
-	import { onMount } from "svelte"
-	import { flip } from "svelte/animate"
-	import { page } from "$app/stores"
-	import { goto } from "$app/navigation"
+	import { onMount } from "svelte";
+	import { flip } from "svelte/animate";
+	import { page } from "$app/stores";
+	import { goto } from "$app/navigation";
 
-	import { user } from "$lib/stores/session"
-	import { supabase, createGameCategory, destroyGameCategory } from "$lib/db"
-	import Category from "$lib/components/Category.svelte"
-	import type { Category as CategoryType } from "$lib/types/Category"
+	import { user } from "$lib/stores/session";
+	import { supabase, createGameCategory, destroyGameCategory } from "$lib/db";
+	import Category from "$lib/components/Category.svelte";
+	import type { Category as CategoryType } from "$lib/types/Category";
 
-	const { id } = $page.params
+	const { id } = $page.params;
 
-	let categories: CategoryType[] = $state([])
-	let allCategories: CategoryType[] = $state([])
+	let categories: CategoryType[] = $state([]);
+	let allCategories: CategoryType[] = $state([]);
 
-	let availableCategories = $derived(allCategories.filter((c) => !categories.some((i) => i.id == c.id)))
+	const availableCategories = $derived(allCategories.filter((c) => !categories.some((i) => i.id == c.id)));
 
 	onMount(() => {
-		if (!$user) goto("/login")
-	})
+	  if (!$user) goto("/login");
+	});
 
 	async function getCategories() {
-		const { data, error } = await supabase
-			.from("game_category")
-			.select(`
+	  const { data, error } = await supabase
+	    .from("game_category")
+	    .select(`
 				game_id, category_id,
 				categories (id, title, type)
 			`)
-			.eq("game_id", id)
+	    .eq("game_id", id);
 
-		if (error) throw new Error(error.message)
+	  if (error) throw new Error(error.message);
 
-		categories = data.map((d) => d.categories).flat()
+	  categories = data.map((d) => d.categories).flat();
 	}
 
 	async function getAllCategories() {
-		const { data, error } = await supabase
-			.from("categories")
-			.select("id, title, type")
-			.order("type")
+	  const { data, error } = await supabase
+	    .from("categories")
+	    .select("id, title, type")
+	    .order("type");
 
-		if (error) throw new Error(error.message)
+	  if (error) throw new Error(error.message);
 
-		allCategories = data
+	  allCategories = data;
 	}
 
 	async function addCategory(category: CategoryType) {
-		try {
-			categories = [...categories, category]
-			await createGameCategory(category.id, id)
-		} catch (error: any) {
-			alert(error?.message)
-		}
+	  try {
+	    categories = [...categories, category];
+	    await createGameCategory(category.id, id);
+	  } catch (error: any) {
+	    alert(error?.message);
+	  }
 	}
 
 	async function removeCategory(category: CategoryType) {
-		try {
-			categories = categories.filter((c) => c.id != category.id)
-			await destroyGameCategory(category.id, id)
-		} catch (error: any) {
-			alert(error?.message)
-		}
+	  try {
+	    categories = categories.filter((c) => c.id != category.id);
+	    await destroyGameCategory(category.id, id);
+	  } catch (error: any) {
+	    alert(error?.message);
+	  }
 	}
 </script>
 

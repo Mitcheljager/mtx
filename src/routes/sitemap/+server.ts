@@ -1,23 +1,23 @@
-import { supabase } from "$lib/db"
-import { gamesTable, itemsPerPage } from "$lib/stores/games"
-import type { RequestEvent } from "./$types"
+import { supabase } from "$lib/db";
+import { gamesTable, itemsPerPage } from "$lib/stores/games";
+import type { RequestEvent } from "./$types";
 
 export async function GET({ setHeaders } : RequestEvent) {
-	const host = "macrotransactions.org"
+  const host = "macrotransactions.org";
 
-	const { data, error } = await supabase
+  const { data, error } = await supabase
     .from(gamesTable)
     .select("slug")
-    .order("created_at", { ascending: false })
+    .order("created_at", { ascending: false });
 
-  if (error) throw new Error(error.message)
+  if (error) throw new Error(error.message);
 
-	setHeaders({
-		"Cache-Control": "max-age=14400",
-		"Content-Type": "application/xml"
-	})
+  setHeaders({
+    "Cache-Control": "max-age=14400",
+    "Content-Type": "application/xml"
+  });
 
-	const body = `<?xml version="1.0" encoding="UTF-8"?>
+  const body = `<?xml version="1.0" encoding="UTF-8"?>
     <urlset
           xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -49,7 +49,7 @@ export async function GET({ setHeaders } : RequestEvent) {
         </url>
       `).join("")}
     </urlset>
-  `
+  `;
 
-	return new Response(body)
+  return new Response(body);
 }

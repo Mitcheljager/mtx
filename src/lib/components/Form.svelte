@@ -1,74 +1,74 @@
 <script lang="ts">
-	import { onMount } from "svelte"
-	import { createGame, updateGame } from "$lib/db"
+	import { onMount } from "svelte";
+	import { createGame, updateGame } from "$lib/db";
 
-	import ImageUpload from "$lib/components/ImageUpload.svelte"
-  import type { GameForm } from "$lib/types/Game.d.ts"
+	import ImageUpload from "$lib/components/ImageUpload.svelte";
+  import type { GameForm } from "$lib/types/Game.d.ts";
 
 	interface Props { game: GameForm }
 
-	const { game } : Props = $props()
+	const { game } : Props = $props();
 
-	let submit = $state(false)
-	let title = $state("")
-	let description = $state("")
-	let publisher = $state("")
-	let year_of_release = $state(0)
-	let image_url = $state("")
-	let slug = $state("")
-	let tentative = $state(false)
+	let submit = $state(false);
+	let title = $state("");
+	let description = $state("");
+	let publisher = $state("");
+	let year_of_release = $state(0);
+	let image_url = $state("");
+	let slug = $state("");
+	let tentative = $state(false);
 
 	onMount(() => {
-		if (game) setData()
-	})
+	  if (game) setData();
+	});
 
 	function setData() {
-		title = game.title
-		description = game.description || ""
-		publisher = game.publisher
-		year_of_release = game.year_of_release
-		image_url = game.image_url
-		slug = game.slug
-		tentative = game.tentative || false
+	  title = game.title;
+	  description = game.description || "";
+	  publisher = game.publisher;
+	  year_of_release = game.year_of_release;
+	  image_url = game.image_url;
+	  slug = game.slug;
+	  tentative = game.tentative || false;
 	}
 
 	async function submitForm() {
-		let data
+	  let data;
 
-		try {
-			if (!game.id) {
-				data = await createGame({
-					title,
-					description,
-					publisher,
-					year_of_release,
-					image_url,
-					slug,
-					tentative,
-				})
-			} else {
-				data = await updateGame({
-					id: game.id,
-					title,
-					description,
-					publisher,
-					year_of_release,
-					image_url,
-					slug,
-					tentative
-				})
-			}
-		} catch (error: any) {
-			throw new Error(error?.message)
-		}
+	  try {
+	    if (!game.id) {
+	      data = await createGame({
+	        title,
+	        description,
+	        publisher,
+	        year_of_release,
+	        image_url,
+	        slug,
+	        tentative
+	      });
+	    } else {
+	      data = await updateGame({
+	        id: game.id,
+	        title,
+	        description,
+	        publisher,
+	        year_of_release,
+	        image_url,
+	        slug,
+	        tentative
+	      });
+	    }
+	  } catch (error: any) {
+	    throw new Error(error?.message);
+	  }
 
-		return data
+	  return data;
 	}
 </script>
 
 <form class="block" onsubmit={(event) => {
-	event.preventDefault();
-	submit = true
+  event.preventDefault();
+  submit = true;
 }}>
 	{#if !submit}
 		<label class="form-label mt-0" for="title">Title</label>

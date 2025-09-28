@@ -1,20 +1,20 @@
 <script lang="ts">
-  import { createCategory } from "$lib/db"
+  import { createCategory } from "$lib/db";
 
-  let submit = $state(false)
-  let title = $state("")
-  let type = $state("")
+  let submit = $state(false);
+  let title = $state("");
+  let type = $state("");
 
   async function submitForm() {
-    let data
+    let data;
 
     try {
-      data = await createCategory({ title, type })
+      data = await createCategory({ title, type });
     } catch(error: any) {
-      throw new Error(error?.message)
+      throw new Error(error?.message);
     }
 
-    return data
+    return data;
   }
 </script>
 
@@ -23,7 +23,7 @@
 
   <form class="block" onsubmit={(event) => {
     event.preventDefault();
-    submit = true
+    submit = true;
   }}>
     {#if !submit}
       <label class="form-label mt-0" for="title">Title</label>

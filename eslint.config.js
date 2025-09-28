@@ -18,7 +18,7 @@ export default ts.config(
   ...svelte.configs.prettier,
   {
     languageOptions: {
-      globals: { ...globals.browser, ...globals.node },
+      globals: { ...globals.browser, ...globals.node }
     },
     rules: {
       semi: ["error", "always"],
@@ -32,14 +32,14 @@ export default ts.config(
       "prefer-const": [
         "error",
         {
-          destructuring: "all",
-        },
+          destructuring: "all"
+        }
       ],
       "@typescript-eslint/no-unused-vars": [
         "error",
-        { argsIgnorePattern: "^_", varsIgnorePattern: "^_" },
-      ],
-    },
+        { argsIgnorePattern: "^_", varsIgnorePattern: "^_" }
+      ]
+    }
   },
   {
     files: ["**/*.svelte", "**/*.svelte.ts", "**/*.svelte.js"],
@@ -48,8 +48,8 @@ export default ts.config(
         projectService: true,
         extraFileExtensions: [".svelte"],
         parser: ts.parser,
-        svelteConfig,
-      },
-    },
-  },
+        svelteConfig
+      }
+    }
+  }
 );

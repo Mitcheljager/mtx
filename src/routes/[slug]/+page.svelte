@@ -1,37 +1,37 @@
 <script lang="ts">
-	import { user } from "$lib/stores/session"
+	import { user } from "$lib/stores/session";
 
-	import Category from "$lib/components/Category.svelte"
-	import Grade from "$lib/components/Grade.svelte"
-	import Background from "$lib/components/Background.svelte"
-	import Tentative from "$lib/components/Tentative.svelte"
-	import Image from "$lib/components/Image.svelte"
-  import type { Game } from "$lib/types/Game"
+	import Category from "$lib/components/Category.svelte";
+	import Grade from "$lib/components/Grade.svelte";
+	import Background from "$lib/components/Background.svelte";
+	import Tentative from "$lib/components/Tentative.svelte";
+	import Image from "$lib/components/Image.svelte";
+  import type { Game } from "$lib/types/Game";
 
 	interface Props { data: { game: Game } }
 
-	const { data } : Props = $props()
+	const { data } : Props = $props();
 
-	const defaultMetaDescription = "This page details the monetisation practices in this game and rates it in comparison to other games."
+	const defaultMetaDescription = "This page details the monetisation practices in this game and rates it in comparison to other games.";
 
-	const { game } = $derived(data)
-	const { id, image_url, description, title, categories, publisher, year_of_release, tentative } = $derived(game)
-	const [_, key] = $derived(image_url.split("games/"))
-	const parsedDescription = $derived(parseDescription(description || ""))
+	const { game } = $derived(data);
+	const { id, image_url, description, title, categories, publisher, year_of_release, tentative } = $derived(game);
+	const [_, key] = $derived(image_url.split("games/"));
+	const parsedDescription = $derived(parseDescription(description || ""));
 
 	function parseDescription(description: string) : string {
-		if (!description) return ""
+	  if (!description) return "";
 
-    const paragraphs = description.split(/\n\s*\n/)
-    let result = ""
+	  const paragraphs = description.split(/\n\s*\n/);
+	  let result = "";
 
-    paragraphs.forEach(paragraph => {
-      if (/<[^>]+>/.test(paragraph)) result += paragraph.trim()
-      else result += `<p>${paragraph.replaceAll(/\n/g, "<br>").trim()}</p>`
-    })
+	  paragraphs.forEach(paragraph => {
+	    if (/<[^>]+>/.test(paragraph)) result += paragraph.trim();
+	    else result += `<p>${paragraph.replaceAll(/\n/g, "<br>").trim()}</p>`;
+	  });
 
-    return result
-  }
+	  return result;
+	}
 </script>
 
 <svelte:head>

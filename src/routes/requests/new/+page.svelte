@@ -1,52 +1,52 @@
 <script lang="ts">
   import { tick } from "svelte";
 
-  let title = $state("")
-  let description = $state("")
-  let errorMessage = $state("")
-  let submitting = $state(false)
-  let success = $state(false)
+  let title = $state("");
+  let description = $state("");
+  let errorMessage = $state("");
+  let submitting = $state(false);
+  let success = $state(false);
 
   async function submit(event: SubmitEvent) {
-    event.preventDefault()
+    event.preventDefault();
 
-    if (submitting) return
+    if (submitting) return;
 
-    submitting = true
+    submitting = true;
 
     try {
-      if (title.length > 100) throw new Error("Title can be a maximum of 100 characters")
-      if (description.length > 500) throw new Error("Description can be a maximum of 500 characters")
+      if (title.length > 100) throw new Error("Title can be a maximum of 100 characters");
+      if (description.length > 500) throw new Error("Description can be a maximum of 500 characters");
 
       const response = await fetch("/api/requests/new", {
         method: "POST",
         headers: {
-          'Content-Type': 'application/json'
+          "Content-Type": "application/json"
         },
         body: JSON.stringify({
           title,
           description
         })
-      })
+      });
 
-      const text = await response.text()
+      const text = await response.text();
 
-      if (!response.ok) throw new Error(text)
+      if (!response.ok) throw new Error(text);
 
-      success = true
+      success = true;
     } catch (error: any) {
-      errorMessage = error.message
+      errorMessage = error.message;
     } finally {
-      submitting = false
+      submitting = false;
     }
   }
 
   function reset() {
-    title = ""
-    description = ""
-    errorMessage = ""
-    submitting = false
-    success = false
+    title = "";
+    description = "";
+    errorMessage = "";
+    submitting = false;
+    success = false;
   }
 </script>
 

@@ -1,47 +1,47 @@
 <script lang="ts">
-	import { fade } from "svelte/transition"
-	import { page } from "$app/stores"
-	import { goto, afterNavigate, invalidate } from "$app/navigation"
-	import { currentPage, games } from "$lib/stores/games"
+	import { fade } from "svelte/transition";
+	import { page } from "$app/stores";
+	import { goto, afterNavigate, invalidate } from "$app/navigation";
+	import { currentPage, games } from "$lib/stores/games";
 
-	let debounce: ReturnType<typeof setTimeout> | null = null
-	let loading = $state(false)
-	let value = $state($page.url.searchParams.get("search"))
+	let debounce: ReturnType<typeof setTimeout> | null = null;
+	let loading = $state(false);
+	let value = $state($page.url.searchParams.get("search"));
 
 	afterNavigate(() =>{
-		value = $page.url.searchParams.get("search")
-	})
+	  value = $page.url.searchParams.get("search");
+	});
 
 	function search() {
-		loading = true
+	  loading = true;
 
-		$games = []
-		$currentPage = 1
+	  $games = [];
+	  $currentPage = 1;
 
-		if (debounce) clearTimeout(debounce)
+	  if (debounce) clearTimeout(debounce);
 
-		try {
-			debounce = setTimeout(async () => {
-				await navigate()
-				invalidate("games:index")
+	  try {
+	    debounce = setTimeout(async () => {
+	      await navigate();
+	      invalidate("games:index");
 
-				loading = false
-			}, 500)
-		} catch (error) {
-			alert("Something went wrong!")
-		}
+	      loading = false;
+	    }, 500);
+	  } catch (error) {
+	    alert("Something went wrong!");
+	  }
 	}
 
 	async function navigate() {
-		if (!value) {
-			$page.url.searchParams.delete("search")
-			await goto(`/`, { replaceState: true, keepFocus: true })
+	  if (!value) {
+	    $page.url.searchParams.delete("search");
+	    await goto("/", { replaceState: true, keepFocus: true });
 
-			return
-		}
+	    return;
+	  }
 
-		$page.url.searchParams.set("search", value)
-		await goto(`?${$page.url.searchParams.toString()}`, { replaceState: true, keepFocus: true })
+	  $page.url.searchParams.set("search", value);
+	  await goto(`?${$page.url.searchParams.toString()}`, { replaceState: true, keepFocus: true });
 	}
 </script>
 

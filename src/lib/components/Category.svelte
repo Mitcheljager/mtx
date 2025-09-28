@@ -1,15 +1,15 @@
 <script lang="ts">
-  import type { Category } from "$lib/types/Category"
+  import type { Category } from "$lib/types/Category";
 
 	interface Props { category: Category }
 
-	const { category } : Props = $props()
+	const { category } : Props = $props();
 
 	function categoryTypeIcon(type: string) : string {
-		if (type == "positive") return "👍"
-		if (type == "negative") return "👎"
-		if (type == "neutral") return "➖"
-		return ""
+	  if (type == "positive") return "👍";
+	  if (type == "negative") return "👎";
+	  if (type == "neutral") return "➖";
+	  return "";
 	}
 </script>
 

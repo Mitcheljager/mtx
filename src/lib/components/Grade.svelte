@@ -1,33 +1,33 @@
 <script lang="ts">
-	import { fade } from "svelte/transition"
-	import { Grade } from "$lib/enums"
-  import type { Category } from "$lib/types/Category"
-  import type { Grade as GradeType } from "$lib/types/Grade"
+	import { fade } from "svelte/transition";
+	import { Grade } from "$lib/enums";
+  import type { Category } from "$lib/types/Category";
+  import type { Grade as GradeType } from "$lib/types/Grade";
 
 	interface Props { categories: Category[], size?: string }
 
-	const { categories, size = "small" } : Props = $props()
+	const { categories, size = "small" } : Props = $props();
 
-	let gradeElement: HTMLElement | null = $state(null)
-	let showTooltip = $state(false)
+	let gradeElement: HTMLElement | null = $state(null);
+	let showTooltip = $state(false);
 
-	const grade: GradeType = categoriesToScore()
+	const grade: GradeType = categoriesToScore();
 
 	function categoriesToScore() : GradeType {
-		let score = 10
+	  let score = 10;
 
-		const negativeCategories = categories?.filter((c) => c.type === "negative").length
+	  const negativeCategories = categories?.filter((c) => c.type === "negative").length;
 
-		score -= negativeCategories
+	  score -= negativeCategories;
 
-		return Object.values(Grade).filter((g) => Math.max(score, 0) >= g.min_score)[0]
+	  return Object.values(Grade).filter((g) => Math.max(score, 0) >= g.min_score)[0];
 	}
 
 	function outsideClick(event: MouseEvent) {
-		const target = event.target as HTMLElement
-		if (target === gradeElement || target.closest(".grade") === gradeElement) return
+	  const target = event.target as HTMLElement;
+	  if (target === gradeElement || target.closest(".grade") === gradeElement) return;
 
-		showTooltip = false
+	  showTooltip = false;
 	}
 </script>
 

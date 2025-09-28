@@ -1,27 +1,27 @@
 <script lang="ts">
-	import { page } from "$app/stores"
-	import Category from "$lib/components/Category.svelte"
-	import Background from "$lib/components/Background.svelte"
-	import Grade from "$lib/components/Grade.svelte"
-	import Tentative from "$lib/components/Tentative.svelte"
-	import Image from "$lib/components/Image.svelte"
-  import type { Game } from "$lib/types/Game"
+	import { page } from "$app/stores";
+	import Category from "$lib/components/Category.svelte";
+	import Background from "$lib/components/Background.svelte";
+	import Grade from "$lib/components/Grade.svelte";
+	import Tentative from "$lib/components/Tentative.svelte";
+	import Image from "$lib/components/Image.svelte";
+  import type { Game } from "$lib/types/Game";
 
 	interface Props { game: Game }
 
-	const { game } : Props = $props()
+	const { game } : Props = $props();
 
-	const maxCategories = 10
-	const publisherQuery = game.publisher?.replace(/[.,]/g, " ")
+	const maxCategories = 10;
+	const publisherQuery = game.publisher?.replace(/[.,]/g, " ");
 
-	const query = $derived($page.url.searchParams.get("search"))
-	const title = $derived(query ? highlightQueryInString(query, game.title) : game.title)
-	const publisher = $derived(query ? highlightQueryInString(query, game.publisher) : game.publisher)
+	const query = $derived($page.url.searchParams.get("search"));
+	const title = $derived(query ? highlightQueryInString(query, game.title) : game.title);
+	const publisher = $derived(query ? highlightQueryInString(query, game.publisher) : game.publisher);
 
 	function highlightQueryInString(query: string, string: string) {
-    const regex = new RegExp(query, 'gi')
-    return string.replace(regex, (match: string) => `<em>${match}</em>`)
-}
+	  const regex = new RegExp(query, "gi");
+	  return string.replace(regex, (match: string) => `<em>${match}</em>`);
+	}
 </script>
 
 <div class="card" style="view-transition-name: card-{game.id}">

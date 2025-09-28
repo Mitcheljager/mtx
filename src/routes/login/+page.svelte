@@ -1,27 +1,27 @@
 <script lang="ts">
-	import { supabase } from "$lib/db"
+	import { supabase } from "$lib/db";
 
-	let loading = false
-	let email = ""
+	let loading = false;
+	let email = "";
 
 	const handleLogin = async () => {
-		try {
-			loading = true
+	  try {
+	    loading = true;
 
-			const { error } = await supabase.auth.signInWithOtp({ email })
+	    const { error } = await supabase.auth.signInWithOtp({ email });
 
-			if (error) throw error
+	    if (error) throw error;
 
-			const maxAge = 365 * 24 * 60 * 60 // 1 year
-			document.cookie = "mtx_attempt_login=true; max-age=" + (maxAge) + "; path=/; Secure"
+	    const maxAge = 365 * 24 * 60 * 60; // 1 year
+	    document.cookie = "mtx_attempt_login=true; max-age=" + (maxAge) + "; path=/; Secure";
 
-			alert("Check your email for the login link!")
-		} catch (error: any) {
-			alert(error.error_description || error.message)
-		} finally {
-			loading = false
-		}
-	}
+	    alert("Check your email for the login link!");
+	  } catch (error: any) {
+	    alert(error.error_description || error.message);
+	  } finally {
+	    loading = false;
+	  }
+	};
 </script>
 
 <form class="" on:submit|preventDefault={handleLogin}>

@@ -1,36 +1,36 @@
-import preprocess from "svelte-preprocess"
-import adapter from "@sveltejs/adapter-cloudflare"
-import { mdsvex } from "mdsvex"
+import preprocess from "svelte-preprocess";
+import adapter from "@sveltejs/adapter-cloudflare";
+import { mdsvex } from "mdsvex";
 
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
-	preprocess: [
-		preprocess({
-			preserve: ["ld+json"],
-			scss: {
-				includePaths: ["src"],
-				prependData: `
+  preprocess: [
+    preprocess({
+      preserve: ["ld+json"],
+      scss: {
+        includePaths: ["src"],
+        prependData: `
 					@use "src/lib/scss/_functions.scss" as *;
 					@use "src/lib/scss/_variables.scss" as *;
 					@use "src/lib/scss/_mixins.scss" as *;
 				`
-			},
-		}),
-		mdsvex({
+      }
+    }),
+    mdsvex({
       extensions: [".md"],
       layout: "./src/routes/post.svelte"
     })
-	],
+  ],
 
-	extensions: [".svelte", ".md"],
+  extensions: [".svelte", ".md"],
 
-	kit: {
-		// adapter-auto only supports some environments, see https://kit.svelte.dev/docs/adapter-auto for a list.
-		// If your environment is not supported or you settled on a specific environment, switch out the adapter.
-		// See https://kit.svelte.dev/docs/adapters for more information about adapters.
-		adapter: adapter(),
-		inlineStyleThreshold: 4096,
-	}
-}
+  kit: {
+    // adapter-auto only supports some environments, see https://kit.svelte.dev/docs/adapter-auto for a list.
+    // If your environment is not supported or you settled on a specific environment, switch out the adapter.
+    // See https://kit.svelte.dev/docs/adapters for more information about adapters.
+    adapter: adapter(),
+    inlineStyleThreshold: 4096
+  }
+};
 
-export default config
+export default config;
