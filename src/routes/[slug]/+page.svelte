@@ -15,8 +15,9 @@
 	const defaultMetaDescription = "This page details the monetisation practices in this game and rates it in comparison to other games."
 
 	const { game } = $derived(data)
-	const [_, key] = $derived(game.image_url.split("games/"))
-	const description = $derived(parseDescription(game.description || ""))
+	const { id, image_url, description, title, categories, publisher, year_of_release, tentative } = $derived(game)
+	const [_, key] = $derived(image_url.split("games/"))
+	const parsedDescription = $derived(parseDescription(description || ""))
 
 	function parseDescription(description: string) : string {
 		if (!description) return ""
@@ -34,85 +35,83 @@
 </script>
 
 <svelte:head>
-	<title>{game.title} | Macrotransactions.org</title>
+	<title>{title} | Macrotransactions.org</title>
 	<meta
 		name="description"
-		content="Are there microtransactions in {game.title}? {game.description || defaultMetaDescription}" />
+		content="Are there microtransactions in {title}? {parsedDescription || defaultMetaDescription}" />
 </svelte:head>
 
 <div class="wrapper">
-	<h1 style="view-transition-name: title-{game.id}">{game.title}</h1>
+	<h1 style="view-transition-name: title-{id}">{title}</h1>
 
-	<div class="block" style="view-transition-name: card-{game.id}">
+	<div class="block" style="view-transition-name: card-{id}">
 		<aside class="sidebar sm:mr-1/2">
-			<div class="image mb-1/4" style="--view-transition-name: image-{game.id}">
-				{#if game.image_url}
+			<div class="image mb-1/4" style="--view-transition-name: image-{id}">
+				{#if image_url}
 					<Image
 						{key}
 						from="games"
 						width={160}
 						height={213}
-						alt={game.title} />
+						alt={title} />
 				{/if}
 			</div>
 
 			<div class="grade mb-1/2 sm:mb-1/4">
-				<Grade categories={game.categories} size="large" />
+				<Grade categories={categories} size="large" />
 			</div>
 
 			<div class="info">
-				{#if game.publisher}
-					<a href="/?search={game.publisher}" class="name sm:mt-1/8">{game.publisher}</a>
+				{#if publisher}
+					<a href="/?search={publisher}" class="name sm:mt-1/8">{publisher}</a>
 				{/if}
 
-				{#if game.year_of_release}
-					<div class="date mt-1/8">{game.year_of_release}</div>
+				{#if year_of_release}
+					<div class="date mt-1/8">{year_of_release}</div>
 				{/if}
 
 				{#if $user}
 					<div class="mt-1/2">
-						<a class="button button--block button--small mb-1/8" href="/games/{game.id}/categories">Edit categories</a><br />
-						<a class="button button--block button--small" href="/games/{game.id}/edit">Edit game</a>
+						<a class="button button--block button--small mb-1/8" href="/games/{id}/categories">Edit categories</a><br />
+						<a class="button button--block button--small" href="/games/{id}/edit">Edit game</a>
 					</div>
 				{/if}
 			</div>
 		</aside>
 
 		<div class="content">
-			{#if game.tentative}
+			{#if tentative}
 				<Tentative />
 			{/if}
 
-			<h2>Microtransactions in <em>{game.title}</em> are summarized as...</h2>
+			<h2>Microtransactions in <em>{title}</em> are summarized as...</h2>
 
-			{#if game.description}
+			{#if parsedDescription}
 				<div class="description">
-					{@html description}
+					{@html parsedDescription}
 				</div>
 			{/if}
 
-			{#if game.categories}
+			{#if categories}
 				<div class="categories">
-					{#each game.categories as category (category.id)}
+					{#each categories as category (category.id)}
 						<Category {category} />
 					{/each}
 				</div>
 			{/if}
 		</div>
 
-		{#if game.image_url}
+		{#if image_url}
 			<Background {key} />
 		{/if}
 	</div>
 </div>
 
-{#if game.image_url}
+{#if image_url}
 	<div class="page-background">
 		<Background {key} />
 	</div>
 {/if}
-
-
 
 <style lang="scss">
 	$breakpoint: 640px;
