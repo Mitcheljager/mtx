@@ -84,8 +84,8 @@
 			</a>
 		{/if}
 
-		<a class="card__continue button" href="/{game.slug}" aria-label="Read more about {game.title}">
-			Read more
+		<a class="card__continue button" href="/{game.slug}">
+			Read more <span class="sr-only">about {game.title}</span>
 		</a>
 	</div>
 
@@ -211,5 +211,13 @@
 			background: var(--content-bg);
 			color: white;
 		}
+	}
+
+	.sr-only {
+		position: absolute;
+		clip: rect(0 0 0 0);
+		overflow: hidden;
+		height: 1px;
+		width: 1px;
 	}
 </style>
