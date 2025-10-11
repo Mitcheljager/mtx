@@ -26,8 +26,36 @@
 	  let result = "";
 
 	  paragraphs.forEach(paragraph => {
-	    if (/<[^>]+>/.test(paragraph)) result += paragraph.trim();
-	    else result += `<p>${paragraph.replaceAll(/\n/g, "<br>").trim()}</p>`;
+	    if (/<[^>]+>/.test(paragraph)) {
+	      result += paragraph.trim();
+	      return;
+	    }
+
+	    paragraph = `<p>${paragraph.replaceAll(/\n/g, "<br>").trim()}</p>`;
+
+	    const containsListItems = paragraph.includes("<br>-");
+
+	    if (!containsListItems) {
+	      result += paragraph;
+	      return;
+	    }
+
+	    // This isn't the most sophisticated thing ever, but this parses markdown like lists to use <ul><li> elements.
+	    // It's based purely on both the previous parsing of lines lines and formatting of lists.
+
+	    // Lists are parsed as paragraphs above, but we want to transform them to <ul> instead, as a <ul> can't exist inside of a <p> tag.
+	    // We start with the closing tag to make things a little easier.
+	    paragraph = paragraph.replace("</p>", "</li></ul>");
+
+	    // Account for both lists that are separate paragraph and once that are on new lines only.
+	    // In other words, whether the list has 2 new lines before it or one. This is done for the first
+	    // list item only, where we also open the <ul> tag.
+	    if(paragraph.includes("<p>-")) paragraph = paragraph.replace("<p>-", "<ul><li>");
+	    else paragraph = paragraph.replace("<br>-", "</p><ul><li>");
+
+			// Finally replace all remaining list items with proper tags.
+			// Note that none of this works for lists with only 1 item.
+	    result += paragraph.replaceAll("<br>-", "</li><li>");
 	  });
 
 	  return result;
@@ -245,6 +273,18 @@
 			height: 1px;
 			border: 0;
 			margin: 1.5rem 0;
+		}
+
+		:global(p + ul) {
+			margin-top: -0.75rem;
+		}
+
+		:global(ul) {
+			padding-left: 1rem;
+		}
+
+		:global(li::marker) {
+			color: var(--primary);
 		}
 	}
 
