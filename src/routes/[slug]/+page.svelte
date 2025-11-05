@@ -50,11 +50,14 @@
 	    // Account for both lists that are separate paragraph and once that are on new lines only.
 	    // In other words, whether the list has 2 new lines before it or one. This is done for the first
 	    // list item only, where we also open the <ul> tag.
-	    if(paragraph.includes("<p>-")) paragraph = paragraph.replace("<p>-", "<ul><li>");
-	    else paragraph = paragraph.replace("<br>-", "</p><ul><li>");
+	    if (paragraph.includes("<p>-")) {
+	      paragraph = paragraph.replace("<p>-", "<ul><li>");
+	    } else {
+	      paragraph = paragraph.replace("<br>-", "</p><ul><li>");
+	    }
 
-			// Finally replace all remaining list items with proper tags.
-			// Note that none of this works for lists with only 1 item.
+	    // Finally replace all remaining list items with proper tags.
+	    // Note that none of this works for lists with only 1 item.
 	    result += paragraph.replaceAll("<br>-", "</li><li>");
 	  });
 
