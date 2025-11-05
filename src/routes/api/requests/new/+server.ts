@@ -7,7 +7,7 @@ export async function POST({ request }) {
 
     if (!title) throw new Error("No title was given");
     if (title.length > 100) throw new Error("Title too long");
-    if (title.description > 500) throw new Error("Description too long");
+    if (description.length > 500) throw new Error("Description too long");
 
     await createRequest({ title, description });
 
