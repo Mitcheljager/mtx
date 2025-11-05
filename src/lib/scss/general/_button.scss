@@ -24,9 +24,9 @@
 		border: 2px solid currentColor;
 	}
 
-	&:hover,
-	&:active,
-	&:focus {
+	&:hover:not([disabled]),
+	&:active:not([disabled]),
+	&:focus:not([disabled]) {
 		color: white;
 	}
 
@@ -37,6 +37,7 @@
 
 	&[disabled] {
 		cursor: not-allowed;
+		opacity: 0.75;
 	}
 }
 

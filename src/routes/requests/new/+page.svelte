@@ -78,7 +78,7 @@
         {#if submitting}
           <button class="button mt-1/2" disabled>Submitting...</button>
         {:else}
-          <button type="submit" class="button button--primary mt-1/2">Submit your request</button>
+          <button type="submit" class="button button--primary mt-1/2" class:button--primary={!!title.length} disabled={!title.length}>Submit your request</button>
         {/if}
       </form>
     {/if}
