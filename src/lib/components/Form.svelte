@@ -78,7 +78,7 @@
 			name="title"
 			required
 			bind:value={title}
-			onchange={() => (slug = title.replace(/[^a-z0-9]/gi, "-").toLowerCase())}
+			onchange={() => (slug = title.replace(/[():]/g, "").replace(/[^a-z0-9]/gi, "-").toLowerCase())}
 		/>
 		<p class="help">The name of the game. Full name, no abbreviations.</p>
 
