@@ -12,4 +12,4 @@ export interface Game {
   description?: string,
 }
 
-export type GameForm = Omit<Game, "id" | "categories"> & Partial<Pick<Game, "id">>
+export type GameForm = Omit<Game, "id" | "categories"> & Pick<Game, "id">

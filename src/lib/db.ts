@@ -16,7 +16,7 @@ export async function createGame(properties: GameForm): Promise<Game> {
   return data[0];
 }
 
-export async function updateGame(properties: GameForm): Promise<Game> {
+export async function updateGame(properties: Required<GameForm>): Promise<Game> {
   if (!properties.slug) throw new Error("No slug was given");
 
   const { data, error } = await supabase.from("games").update(properties).eq("id", properties.id).select();
