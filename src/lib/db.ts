@@ -1,6 +1,6 @@
 import { createClient } from "@supabase/supabase-js";
 import type { Game, GameForm } from "$lib/types/Game";
-import type { Category, CreateCategory } from "$lib/types/Category";
+import type { Category } from "$lib/types/Category";
 import type { Image } from "./types/Image";
 
 export const supabase = createClient(
@@ -26,7 +26,7 @@ export async function updateGame(properties: GameForm): Promise<Game> {
   return data[0];
 }
 
-export async function createCategory(properties: CreateCategory): Promise<Category> {
+export async function createCategory(properties: Omit<Category, "id">): Promise<Category> {
   if (!properties.title) throw new Error("No title was given");
 
   const { data, error } = await supabase.from("categories").insert([properties]).select();

@@ -10,4 +10,4 @@ export const itemsPerPage = 27;
 export const gamesTable = "games";
 export const gamesSelect = `
   id, title, publisher, year_of_release, image_url, slug, tentative,
-  categories (id, title, type)`;
+  categories (title, type)`;

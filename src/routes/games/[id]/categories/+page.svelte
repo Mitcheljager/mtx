@@ -11,8 +11,8 @@
 
 	const { id } = $page.params;
 
-	let categories: CategoryType[] = $state([]);
-	let allCategories: CategoryType[] = $state([]);
+	let categories: Required<CategoryType>[] = $state([]);
+	let allCategories: Required<CategoryType>[] = $state([]);
 
 	const availableCategories = $derived(allCategories.filter((c) => !categories.some((i) => i.id == c.id)));
 
@@ -45,7 +45,7 @@
 	  allCategories = data;
 	}
 
-	async function addCategory(category: CategoryType): Promise<void> {
+	async function addCategory(category: Required<CategoryType>): Promise<void> {
 	  try {
 	    categories = [...categories, category];
 	    await createGameCategory(category.id, id);
@@ -54,7 +54,7 @@
 	  }
 	}
 
-	async function removeCategory(category: CategoryType): Promise<void> {
+	async function removeCategory(category: Required<CategoryType>): Promise<void> {
 	  try {
 	    categories = categories.filter((c) => c.id != category.id);
 	    await destroyGameCategory(category.id, id);

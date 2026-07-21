@@ -10,7 +10,7 @@ export async function GET({ params } : RequestEvent): Promise<Response> {
     .from(gamesTable)
     .select(`
       id, description, title, publisher, year_of_release, image_url, slug, tentative,
-      categories (id, title, type)
+      categories (title, type)
     `)
     .eq(column, value)
     .single();
