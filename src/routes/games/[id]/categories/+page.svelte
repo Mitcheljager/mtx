@@ -14,7 +14,7 @@
 	let categories: Required<CategoryType>[] = $state([]);
 	let allCategories: Required<CategoryType>[] = $state([]);
 
-	const availableCategories = $derived(allCategories.filter((c) => !categories.some((i) => i.id == c.id)));
+	const availableCategories = $derived(allCategories.filter((a) => !categories.some((b) => b.id == a.id)));
 
 	onMount(() => {
 	  if (!$user) goto("/login");
