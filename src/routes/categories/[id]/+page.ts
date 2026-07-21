@@ -1,4 +1,3 @@
-import { error } from "@sveltejs/kit";
 import { api } from "$lib/api";
 import type { PageLoad } from "./$types";
 import type { Category } from "$lib/types/Category";
@@ -12,7 +11,7 @@ export const load : PageLoad = async ({ params, fetch }) => {
     api<Game[]>(`games/category/${id}`, fetch)
   ])).map(p => {
     // @ts-expect-error Shut up
-    return p.value
+    return p.value;
   });
 
   return { category, games };

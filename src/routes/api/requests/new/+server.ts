@@ -1,7 +1,7 @@
-import { createRequest } from '$lib/db';
-import { json, error } from '@sveltejs/kit';
+import { createRequest } from "$lib/db";
+import { json, error } from "@sveltejs/kit";
 
-export async function POST({ request }) {
+export async function POST({ request }): Promise<Response> {
   try {
     const { title, description } = await request.json();
 

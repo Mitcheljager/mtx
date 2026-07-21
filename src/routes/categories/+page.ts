@@ -7,7 +7,7 @@ export const load : PageLoad = async ({ fetch }) => {
   let data;
 
   try {
-    data = await api<Category[]>('categories', fetch);
+    data = await api<Category[]>("categories", fetch);
     if (!data) throw new Error;
   } catch {
     throw error(404, { message: "Not found" });

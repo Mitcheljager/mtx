@@ -126,7 +126,7 @@
 
 			{#if categories}
 				<div class="categories">
-					{#each categories as category}
+					{#each categories as category (category.title)}
 						<Category {category} />
 					{/each}
 				</div>

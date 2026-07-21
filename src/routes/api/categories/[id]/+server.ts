@@ -4,10 +4,10 @@ export async function GET({ params }): Promise<Response> {
   const { id } = params;
 
   const { data, error } = await supabase
-	    .from("categories")
-	    .select("id, title, type")
-	    .eq("id", id)
-      .single();
+    .from("categories")
+    .select("id, title, type")
+    .eq("id", id)
+    .single();
 
   if (error) throw new Error(error.message);
 
