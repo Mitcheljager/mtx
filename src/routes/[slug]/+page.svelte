@@ -15,7 +15,7 @@
 	const defaultMetaDescription = "This page details the monetisation practices in this game and rates it in comparison to other games.";
 
 	const { game } = $derived(data);
-	const { id, image_url, description, title, categories, publisher, year_of_release, tentative } = $derived(game);
+	const { id, slug, image_url, description, title, categories, publisher, year_of_release, tentative } = $derived(game);
 	const [_, key] = $derived(image_url.split("games/"));
 	const parsedDescription = $derived(parseDescription(description || ""));
 
@@ -73,11 +73,11 @@
 </svelte:head>
 
 <div class="wrapper">
-	<h1 style="view-transition-name: title-{id}">{title}</h1>
+	<h1 style="view-transition-name: title-{slug}">{title}</h1>
 
-	<div class="block" style="view-transition-name: card-{id}">
+	<div class="block" style="view-transition-name: card-{slug}">
 		<aside class="sidebar sm:mr-1/2">
-			<div class="image mb-1/4" style="--view-transition-name: image-{id}">
+			<div class="image mb-1/4" style="--view-transition-name: image-{slug}">
 				{#if image_url}
 					<Image
 						{key}

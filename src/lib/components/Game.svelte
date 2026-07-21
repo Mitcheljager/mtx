@@ -24,12 +24,12 @@
 	}
 </script>
 
-<div class="card" style="view-transition-name: card-{game.id}">
+<div class="card" style="view-transition-name: card-{game.slug}">
 	<div class="card__content">
 		<div class="card__header">
 			<a
 				class="card__image"
-				style="view-transition-name: image-{game.id}"
+				style="view-transition-name: image-{game.slug}"
 				href="/{game.slug}"
 				tabindex="-1">
 				{#if game.image_url}
@@ -44,7 +44,7 @@
 
 			<div>
 				<div>
-					<a class="card__title" style="view-transition-name: title-{game.id}" href="/{game.slug}">
+					<a class="card__title" style="view-transition-name: title-{game.slug}" href="/{game.slug}">
 						<!-- eslint-disable-next-line svelte/no-at-html-tags -->
 						{@html title}
 					</a>
