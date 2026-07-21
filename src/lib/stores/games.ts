@@ -2,7 +2,7 @@ import { writable, type Writable } from "svelte/store";
 
 import type { Game } from "$lib/types/Game";
 
-export const games: Writable<Game[]> = writable([]);
+export const games: Writable<Omit<Game, "id">[]> = writable([]);
 export const currentPage: Writable<number> = writable(0);
 export const reachedEnd = writable(false);
 

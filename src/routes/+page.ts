@@ -12,7 +12,7 @@ export const load : PageLoad = async ({ fetch, url, depends }) => {
   const page = browser && get(currentPage) ? get(currentPage) : parseInt(url.searchParams.get("page") || "1");
 
   const path = query ? `search?query=${query}` : `games?page=${page}`;
-  const data = browser && get(games)?.length ? get(games) : await api<Game[]>(path, fetch);
+  const data = browser && get(games)?.length ? get(games) : await api<Omit<Game, "id">[]>(path, fetch);
 
   return {
     games: data || [],

@@ -1,7 +1,7 @@
 import type { Category } from "./Category";
 
 export interface Game {
-  id: string,
+  id?: string,
   title: string,
   slug: string,
   publisher: string,

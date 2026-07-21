@@ -1,5 +1,6 @@
 import { supabase } from "$lib/db";
 import { gamesSelect, gamesTable, itemsPerPage } from "$lib/stores/games";
+import type { Game } from "$lib/types/Game";
 import { sortedCategories } from "$lib/utils/categories";
 import type { RequestEvent } from "./$types";
 
@@ -19,5 +20,7 @@ export async function GET({ url } : RequestEvent): Promise<Response> {
 
   data.forEach((game) => (game.categories = sortedCategories(game.categories)));
 
-  return new Response(JSON.stringify(data), { headers: { "Content-Type": "application/json" } });
+  for (const game of data) delete game["id"];
+
+  return new Response(JSON.stringify(data as Omit<Game, "id">[]), { headers: { "Content-Type": "application/json" } });
 }

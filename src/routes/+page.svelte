@@ -7,9 +7,7 @@
 	import Game from "$lib/components/Game.svelte";
 	import Search from "$lib/components/Search.svelte";
 
-	interface Props { data: any }
-
-	const { data } : Props = $props();
+	const { data } = $props();
 
 	setStoresFromData();
 
@@ -26,13 +24,13 @@
 	  loading = true;
 
 	  try {
-	    const response = await api<GameType[]>(`games?page=${$currentPage + 1}`);
+	    const response = await api<Omit<GameType, "id">[]>(`games?page=${$currentPage + 1}`);
 
 	    $currentPage += 1;
 	    $reachedEnd = response.length < itemsPerPage;
 
 	    // Filter out potential duplicates in case of caching
-	    const filteredResponse = response.filter(r => !$games.find(g => g.id === r.id));
+	    const filteredResponse = response.filter(r => !$games.find(g => g.slug === r.slug));
 
 	    $games = [...$games, ...filteredResponse];
 	  } catch (error: any) {
@@ -69,7 +67,7 @@
 
 <div class="cards" class:cards--single={$games?.length == 1}>
 	{#if $games}
-		{#each $games as game (game.id)}
+		{#each $games as game (game.slug)}
 			<Game {game} />
 		{/each}
 	{/if}
