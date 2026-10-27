@@ -1,5 +1,5 @@
 <script lang="ts">
-  import Category from "$lib/components/Category.svelte";
+  import Category from "$lib/components/global/Category.svelte";
 
   const { data } = $props();
 

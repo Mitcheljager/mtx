@@ -18,6 +18,14 @@ export default defineConfig({
     }
   },
   build: {
-    assetsInlineLimit: 1024
+    assetsInlineLimit: 1024,
+    rollupOptions: {
+      output:{
+        manualChunks(id) {
+          if (id.includes(".css") || id.includes(".scss")) return "style"
+          if (id.includes("components/global")) return "global"
+        }
+      }
+    }
   }
 });

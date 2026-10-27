@@ -2,7 +2,7 @@
 	import { onMount } from "svelte";
 	import { createGame, updateGame } from "$lib/db";
 
-	import ImageUpload from "$lib/components/ImageUpload.svelte";
+	import ImageUpload from "$lib/components//ImageUpload.svelte";
   import type { Game, GameForm } from "$lib/types/Game.d.ts";
 
 	interface Props { game: GameForm }

@@ -5,8 +5,8 @@
   import { onMount } from "svelte";
   import type { NavigationType } from "@sveltejs/kit";
 
-	import Header from "$lib/components/Header.svelte";
-	import Footer from "$lib/components/Footer.svelte";
+	import Header from "$lib/components/global/Header.svelte";
+	import Footer from "$lib/components/global/Footer.svelte";
 
 	import "$lib/scss/app.scss";
 

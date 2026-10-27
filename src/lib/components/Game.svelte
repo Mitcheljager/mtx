@@ -1,10 +1,10 @@
 <script lang="ts">
 	import { page } from "$app/stores";
-	import Category from "$lib/components/Category.svelte";
-	import Background from "$lib/components/Background.svelte";
-	import Grade from "$lib/components/Grade.svelte";
+	import Category from "$lib/components/global/Category.svelte";
+	import Background from "$lib/components/global/Background.svelte";
+	import Grade from "$lib/components/global/Grade.svelte";
 	import Tentative from "$lib/components/Tentative.svelte";
-	import Image from "$lib/components/Image.svelte";
+	import Image from "$lib/components/global/Image.svelte";
   import type { Game } from "$lib/types/Game";
 
 	interface Props { game: Game }

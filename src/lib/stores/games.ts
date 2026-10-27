@@ -6,7 +6,7 @@ export const games: Writable<Omit<Game, "id">[]> = writable([]);
 export const currentPage: Writable<number> = writable(0);
 export const reachedEnd = writable(false);
 
-export const itemsPerPage = 27;
+export const itemsPerPage = 24;
 export const gamesTable = "games";
 export const gamesSelect = `
   id, title, publisher, year_of_release, image_url, slug, tentative,
